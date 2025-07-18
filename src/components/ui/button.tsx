@@ -18,6 +18,12 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Faith Harbor Premium Variants
+        hero: "bg-lighthouse-gradient text-white hover:shadow-glow transition-all duration-300 border-0 shadow-large",
+        ministry: "bg-ministry-gradient text-white hover:scale-105 transition-all duration-300 shadow-medium",
+        spiritual: "bg-spiritual-gradient text-white hover:bg-spiritual-gradient/90 shadow-soft",
+        premium: "bg-white/10 text-white border border-white/20 backdrop-blur-sm hover:bg-white/20 transition-all duration-300",
+        cta: "bg-primary text-primary-foreground hover:bg-primary-glow shadow-large hover:shadow-glow transition-all duration-300 animate-glow",
       },
       size: {
         default: "h-10 px-4 py-2",
