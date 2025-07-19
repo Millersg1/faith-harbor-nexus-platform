@@ -14,10 +14,10 @@ const Footer = () => {
             <h3 className="text-lg font-semibold" style={{color: "hsl(var(--gold))"}}>
               Faith Harbor
             </h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-700">
               The complete ministry management platform built specifically for churches and Christian businesses.
             </p>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-sm text-gray-700">
               <Heart className="h-4 w-4 text-red-500" />
               <span>Built with faith and purpose</span>
             </div>
@@ -25,25 +25,25 @@ const Footer = () => {
 
           {/* Product Links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-foreground">Product</h4>
+            <h4 className="text-sm font-semibold text-gray-900">Product</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/demo" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/demo" className="text-gray-700 hover:text-blue-800 transition-colors">
                   Demo
                 </Link>
               </li>
               <li>
-                <Link to="/demo-video" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/demo-video" className="text-gray-700 hover:text-blue-800 transition-colors">
                   Demo Video
                 </Link>
               </li>
               <li>
-                <Link to="/sales-churches" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/sales-churches" className="text-gray-700 hover:text-blue-800 transition-colors">
                   For Churches
                 </Link>
               </li>
               <li>
-                <Link to="/sales-business" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/sales-business" className="text-gray-700 hover:text-blue-800 transition-colors">
                   For Businesses
                 </Link>
               </li>
@@ -52,20 +52,20 @@ const Footer = () => {
 
           {/* Legal Links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-foreground">Legal</h4>
+            <h4 className="text-sm font-semibold text-gray-900">Legal</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/privacy-policy" className="text-gray-700 hover:text-blue-800 transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms-of-service" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/terms-of-service" className="text-gray-700 hover:text-blue-800 transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link to="/cookie-policy" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link to="/cookie-policy" className="text-gray-700 hover:text-blue-800 transition-colors">
                   Cookie Policy
                 </Link>
               </li>
@@ -74,8 +74,8 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-foreground">Contact</h4>
-            <div className="space-y-2 text-sm text-muted-foreground">
+            <h4 className="text-sm font-semibold text-gray-900">Contact</h4>
+            <div className="space-y-2 text-sm text-gray-700">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
                 <span>support@faithharbor.com</span>
@@ -95,10 +95,10 @@ const Footer = () => {
         <Separator className="my-8" />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-gray-700">
             © {currentYear} Faith Harbor. All rights reserved.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-gray-700">
             Ministry management platform in development
           </p>
         </div>
