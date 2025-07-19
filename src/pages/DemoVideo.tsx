@@ -124,7 +124,7 @@ const DemoVideo = () => {
                   <Button variant="outline" size="lg" className="w-full">
                     Schedule Personal Demo
                   </Button>
-                  <div className="text-center text-sm text-muted-foreground">
+                  <div className="text-center text-sm text-blue-600">
                     No credit card required • Setup in minutes
                   </div>
                 </CardContent>
