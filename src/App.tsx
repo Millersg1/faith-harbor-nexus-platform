@@ -23,6 +23,10 @@ import DonationSuccess from "./pages/DonationSuccess";
 import Analytics from "./pages/Analytics";
 import EmailMarketing from "./pages/EmailMarketing";
 import Sermons from "./pages/Sermons";
+import PrayerRequests from "./pages/PrayerRequests";
+import SmallGroups from "./pages/SmallGroups";
+import Volunteers from "./pages/Volunteers";
+import Documents from "./pages/Documents";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 
