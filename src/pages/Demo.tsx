@@ -267,7 +267,7 @@ const Demo = () => {
                     {features.map((feature, index) => (
                       <div key={index} className="flex items-center gap-3">
                         <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                        <span className="text-sm text-gray-900">{feature}</span>
+                        <span className="text-sm text-blue-600">{feature}</span>
                       </div>
                     ))}
                   </div>
