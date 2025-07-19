@@ -7,7 +7,7 @@ const BusinessSales = () => {
   const pricingPlans = [
     {
       name: "Startup",
-      price: 147,
+      price: 79,
       description: "Perfect for small Christian businesses (1-10 employees)",
       features: [
         "CRM & Lead Management",
@@ -22,7 +22,7 @@ const BusinessSales = () => {
     },
     {
       name: "Growth",
-      price: 297,
+      price: 147,
       description: "Ideal for growing businesses (10-50 employees)",
       features: [
         "Everything in Startup",
@@ -38,7 +38,7 @@ const BusinessSales = () => {
     },
     {
       name: "Enterprise",
-      price: 497,
+      price: 397,
       description: "For large Christian enterprises (50+ employees)",
       features: [
         "Everything in Growth",
