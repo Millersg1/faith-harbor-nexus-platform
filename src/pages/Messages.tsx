@@ -7,9 +7,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
-import { MessageCircle, Send, User, Clock, Reply } from "lucide-react";
+import { MessageCircle, Send, User, Clock, Reply, Phone } from "lucide-react";
 import { format } from "date-fns";
+import TwilioFlexPanel from "@/components/TwilioFlexPanel";
 
 interface Message {
   id: string;
@@ -162,169 +164,190 @@ const Messages = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold">Messages</h1>
-          <p className="text-muted-foreground">Stay connected with your community</p>
+          <h1 className="text-3xl font-bold">Messages & Support</h1>
+          <p className="text-muted-foreground">Internal messaging and Twilio Flex support center</p>
         </div>
-        <Dialog open={isComposeOpen} onOpenChange={setIsComposeOpen}>
-          <DialogTrigger asChild>
-            <Button>
-              <Send className="mr-2 h-4 w-4" />
-              Compose Message
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-[525px]">
-            <DialogHeader>
-              <DialogTitle>Compose New Message</DialogTitle>
-              <DialogDescription>
-                Send a message to a community member.
-              </DialogDescription>
-            </DialogHeader>
-            <form onSubmit={handleSendMessage} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="recipient">Recipient</Label>
-                <select
-                  id="recipient"
-                  value={composeForm.recipient_id}
-                  onChange={(e) => setComposeForm(prev => ({ ...prev, recipient_id: e.target.value }))}
-                  className="w-full p-2 border rounded-md"
-                  required
-                >
-                  <option value="">Select recipient...</option>
-                  {profiles.map((profile) => (
-                    <option key={profile.user_id} value={profile.user_id}>
-                      {getProfileName(profile.user_id)}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="subject">Subject</Label>
-                <Input
-                  id="subject"
-                  value={composeForm.subject}
-                  onChange={(e) => setComposeForm(prev => ({ ...prev, subject: e.target.value }))}
-                  placeholder="Enter message subject"
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="content">Message</Label>
-                <Textarea
-                  id="content"
-                  value={composeForm.content}
-                  onChange={(e) => setComposeForm(prev => ({ ...prev, content: e.target.value }))}
-                  placeholder="Type your message here..."
-                  rows={6}
-                  required
-                />
-              </div>
-              <div className="flex justify-end space-x-2">
-                <Button type="button" variant="outline" onClick={() => setIsComposeOpen(false)}>
-                  Cancel
-                </Button>
-                <Button type="submit">
+      </div>
+
+      <Tabs defaultValue="messages" className="w-full">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="messages" className="flex items-center gap-2">
+            <MessageCircle className="h-4 w-4" />
+            Internal Messages
+          </TabsTrigger>
+          <TabsTrigger value="flex" className="flex items-center gap-2">
+            <Phone className="h-4 w-4" />
+            Flex Support
+          </TabsTrigger>
+        </TabsList>
+        
+        <TabsContent value="messages" className="mt-6">
+          <div className="flex justify-between items-center mb-6">
+            <div className="mb-6">
+              <Input
+                placeholder="Search messages..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="max-w-md"
+              />
+            </div>
+            <Dialog open={isComposeOpen} onOpenChange={setIsComposeOpen}>
+              <DialogTrigger asChild>
+                <Button>
                   <Send className="mr-2 h-4 w-4" />
-                  Send Message
+                  Compose Message
                 </Button>
-              </div>
-            </form>
-          </DialogContent>
-        </Dialog>
-      </div>
-
-      <div className="mb-6">
-        <Input
-          placeholder="Search messages..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="max-w-md"
-        />
-      </div>
-
-      {filteredMessages.length === 0 ? (
-        <Card>
-          <CardContent className="flex flex-col items-center justify-center py-16">
-            <MessageCircle className="h-12 w-12 text-muted-foreground mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No messages found</h3>
-            <p className="text-muted-foreground text-center">
-              {searchTerm ? "No messages match your search." : "Start a conversation by sending your first message."}
-            </p>
-          </CardContent>
-        </Card>
-      ) : (
-        <div className="space-y-4">
-          {filteredMessages.map((message) => (
-            <Card 
-              key={message.id} 
-              className={`cursor-pointer transition-colors hover:bg-accent ${!message.read ? 'border-primary' : ''}`}
-              onClick={() => {
-                setSelectedMessage(message);
-                if (!message.read) markAsRead(message.id);
-              }}
-            >
-              <CardHeader className="pb-2">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <User className="h-4 w-4 text-muted-foreground" />
-                    <span className="font-medium">{getProfileName(message.sender_id)}</span>
-                    {!message.read && <Badge variant="secondary">New</Badge>}
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[525px]">
+                <DialogHeader>
+                  <DialogTitle>Compose New Message</DialogTitle>
+                  <DialogDescription>
+                    Send a message to a community member.
+                  </DialogDescription>
+                </DialogHeader>
+                <form onSubmit={handleSendMessage} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="recipient">Recipient</Label>
+                    <select
+                      id="recipient"
+                      value={composeForm.recipient_id}
+                      onChange={(e) => setComposeForm(prev => ({ ...prev, recipient_id: e.target.value }))}
+                      className="w-full p-2 border rounded-md"
+                      required
+                    >
+                      <option value="">Select recipient...</option>
+                      {profiles.map((profile) => (
+                        <option key={profile.user_id} value={profile.user_id}>
+                          {getProfileName(profile.user_id)}
+                        </option>
+                      ))}
+                    </select>
                   </div>
-                  <div className="flex items-center text-sm text-muted-foreground">
-                    <Clock className="h-3 w-3 mr-1" />
-                    {format(new Date(message.created_at), "MMM d, yyyy h:mm a")}
+                  <div className="space-y-2">
+                    <Label htmlFor="subject">Subject</Label>
+                    <Input
+                      id="subject"
+                      value={composeForm.subject}
+                      onChange={(e) => setComposeForm(prev => ({ ...prev, subject: e.target.value }))}
+                      placeholder="Enter message subject"
+                      required
+                    />
                   </div>
-                </div>
-                <CardTitle className="text-lg">{message.subject}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground line-clamp-2">{message.content}</p>
+                  <div className="space-y-2">
+                    <Label htmlFor="content">Message</Label>
+                    <Textarea
+                      id="content"
+                      value={composeForm.content}
+                      onChange={(e) => setComposeForm(prev => ({ ...prev, content: e.target.value }))}
+                      placeholder="Type your message here..."
+                      rows={6}
+                      required
+                    />
+                  </div>
+                  <div className="flex justify-end space-x-2">
+                    <Button type="button" variant="outline" onClick={() => setIsComposeOpen(false)}>
+                      Cancel
+                    </Button>
+                    <Button type="submit">
+                      <Send className="mr-2 h-4 w-4" />
+                      Send Message
+                    </Button>
+                  </div>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </div>
+
+          {filteredMessages.length === 0 ? (
+            <Card>
+              <CardContent className="flex flex-col items-center justify-center py-16">
+                <MessageCircle className="h-12 w-12 text-muted-foreground mb-4" />
+                <h3 className="text-lg font-semibold mb-2">No messages found</h3>
+                <p className="text-muted-foreground text-center">
+                  {searchTerm ? "No messages match your search." : "Start a conversation by sending your first message."}
+                </p>
               </CardContent>
             </Card>
-          ))}
-        </div>
-      )}
-
-      {selectedMessage && (
-        <Dialog open={!!selectedMessage} onOpenChange={() => setSelectedMessage(null)}>
-          <DialogContent className="sm:max-w-[700px]">
-            <DialogHeader>
-              <div className="flex items-center justify-between">
-                <div>
-                  <DialogTitle>{selectedMessage.subject}</DialogTitle>
-                  <DialogDescription className="flex items-center mt-2">
-                    <User className="h-4 w-4 mr-1" />
-                    From: {getProfileName(selectedMessage.sender_id)}
-                    <Clock className="h-4 w-4 ml-4 mr-1" />
-                    {format(new Date(selectedMessage.created_at), "MMM d, yyyy h:mm a")}
-                  </DialogDescription>
-                </div>
-              </div>
-            </DialogHeader>
-            <div className="mt-4">
-              <div className="bg-muted p-4 rounded-lg">
-                <p className="whitespace-pre-wrap">{selectedMessage.content}</p>
-              </div>
-              <div className="mt-4 flex justify-end">
-                <Button 
-                  variant="outline"
+          ) : (
+            <div className="space-y-4">
+              {filteredMessages.map((message) => (
+                <Card 
+                  key={message.id} 
+                  className={`cursor-pointer transition-colors hover:bg-accent ${!message.read ? 'border-primary' : ''}`}
                   onClick={() => {
-                    setComposeForm({
-                      recipient_id: selectedMessage.sender_id,
-                      subject: `Re: ${selectedMessage.subject}`,
-                      content: ""
-                    });
-                    setSelectedMessage(null);
-                    setIsComposeOpen(true);
+                    setSelectedMessage(message);
+                    if (!message.read) markAsRead(message.id);
                   }}
                 >
-                  <Reply className="mr-2 h-4 w-4" />
-                  Reply
-                </Button>
-              </div>
+                  <CardHeader className="pb-2">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <User className="h-4 w-4 text-muted-foreground" />
+                        <span className="font-medium">{getProfileName(message.sender_id)}</span>
+                        {!message.read && <Badge variant="secondary">New</Badge>}
+                      </div>
+                      <div className="flex items-center text-sm text-muted-foreground">
+                        <Clock className="h-3 w-3 mr-1" />
+                        {format(new Date(message.created_at), "MMM d, yyyy h:mm a")}
+                      </div>
+                    </div>
+                    <CardTitle className="text-lg">{message.subject}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground line-clamp-2">{message.content}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
-          </DialogContent>
-        </Dialog>
-      )}
+          )}
+
+          {selectedMessage && (
+            <Dialog open={!!selectedMessage} onOpenChange={() => setSelectedMessage(null)}>
+              <DialogContent className="sm:max-w-[700px]">
+                <DialogHeader>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <DialogTitle>{selectedMessage.subject}</DialogTitle>
+                      <DialogDescription className="flex items-center mt-2">
+                        <User className="h-4 w-4 mr-1" />
+                        From: {getProfileName(selectedMessage.sender_id)}
+                        <Clock className="h-4 w-4 ml-4 mr-1" />
+                        {format(new Date(selectedMessage.created_at), "MMM d, yyyy h:mm a")}
+                      </DialogDescription>
+                    </div>
+                  </div>
+                </DialogHeader>
+                <div className="mt-4">
+                  <div className="bg-muted p-4 rounded-lg">
+                    <p className="whitespace-pre-wrap">{selectedMessage.content}</p>
+                  </div>
+                  <div className="mt-4 flex justify-end">
+                    <Button 
+                      variant="outline"
+                      onClick={() => {
+                        setComposeForm({
+                          recipient_id: selectedMessage.sender_id,
+                          subject: `Re: ${selectedMessage.subject}`,
+                          content: ""
+                        });
+                        setSelectedMessage(null);
+                        setIsComposeOpen(true);
+                      }}
+                    >
+                      <Reply className="mr-2 h-4 w-4" />
+                      Reply
+                    </Button>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
+          )}
+        </TabsContent>
+        
+        <TabsContent value="flex" className="mt-6">
+          <TwilioFlexPanel />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
