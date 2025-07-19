@@ -7,7 +7,7 @@ const ChurchSales = () => {
   const pricingPlans = [
     {
       name: "Starter",
-      price: 79,
+      price: 97,
       description: "Perfect for small churches (up to 100 members)",
       features: [
         "Member Management System",
@@ -22,7 +22,7 @@ const ChurchSales = () => {
     },
     {
       name: "Professional", 
-      price: 147,
+      price: 197,
       description: "Ideal for growing churches (up to 500 members)",
       features: [
         "Everything in Starter",
