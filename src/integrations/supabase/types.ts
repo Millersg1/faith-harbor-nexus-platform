@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      announcements: {
+        Row: {
+          author_id: string | null
+          category: string | null
+          content: string
+          created_at: string | null
+          expires_at: string | null
+          id: string
+          priority: string | null
+          published_at: string | null
+          status: string | null
+          target_audience: string | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          author_id?: string | null
+          category?: string | null
+          content: string
+          created_at?: string | null
+          expires_at?: string | null
+          id?: string
+          priority?: string | null
+          published_at?: string | null
+          status?: string | null
+          target_audience?: string | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          author_id?: string | null
+          category?: string | null
+          content?: string
+          created_at?: string | null
+          expires_at?: string | null
+          id?: string
+          priority?: string | null
+          published_at?: string | null
+          status?: string | null
+          target_audience?: string | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       blog_categories: {
         Row: {
           created_at: string | null
@@ -208,6 +253,236 @@ export type Database = {
         }
         Relationships: []
       }
+      donations: {
+        Row: {
+          amount: number
+          anonymous: boolean | null
+          category: string | null
+          created_at: string | null
+          currency: string | null
+          donation_type: string
+          donor_email: string
+          donor_id: string | null
+          donor_name: string
+          id: string
+          message: string | null
+          recurring_frequency: string | null
+          status: string | null
+          stripe_payment_intent_id: string | null
+          stripe_subscription_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          amount: number
+          anonymous?: boolean | null
+          category?: string | null
+          created_at?: string | null
+          currency?: string | null
+          donation_type: string
+          donor_email: string
+          donor_id?: string | null
+          donor_name: string
+          id?: string
+          message?: string | null
+          recurring_frequency?: string | null
+          status?: string | null
+          stripe_payment_intent_id?: string | null
+          stripe_subscription_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          amount?: number
+          anonymous?: boolean | null
+          category?: string | null
+          created_at?: string | null
+          currency?: string | null
+          donation_type?: string
+          donor_email?: string
+          donor_id?: string | null
+          donor_name?: string
+          id?: string
+          message?: string | null
+          recurring_frequency?: string | null
+          status?: string | null
+          stripe_payment_intent_id?: string | null
+          stripe_subscription_id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      event_registrations: {
+        Row: {
+          attendee_email: string
+          attendee_name: string
+          attendee_phone: string | null
+          event_id: string | null
+          id: string
+          number_of_guests: number | null
+          payment_status: string | null
+          registered_at: string | null
+          special_requests: string | null
+          user_id: string | null
+        }
+        Insert: {
+          attendee_email: string
+          attendee_name: string
+          attendee_phone?: string | null
+          event_id?: string | null
+          id?: string
+          number_of_guests?: number | null
+          payment_status?: string | null
+          registered_at?: string | null
+          special_requests?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          attendee_email?: string
+          attendee_name?: string
+          attendee_phone?: string | null
+          event_id?: string | null
+          id?: string
+          number_of_guests?: number | null
+          payment_status?: string | null
+          registered_at?: string | null
+          special_requests?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "event_registrations_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      events: {
+        Row: {
+          category: string | null
+          cost: number | null
+          created_at: string | null
+          description: string | null
+          end_date: string | null
+          event_date: string
+          id: string
+          image_url: string | null
+          location: string | null
+          max_capacity: number | null
+          organizer_id: string | null
+          registration_deadline: string | null
+          registration_required: boolean | null
+          status: string | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          category?: string | null
+          cost?: number | null
+          created_at?: string | null
+          description?: string | null
+          end_date?: string | null
+          event_date: string
+          id?: string
+          image_url?: string | null
+          location?: string | null
+          max_capacity?: number | null
+          organizer_id?: string | null
+          registration_deadline?: string | null
+          registration_required?: boolean | null
+          status?: string | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string | null
+          cost?: number | null
+          created_at?: string | null
+          description?: string | null
+          end_date?: string | null
+          event_date?: string
+          id?: string
+          image_url?: string | null
+          location?: string | null
+          max_capacity?: number | null
+          organizer_id?: string | null
+          registration_deadline?: string | null
+          registration_required?: boolean | null
+          status?: string | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      member_roles: {
+        Row: {
+          active: boolean | null
+          assigned_at: string | null
+          assigned_by: string | null
+          created_at: string | null
+          id: string
+          role_description: string | null
+          role_name: string
+          user_id: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          assigned_at?: string | null
+          assigned_by?: string | null
+          created_at?: string | null
+          id?: string
+          role_description?: string | null
+          role_name: string
+          user_id?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          assigned_at?: string | null
+          assigned_by?: string | null
+          created_at?: string | null
+          id?: string
+          role_description?: string | null
+          role_name?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      newsletter_subscriptions: {
+        Row: {
+          confirmation_token: string | null
+          confirmed: boolean | null
+          email: string
+          id: string
+          preferences: Json | null
+          subscribed: boolean | null
+          subscribed_at: string | null
+          unsubscribed_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          confirmation_token?: string | null
+          confirmed?: boolean | null
+          email: string
+          id?: string
+          preferences?: Json | null
+          subscribed?: boolean | null
+          subscribed_at?: string | null
+          unsubscribed_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          confirmation_token?: string | null
+          confirmed?: boolean | null
+          email?: string
+          id?: string
+          preferences?: Json | null
+          subscribed?: boolean | null
+          subscribed_at?: string | null
+          unsubscribed_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       prices: {
         Row: {
           active: boolean | null
@@ -293,55 +568,82 @@ export type Database = {
       }
       profiles: {
         Row: {
+          address: string | null
           avatar_url: string | null
           bio: string | null
+          city: string | null
           created_at: string
+          date_joined: string | null
           display_name: string | null
           early_access_status: string | null
+          emergency_contact_name: string | null
+          emergency_contact_phone: string | null
           first_name: string | null
           id: string
           last_name: string | null
+          member_status: string | null
+          membership_type: string | null
           onboarding_completed: boolean | null
           organization_name: string | null
           organization_type: string | null
           phone: string | null
+          state: string | null
           updated_at: string
           user_id: string
           website: string | null
+          zip_code: string | null
         }
         Insert: {
+          address?: string | null
           avatar_url?: string | null
           bio?: string | null
+          city?: string | null
           created_at?: string
+          date_joined?: string | null
           display_name?: string | null
           early_access_status?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
           first_name?: string | null
           id?: string
           last_name?: string | null
+          member_status?: string | null
+          membership_type?: string | null
           onboarding_completed?: boolean | null
           organization_name?: string | null
           organization_type?: string | null
           phone?: string | null
+          state?: string | null
           updated_at?: string
           user_id: string
           website?: string | null
+          zip_code?: string | null
         }
         Update: {
+          address?: string | null
           avatar_url?: string | null
           bio?: string | null
+          city?: string | null
           created_at?: string
+          date_joined?: string | null
           display_name?: string | null
           early_access_status?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
           first_name?: string | null
           id?: string
           last_name?: string | null
+          member_status?: string | null
+          membership_type?: string | null
           onboarding_completed?: boolean | null
           organization_name?: string | null
           organization_type?: string | null
           phone?: string | null
+          state?: string | null
           updated_at?: string
           user_id?: string
           website?: string | null
+          zip_code?: string | null
         }
         Relationships: []
       }

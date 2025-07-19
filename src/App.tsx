@@ -15,6 +15,11 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 import NotFound from "./pages/NotFound";
+import Donate from "./pages/Donate";
+import Members from "./pages/Members";
+import Events from "./pages/Events";
+import Announcements from "./pages/Announcements";
+import DonationSuccess from "./pages/DonationSuccess";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 
@@ -40,6 +45,11 @@ const App = () => (
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="/cookie-policy" element={<CookiePolicy />} />
+                <Route path="/donate" element={<Donate />} />
+                <Route path="/members" element={<Members />} />
+                <Route path="/events" element={<Events />} />
+                <Route path="/announcements" element={<Announcements />} />
+                <Route path="/donation-success" element={<DonationSuccess />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
