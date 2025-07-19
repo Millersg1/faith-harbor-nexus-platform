@@ -104,7 +104,7 @@ const FeatureShowcase = () => {
               
               <ul className="space-y-2">
                 {feature.benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-center text-sm text-muted-foreground">
+                  <li key={idx} className="flex items-center text-sm text-blue-600">
                     <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
                     {benefit}
                   </li>
