@@ -27,6 +27,11 @@ import PrayerRequests from "./pages/PrayerRequests";
 import SmallGroups from "./pages/SmallGroups";
 import Volunteers from "./pages/Volunteers";
 import Documents from "./pages/Documents";
+import Messages from "./pages/Messages";
+import FinancialManagement from "./pages/FinancialManagement";
+import ServicePlanning from "./pages/ServicePlanning";
+import RoomBooking from "./pages/RoomBooking";
+import AdvancedAnalytics from "./pages/AdvancedAnalytics";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 
