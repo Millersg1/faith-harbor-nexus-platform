@@ -56,6 +56,9 @@ const AuthenticatedNavigation = () => {
             <Link to="/analytics" className="text-white hover:text-primary-foreground transition-colors">
               Analytics
             </Link>
+            <Link to="/admin" className="text-white hover:text-primary-foreground transition-colors">
+              Admin
+            </Link>
             <Link to="/donate" className="text-white hover:text-primary-foreground transition-colors">
               Donate
             </Link>
@@ -139,6 +142,13 @@ const AuthenticatedNavigation = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Analytics
+            </Link>
+            <Link
+              to="/admin"
+              className="block px-3 py-2 text-white hover:bg-white/10 rounded-md"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Admin
             </Link>
             <Link
               to="/donate"
