@@ -172,10 +172,10 @@ const BusinessSales = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-blue-600 mb-6">
               Everything Your Business Needs to Thrive
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-blue-600 max-w-3xl mx-auto">
               Comprehensive business management tools built on Christian principles to help you serve your customers and grow your impact.
             </p>
           </div>
@@ -184,10 +184,10 @@ const BusinessSales = () => {
             {businessFeatures.map((feature, index) => (
               <div key={index} className="bg-card rounded-xl p-6 shadow-soft border border-border hover:shadow-medium transition-all duration-300">
                 <div className="text-3xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">
+                <h3 className="text-xl font-semibold text-blue-600 mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-blue-600">
                   {feature.description}
                 </p>
               </div>
@@ -196,14 +196,14 @@ const BusinessSales = () => {
 
           {/* Integrations */}
           <div className="mt-16 text-center">
-            <h3 className="text-2xl font-bold text-foreground mb-8">
+            <h3 className="text-2xl font-bold text-blue-600 mb-8">
               Seamlessly Integrates With Your Favorite Tools
             </h3>
             <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
               {integrations.map((integration, index) => (
                 <span 
                   key={index}
-                  className="px-4 py-2 bg-muted rounded-lg text-sm font-medium text-foreground"
+                  className="px-4 py-2 bg-muted rounded-lg text-sm font-medium text-blue-600"
                 >
                   {integration}
                 </span>
@@ -217,10 +217,10 @@ const BusinessSales = () => {
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-blue-600 mb-6">
               Invest in Your Business Growth
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-blue-600">
               Affordable pricing that scales with your business success
             </p>
           </div>
@@ -242,19 +242,19 @@ const BusinessSales = () => {
                 )}
                 
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h3>
+                  <h3 className="text-2xl font-bold text-blue-600 mb-2">{plan.name}</h3>
                   <div className="mb-3">
-                    <span className="text-4xl font-bold text-foreground">${plan.price}</span>
-                    <span className="text-muted-foreground">/month</span>
+                    <span className="text-4xl font-bold text-blue-600">${plan.price}</span>
+                    <span className="text-blue-600">/month</span>
                   </div>
-                  <p className="text-muted-foreground">{plan.description}</p>
+                  <p className="text-blue-600">{plan.description}</p>
                 </div>
 
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-sm">
                       <Check className="h-4 w-4 text-primary mr-3 flex-shrink-0" />
-                      <span className="text-foreground">{feature}</span>
+                      <span className="text-blue-600">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -276,10 +276,10 @@ const BusinessSales = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-blue-600 mb-6">
               Real Results from Christian Businesses
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-blue-600">
               See how Faith Harbor is helping businesses grow while staying faithful
             </p>
           </div>
@@ -297,12 +297,12 @@ const BusinessSales = () => {
                     {testimonial.metric}
                   </span>
                 </div>
-                <p className="text-foreground mb-4 italic">
+                <p className="text-blue-600 mb-4 italic">
                   "{testimonial.content}"
                 </p>
                 <div>
-                  <div className="font-semibold text-foreground">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.business}</div>
+                  <div className="font-semibold text-blue-600">{testimonial.name}</div>
+                  <div className="text-sm text-blue-600">{testimonial.business}</div>
                 </div>
               </div>
             ))}
