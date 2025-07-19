@@ -5,10 +5,10 @@ import heroBackground from "@/assets/hero-background.jpg";
 
 const Hero = () => {
   const stats = [
-    { icon: Users, value: "10,000+", label: "Churches & Businesses" },
-    { icon: Star, value: "4.9/5", label: "Customer Rating" },
-    { icon: Shield, value: "99.9%", label: "Uptime Guarantee" },
-    { icon: Zap, value: "600+", label: "Built-in Features" },
+    { icon: Users, value: "New", label: "Innovative Platform" },
+    { icon: Star, value: "Built", label: "For Ministry" },
+    { icon: Shield, value: "SOC 2", label: "Security Standard" },
+    { icon: Zap, value: "AI", label: "Powered Features" },
   ];
 
   return (
@@ -46,8 +46,8 @@ const Hero = () => {
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto animate-fade-in leading-relaxed">
-            600+ powerful features, AI-powered tools, and complete management solutions 
-            to grow your ministry and streamline operations in one platform.
+            Comprehensive ministry management features, AI-powered tools, and complete solutions 
+            to help grow your ministry and streamline operations in one platform.
           </p>
 
           {/* CTA Buttons */}
@@ -68,7 +68,7 @@ const Hero = () => {
 
           {/* Trust Indicators */}
           <div className="text-white mb-12 animate-fade-in">
-            <p className="text-sm mb-4">Trusted by 10,000+ churches and Christian businesses worldwide</p>
+            <p className="text-sm mb-4">Built specifically for churches and Christian businesses</p>
             <div className="flex flex-wrap justify-center gap-8 opacity-75">
               <span className="text-sm">✓ No Setup Fees</span>
               <span className="text-sm">✓ Cancel Anytime</span>

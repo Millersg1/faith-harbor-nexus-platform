@@ -70,27 +70,27 @@ const Demo = () => {
             </h1>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               See how Faith Harbor can transform your ministry operations with a personalized demonstration 
-              tailored to your organization's specific needs. Join 10,000+ churches already growing with us.
+              tailored to your organization's specific needs. Experience the future of ministry management.
             </p>
           </div>
 
           {/* Stats Bar */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">10,000+</div>
-              <div className="text-sm text-gray-600">Active Churches</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">New</div>
+              <div className="text-sm text-gray-600">Innovative Platform</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">4.9/5</div>
-              <div className="text-sm text-gray-600">Customer Rating</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">AI</div>
+              <div className="text-sm text-gray-600">Powered Technology</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">600+</div>
-              <div className="text-sm text-gray-600">Built-in Features</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">Complete</div>
+              <div className="text-sm text-gray-600">Ministry Solution</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">99.9%</div>
-              <div className="text-sm text-gray-600">Uptime SLA</div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">SOC 2</div>
+              <div className="text-sm text-gray-600">Security Ready</div>
             </div>
           </div>
         </div>
@@ -316,7 +316,7 @@ const Demo = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4 text-gray-900">Ready to Transform Your Ministry?</h2>
           <p className="text-lg text-gray-600 mb-8">
-            Join thousands of churches and ministries already using Faith Harbor to grow their impact.
+            Be among the first to experience the future of ministry management technology.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-blue-600 text-white hover:bg-blue-700">

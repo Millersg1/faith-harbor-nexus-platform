@@ -125,20 +125,20 @@ const BusinessSales = () => {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mb-8">
               <div>
-                <div className="text-2xl font-bold">2,500+</div>
-                <div className="text-sm opacity-80">Christian Businesses</div>
+                <div className="text-2xl font-bold">New</div>
+                <div className="text-sm opacity-80">Platform</div>
               </div>
               <div>
-                <div className="text-2xl font-bold">45%</div>
-                <div className="text-sm opacity-80">Avg. Revenue Growth</div>
+                <div className="text-2xl font-bold">AI</div>
+                <div className="text-sm opacity-80">Powered Technology</div>
               </div>
               <div>
-                <div className="text-2xl font-bold">25hrs</div>
-                <div className="text-sm opacity-80">Time Saved/Week</div>
+                <div className="text-2xl font-bold">Complete</div>
+                <div className="text-sm opacity-80">Business Solution</div>
               </div>
               <div>
-                <div className="text-2xl font-bold">99.9%</div>
-                <div className="text-sm opacity-80">Uptime</div>
+                <div className="text-2xl font-bold">SOC 2</div>
+                <div className="text-sm opacity-80">Security Ready</div>
               </div>
             </div>
           </div>
@@ -257,7 +257,7 @@ const BusinessSales = () => {
             Ready to Scale Your Christian Business?
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Join thousands of Christian entrepreneurs using Faith Harbor to grow their impact and profitability.
+            Be among the first Christian entrepreneurs to experience the future of business ministry technology.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/demo">

@@ -117,7 +117,7 @@ const FeatureShowcase = () => {
         {/* Additional Features */}
         <div className="bg-muted/30 rounded-2xl p-8 mb-12">
           <h3 className="text-2xl font-bold text-center mb-8" style={{color: "hsl(var(--gold))"}}>
-            Plus 590+ Additional Features
+            Plus Many Additional Features
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {additionalFeatures.map((feature, index) => (
@@ -138,7 +138,7 @@ const FeatureShowcase = () => {
             Ready to Transform Your Ministry?
           </h3>
           <p className="text-xl mb-6 opacity-90">
-            Join 10,000+ churches already using Faith Harbor to grow their impact
+            Be among the first to experience the future of ministry management
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/sales-churches">

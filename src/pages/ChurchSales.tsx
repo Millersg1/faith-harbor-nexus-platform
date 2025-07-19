@@ -216,7 +216,7 @@ const ChurchSales = () => {
             Ready to Transform Your Ministry?
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Join thousands of churches already using Faith Harbor to grow their impact and streamline operations.
+            Be among the first churches to experience the future of ministry management technology.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/demo">
