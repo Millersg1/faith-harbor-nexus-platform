@@ -44,7 +44,8 @@ const Hero = () => {
             filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5))'
           }}>
             The Complete
-            <span className="block bg-gradient-to-r from-yellow-200 to-yellow-100 bg-clip-text text-transparent font-extrabold" style={{
+            <span className="block font-extrabold" style={{
+              color: 'hsl(var(--gold))',
               textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 30px hsl(var(--gold) / 0.8)',
               filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.6))'
             }}>
