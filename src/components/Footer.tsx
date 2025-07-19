@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
 import { Heart, Mail, Phone, MapPin } from "lucide-react";
+import faithHarborLogo from "@/assets/faith-harbor-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,9 +12,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold" style={{color: "hsl(var(--gold))"}}>
-              Faith Harbor™
-            </h3>
+            <div className="flex items-center space-x-3">
+              <img src={faithHarborLogo} alt="Faith Harbor" className="h-10 w-10" />
+              <h3 className="text-2xl font-bold" style={{color: "hsl(var(--gold))"}}>
+                Faith Harbor™
+              </h3>
+            </div>
             <p className="text-sm text-gray-700">
               The complete ministry management platform built specifically for churches and Christian businesses.
             </p>
