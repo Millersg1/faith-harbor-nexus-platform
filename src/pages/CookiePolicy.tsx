@@ -19,7 +19,7 @@ const CookiePolicy = () => {
 
           <section>
             <h2 className="text-2xl font-semibold mb-4 text-blue-600">How We Use Cookies</h2>
-            <p className="mb-4">Faith Harbor uses cookies for several purposes:</p>
+            <p className="mb-4">Faith Harbor™ uses cookies for several purposes:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li><strong>Essential cookies:</strong> Required for the website to function properly</li>
               <li><strong>Analytics cookies:</strong> Help us understand how you use our website</li>
@@ -44,7 +44,7 @@ const CookiePolicy = () => {
               
               <div>
                 <h3 className="text-lg font-semibold text-blue-600">First-party Cookies</h3>
-                <p>Set by Faith Harbor directly.</p>
+                <p>Set by Faith Harbor™ directly.</p>
               </div>
               
               <div>

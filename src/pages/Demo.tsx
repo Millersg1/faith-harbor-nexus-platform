@@ -31,7 +31,7 @@ const Demo = () => {
   };
 
   const benefits = [
-    { icon: Calendar, title: "Personalized Demo", description: "See Faith Harbor customized for your ministry needs" },
+    { icon: Calendar, title: "Personalized Demo", description: "See Faith Harbor™ customized for your ministry needs" },
     { icon: Users, title: "Expert Guidance", description: "Get insights from our ministry technology specialists" },
     { icon: Zap, title: "Quick Setup", description: "Learn how to get started in under 30 minutes" },
     { icon: Shield, title: "No Pressure", description: "No sales pressure - just valuable insights for your ministry" }
@@ -69,7 +69,7 @@ const Demo = () => {
               <span className="text-blue-600"> Free Demo</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              See how Faith Harbor can transform your ministry operations with a personalized demonstration 
+              See how Faith Harbor™ can transform your ministry operations with a personalized demonstration 
               tailored to your organization's specific needs. Experience the future of ministry management.
             </p>
           </div>
@@ -237,7 +237,7 @@ const Demo = () => {
                     What You'll Get in Your Demo
                   </CardTitle>
                   <CardDescription className="text-gray-600">
-                    Your demo will be customized to show you exactly how Faith Harbor can benefit your ministry.
+                    Your demo will be customized to show you exactly how Faith Harbor™ can benefit your ministry.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">

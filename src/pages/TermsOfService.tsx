@@ -12,7 +12,7 @@ const TermsOfService = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-4 text-blue-600">Acceptance of Terms</h2>
             <p className="mb-4">
-              By accessing and using Faith Harbor's services, you accept and agree to be bound by the terms 
+              By accessing and using Faith Harbor™'s services, you accept and agree to be bound by the terms 
               and provision of this agreement.
             </p>
           </section>
@@ -20,7 +20,7 @@ const TermsOfService = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-4 text-blue-600">Use License</h2>
             <p className="mb-4">
-              Permission is granted to temporarily access Faith Harbor for personal, non-commercial transitory viewing only.
+              Permission is granted to temporarily access Faith Harbor™ for personal, non-commercial transitory viewing only.
             </p>
             <p className="mb-4">Under this license you may not:</p>
             <ul className="list-disc pl-6 space-y-2">
@@ -34,7 +34,7 @@ const TermsOfService = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-4 text-blue-600">Service Availability</h2>
             <p className="mb-4">
-              Faith Harbor is currently in development. We strive to provide reliable service but cannot 
+              Faith Harbor™ is currently in development. We strive to provide reliable service but cannot 
               guarantee uninterrupted availability.
             </p>
           </section>
@@ -60,7 +60,7 @@ const TermsOfService = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-4 text-blue-600">Limitation of Liability</h2>
             <p className="mb-4">
-              In no event shall Faith Harbor or its suppliers be liable for any damages arising out of the use 
+              In no event shall Faith Harbor™ or its suppliers be liable for any damages arising out of the use 
               or inability to use the service.
             </p>
           </section>

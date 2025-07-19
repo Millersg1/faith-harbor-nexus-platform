@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-4 text-blue-600">Information We Collect</h2>
             <p className="mb-4">
-              Faith Harbor collects information you provide directly to us, such as when you create an account, 
+              Faith Harbor™ collects information you provide directly to us, such as when you create an account, 
               use our services, or contact us for support.
             </p>
             <ul className="list-disc pl-6 space-y-2">

@@ -28,11 +28,11 @@ const DemoVideo = () => {
               2 minute overview
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              See Faith Harbor 
+              See Faith Harbor™ 
               <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent"> in Action</span>
             </h1>
             <p className="text-xl text-blue-600 max-w-3xl mx-auto">
-              Watch our comprehensive demo video to see how Faith Harbor can transform 
+              Watch our comprehensive demo video to see how Faith Harbor™ can transform 
               your ministry operations and help you focus on what matters most.
             </p>
           </div>
@@ -45,7 +45,7 @@ const DemoVideo = () => {
                   <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-4 mx-auto hover:bg-primary/90 transition-colors cursor-pointer">
                     <Play className="h-8 w-8 ml-1 text-blue-600" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">Faith Harbor Demo Video</h3>
+                  <h3 className="text-xl font-semibold mb-2">Faith Harbor™ Demo Video</h3>
                   <p className="text-blue-600/80">Click to watch the complete platform overview</p>
                 </div>
                 <div className="absolute top-4 right-4 flex gap-2">
@@ -68,7 +68,7 @@ const DemoVideo = () => {
               <CardHeader>
                 <CardTitle>What You'll Learn</CardTitle>
                 <CardDescription>
-                  This demo covers all the essential features that make Faith Harbor the complete ministry solution.
+                  This demo covers all the essential features that make Faith Harbor™ the complete ministry solution.
                 </CardDescription>
               </CardHeader>
               <CardContent>
