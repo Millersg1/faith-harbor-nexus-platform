@@ -97,7 +97,7 @@ const DemoVideo = () => {
                   ))}
                 </div>
                 <div className="mt-8 pt-6 border-t">
-                  <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <div className="flex items-center justify-between text-sm text-blue-600">
                     <span>Duration: 2 minutes</span>
                     <span>Updated: December 2024</span>
                   </div>
