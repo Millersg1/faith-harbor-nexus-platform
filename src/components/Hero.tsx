@@ -67,14 +67,14 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-scale-in">
             <Link to="/demo">
               <Button size="lg" variant="hero" className="px-8 py-4 text-lg">
-                Start Free 30-Day Trial
+                Join Early Access Program
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
             <Link to="/demo-video">
               <Button size="lg" variant="premium" className="px-8 py-4 text-lg">
                 <Play className="mr-2 h-5 w-5" />
-                Watch Demo (2 min)
+                Watch Preview
               </Button>
             </Link>
           </div>
@@ -83,12 +83,12 @@ const Hero = () => {
           <div className="text-white mb-12 animate-fade-in" style={{
             textShadow: '1px 1px 3px rgba(0,0,0,0.6)'
           }}>
-            <p className="text-sm mb-4 font-medium">Built specifically for churches and Christian businesses</p>
+            <p className="text-sm mb-4 font-medium">Being built specifically for churches and Christian businesses</p>
             <div className="flex flex-wrap justify-center gap-8 opacity-90">
-              <span className="text-sm font-medium">✓ No Setup Fees</span>
-              <span className="text-sm font-medium">✓ Cancel Anytime</span>
-              <span className="text-sm font-medium">✓ 24/7 Support</span>
-              <span className="text-sm font-medium">✓ SOC 2 Compliant</span>
+              <span className="text-sm font-medium">✓ Early Access Program</span>
+              <span className="text-sm font-medium">✓ Community Input</span>
+              <span className="text-sm font-medium">✓ Development Updates</span>
+              <span className="text-sm font-medium">✓ Security-First Design</span>
             </div>
           </div>
 

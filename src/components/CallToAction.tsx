@@ -14,9 +14,9 @@ const CallToAction = () => {
           <h2 className="heading-xl text-white mb-6" style={{
             textShadow: '2px 2px 8px rgba(0,0,0,0.7)'
           }}>
-            Ready to Transform Your Ministry?
+            Help Us Build the Future of Ministry
             <span className="block" style={{color: "hsl(var(--gold))"}}>
-              Start Your Free Trial Today
+              Join Our Early Access Program
             </span>
           </h2>
 
@@ -24,22 +24,22 @@ const CallToAction = () => {
           <p className="body-xl text-white/90 mb-8 max-w-3xl mx-auto" style={{
             textShadow: '1px 1px 4px rgba(0,0,0,0.6)'
           }}>
-            Join thousands of ministry leaders who are already using Faith Harbor to grow their churches and impact their communities.
+            Be part of creating the most comprehensive ministry management platform. Your feedback will help shape every feature.
           </p>
 
           {/* Features Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             <div className="flex items-center justify-center space-x-3 text-white">
               <Clock className="h-6 w-6 text-yellow-300" />
-              <span className="font-semibold">Setup in 30 minutes</span>
+              <span className="font-semibold">In active development</span>
             </div>
             <div className="flex items-center justify-center space-x-3 text-white">
               <Users className="h-6 w-6 text-yellow-300" />
-              <span className="font-semibold">Trusted by 500+ churches</span>
+              <span className="font-semibold">Community-driven</span>
             </div>
             <div className="flex items-center justify-center space-x-3 text-white">
               <Shield className="h-6 w-6 text-yellow-300" />
-              <span className="font-semibold">SOC 2 compliant</span>
+              <span className="font-semibold">Security-first design</span>
             </div>
           </div>
 
@@ -47,13 +47,13 @@ const CallToAction = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Link to="/demo">
               <Button size="lg" variant="premium" className="px-10 py-4 text-lg">
-                Start Free 30-Day Trial
+                Join Early Access Program
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
             <Link to="/demo-video">
               <Button size="lg" variant="premium" className="px-10 py-4 text-lg">
-                Watch 2-Minute Demo
+                Watch Development Preview
               </Button>
             </Link>
           </div>
@@ -62,7 +62,7 @@ const CallToAction = () => {
           <p className="text-white/80 text-sm" style={{
             textShadow: '1px 1px 3px rgba(0,0,0,0.6)'
           }}>
-            No credit card required • Cancel anytime • Full support included
+            No cost to join • Early access benefits • Help shape the platform
           </p>
         </div>
       </div>

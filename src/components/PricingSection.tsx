@@ -19,7 +19,7 @@ const PricingSection = () => {
         "Email support"
       ],
       popular: false,
-      cta: "Start Free Trial"
+      cta: "Join Early Access"
     },
     {
       name: "Professional",
@@ -38,7 +38,7 @@ const PricingSection = () => {
         "Priority support"
       ],
       popular: true,
-      cta: "Start Free Trial"
+      cta: "Join Early Access"
     },
     {
       name: "Enterprise",
@@ -57,7 +57,7 @@ const PricingSection = () => {
         "Custom training sessions"
       ],
       popular: false,
-      cta: "Contact Sales"
+      cta: "Contact Us"
     }
   ];
 
@@ -67,11 +67,11 @@ const PricingSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="heading-lg mb-6" style={{color: "hsl(var(--gold))"}}>
-            Simple, Transparent Pricing
-            <span className="block text-primary">Built for Every Ministry Size</span>
+            Planned Pricing Structure
+            <span className="block text-primary">Designed for Every Ministry Size</span>
           </h2>
           <p className="body-lg text-muted-foreground max-w-3xl mx-auto">
-            Start with our 30-day free trial. No setup fees, no contracts, cancel anytime.
+            Our anticipated pricing when the platform launches. Join early access for special founding member rates.
           </p>
         </div>
 
@@ -134,19 +134,19 @@ const PricingSection = () => {
               <h3 className="text-xl font-bold" style={{color: "hsl(var(--gold))"}}>All Plans Include</h3>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-muted-foreground">
-              <div>✓ 30-day free trial</div>
-              <div>✓ No setup fees</div>
-              <div>✓ SSL security</div>
-              <div>✓ Data backup</div>
-              <div>✓ Mobile apps</div>
-              <div>✓ Regular updates</div>
-              <div>✓ Community support</div>
-              <div>✓ Cancel anytime</div>
+              <div>✓ Early access program</div>
+              <div>✓ Founding member rates</div>
+              <div>✓ Security-first design</div>
+              <div>✓ Regular development updates</div>
+              <div>✓ Community input</div>
+              <div>✓ Feature voting</div>
+              <div>✓ Direct developer access</div>
+              <div>✓ Special launch pricing</div>
             </div>
           </div>
 
           <p className="text-muted-foreground">
-            Need a custom solution? <Link to="/demo" className="text-primary hover:underline">Contact our team</Link> for enterprise pricing.
+            Want to help shape the platform? <Link to="/demo" className="text-primary hover:underline">Join our development community</Link> for exclusive access.
           </p>
         </div>
       </div>

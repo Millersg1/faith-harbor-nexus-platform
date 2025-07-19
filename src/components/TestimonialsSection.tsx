@@ -1,30 +1,21 @@
 import { Star, Quote } from "lucide-react";
 
 const TestimonialsSection = () => {
-  const testimonials = [
+  const developmentHighlights = [
     {
-      name: "Pastor Michael Johnson",
-      role: "Senior Pastor",
-      church: "Grace Community Church",
-      image: "/placeholder.svg",
-      content: "Faith Harbor has revolutionized how we manage our ministry. The AI spiritual companion and comprehensive tools have helped us grow by 40% this year.",
-      rating: 5
+      title: "Ministry-Focused Design",
+      description: "Every feature is being designed specifically with churches and Christian organizations in mind, ensuring the platform serves your spiritual mission.",
+      icon: "🙏"
     },
     {
-      name: "Sarah Martinez",
-      role: "Ministry Leader",
-      church: "New Hope Fellowship",
-      image: "/placeholder.svg",
-      content: "The volunteer management and event planning features are incredible. We've streamlined everything into one platform and our team loves it.",
-      rating: 5
+      title: "Comprehensive Feature Set",
+      description: "We're developing an all-in-one solution to replace multiple tools, streamlining ministry operations into a single, powerful platform.",
+      icon: "⚡"
     },
     {
-      name: "Dr. James Wilson",
-      role: "Executive Pastor",
-      church: "First Baptist Downtown",
-      image: "/placeholder.svg",
-      content: "As a large church, we needed enterprise-level features with spiritual focus. Faith Harbor delivers exactly that with SOC 2 compliance and amazing support.",
-      rating: 5
+      title: "Early Access Program",
+      description: "Join our development community to help shape the platform and get exclusive early access as features become available.",
+      icon: "🚀"
     }
   ];
 
@@ -34,63 +25,45 @@ const TestimonialsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="heading-lg mb-6" style={{color: "hsl(var(--gold))"}}>
-            Trusted by Ministry Leaders
-            <span className="block text-primary">Across the Nation</span>
+            Built for Ministry Leaders
+            <span className="block text-primary">By Ministry Leaders</span>
           </h2>
           <p className="body-lg text-muted-foreground max-w-3xl mx-auto">
-            Join thousands of churches and Christian businesses who are transforming their ministry with Faith Harbor
+            We're developing Faith Harbor based on real ministry needs and feedback from church leaders
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+        {/* Development Highlights */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {developmentHighlights.map((highlight, index) => (
             <div 
               key={index}
-              className="ministry-card relative overflow-hidden"
+              className="ministry-card text-center"
             >
-              {/* Quote Icon */}
-              <div className="absolute top-4 right-4 opacity-10">
-                <Quote className="h-12 w-12 text-primary" />
-              </div>
+              {/* Icon */}
+              <div className="text-4xl mb-4">{highlight.icon}</div>
 
-              {/* Rating */}
-              <div className="flex mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
+              {/* Title */}
+              <h3 className="text-xl font-semibold mb-4" style={{color: "hsl(var(--gold))"}}>
+                {highlight.title}
+              </h3>
 
-              {/* Content */}
-              <p className="text-muted-foreground mb-6 leading-relaxed italic">
-                "{testimonial.content}"
+              {/* Description */}
+              <p className="text-muted-foreground leading-relaxed">
+                {highlight.description}
               </p>
-
-              {/* Author */}
-              <div className="flex items-center">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
-                  <span className="text-primary font-semibold text-lg">
-                    {testimonial.name.split(' ').map(n => n[0]).join('')}
-                  </span>
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                  <div className="text-sm text-primary">{testimonial.church}</div>
-                </div>
-              </div>
             </div>
           ))}
         </div>
 
-        {/* Trust Indicators */}
+        {/* Development Status */}
         <div className="mt-16 text-center">
-          <p className="text-muted-foreground mb-8">Trusted by 500+ ministry organizations</p>
+          <p className="text-muted-foreground mb-8">Currently in development - Join our early access program</p>
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            <div className="text-sm font-medium">✓ SOC 2 Type II Certified</div>
-            <div className="text-sm font-medium">✓ 99.9% Uptime Guarantee</div>
-            <div className="text-sm font-medium">✓ 24/7 Ministry Support</div>
-            <div className="text-sm font-medium">✓ Data Backup & Recovery</div>
+            <div className="text-sm font-medium">✓ Security-First Development</div>
+            <div className="text-sm font-medium">✓ Ministry-Focused Features</div>
+            <div className="text-sm font-medium">✓ Early Access Program</div>
+            <div className="text-sm font-medium">✓ Community Feedback Driven</div>
           </div>
         </div>
       </div>

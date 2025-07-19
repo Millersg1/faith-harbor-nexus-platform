@@ -117,7 +117,7 @@ const Navigation = () => {
               <Button variant="ghost">Sign In</Button>
             </Link>
             <Link to="/demo">
-              <Button variant="cta">Get Free Demo</Button>
+              <Button variant="cta">Join Early Access</Button>
             </Link>
           </div>
 
@@ -173,7 +173,7 @@ const Navigation = () => {
               </Link>
               <Link to="/demo" onClick={() => setIsMenuOpen(false)}>
                 <Button variant="cta" className="w-full">
-                  Get Free Demo
+                  Join Early Access
                 </Button>
               </Link>
             </div>
