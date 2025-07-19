@@ -2,23 +2,19 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
 import { Heart, Mail, Phone, MapPin } from "lucide-react";
-import faithHarborLogo from "@/assets/faith-harbor-logo.png";
-import LogoProcessor from "./LogoProcessor";
+import lighthouseTransparent from "@/assets/lighthouse-transparent.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const [processedLogoUrl, setProcessedLogoUrl] = useState<string>(faithHarborLogo);
 
   return (
-    <>
-      <LogoProcessor onProcessed={setProcessedLogoUrl} />
-      <footer className="bg-blue-200 border-t">
+    <footer className="bg-blue-200 border-t">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <img src={processedLogoUrl} alt="Faith Harbor" className="h-10 w-10" />
+              <img src={lighthouseTransparent} alt="Faith Harbor" className="h-10 w-10" />
               <h3 className="text-2xl font-bold" style={{color: "hsl(var(--gold))"}}>
                 Faith Harbor™
               </h3>
@@ -112,8 +108,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      </footer>
-    </>
+    </footer>
   );
 };
 
