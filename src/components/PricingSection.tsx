@@ -113,7 +113,7 @@ const PricingSection = () => {
               </ul>
 
               {/* CTA Button */}
-              <Link to="/demo" className="block">
+              <Link to="/auth" className="block">
                 <Button 
                   variant={plan.popular ? "hero" : "outline"} 
                   className="w-full"

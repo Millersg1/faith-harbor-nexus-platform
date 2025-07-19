@@ -45,7 +45,7 @@ const CallToAction = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Link to="/demo">
+            <Link to="/auth">
               <Button size="lg" variant="premium" className="px-10 py-4 text-lg">
                 Join Early Access Program
                 <ArrowRight className="ml-2 h-5 w-5" />

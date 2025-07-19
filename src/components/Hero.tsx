@@ -65,7 +65,7 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-scale-in">
-            <Link to="/demo">
+            <Link to="/auth">
               <Button size="lg" variant="hero" className="px-8 py-4 text-lg">
                 Join Early Access Program
                 <ArrowRight className="ml-2 h-5 w-5" />

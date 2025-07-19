@@ -291,6 +291,60 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          display_name: string | null
+          early_access_status: string | null
+          first_name: string | null
+          id: string
+          last_name: string | null
+          onboarding_completed: boolean | null
+          organization_name: string | null
+          organization_type: string | null
+          phone: string | null
+          updated_at: string
+          user_id: string
+          website: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          display_name?: string | null
+          early_access_status?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          onboarding_completed?: boolean | null
+          organization_name?: string | null
+          organization_type?: string | null
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+          website?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          display_name?: string | null
+          early_access_status?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          onboarding_completed?: boolean | null
+          organization_name?: string | null
+          organization_type?: string | null
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+          website?: string | null
+        }
+        Relationships: []
+      }
       subscriptions: {
         Row: {
           cancel_at_period_end: boolean | null

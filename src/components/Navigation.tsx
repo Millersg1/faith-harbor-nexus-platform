@@ -113,10 +113,10 @@ const Navigation = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Link to="/login">
+            <Link to="/auth">
               <Button variant="ghost">Sign In</Button>
             </Link>
-            <Link to="/demo">
+            <Link to="/auth">
               <Button variant="cta">Join Early Access</Button>
             </Link>
           </div>
@@ -166,12 +166,12 @@ const Navigation = () => {
               Blog
             </Link>
             <div className="pt-4 space-y-2">
-              <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
                 <Button variant="ghost" className="w-full">
                   Sign In
                 </Button>
               </Link>
-              <Link to="/demo" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
                 <Button variant="cta" className="w-full">
                   Join Early Access
                 </Button>
