@@ -54,26 +54,6 @@ const ChurchSales = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      name: "Pastor Michael Johnson",
-      church: "Grace Community Church",
-      content: "Faith Harbor transformed how we manage our ministry. The AI companion has been a game-changer for pastoral care.",
-      rating: 5
-    },
-    {
-      name: "Sarah Williams",
-      church: "New Hope Baptist",
-      content: "We've seen 40% growth in giving since implementing Faith Harbor's stewardship tools. Incredible platform!",
-      rating: 5
-    },
-    {
-      name: "Dr. Robert Chen",
-      church: "Cornerstone Fellowship",
-      content: "The volunteer management system saved us 15+ hours per week. Our staff can focus on ministry instead of admin.",
-      rating: 5
-    }
-  ];
 
   const features = [
     {
@@ -228,38 +208,6 @@ const ChurchSales = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-              Trusted by Churches Worldwide
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              See how Faith Harbor is transforming ministries every day
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-card rounded-xl p-6 shadow-soft border border-border">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-foreground mb-4 italic">
-                  "{testimonial.content}"
-                </p>
-                <div>
-                  <div className="font-semibold text-foreground">{testimonial.name}</div>
-                  <div className="text-sm text-muted-foreground">{testimonial.church}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Final CTA */}
       <section className="py-20 bg-lighthouse-gradient text-white">

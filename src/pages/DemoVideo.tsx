@@ -15,20 +15,6 @@ const DemoVideo = () => {
     "Reporting dashboard"
   ];
 
-  const testimonials = [
-    {
-      name: "Pastor Michael Johnson",
-      church: "Grace Community Church",
-      quote: "This video showed me exactly what our church needed. The setup was as easy as promised!",
-      rating: 5
-    },
-    {
-      name: "Sarah Williams",
-      role: "Church Administrator",
-      quote: "Finally, a platform that understands ministry needs. The demo was incredibly helpful.",
-      rating: 5
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -152,32 +138,6 @@ const DemoVideo = () => {
             </div>
           </div>
 
-          {/* Testimonials */}
-          <div className="mt-16">
-            <h2 className="text-2xl font-bold text-center mb-8">What Ministry Leaders Say</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {testimonials.map((testimonial, index) => (
-                <Card key={index}>
-                  <CardContent className="pt-6">
-                    <div className="flex gap-1 mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                    <blockquote className="text-sm mb-4">
-                      "{testimonial.quote}"
-                    </blockquote>
-                    <div className="text-sm">
-                      <div className="font-medium">{testimonial.name}</div>
-                      <div className="text-muted-foreground">
-                        {testimonial.church || testimonial.role}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
     </div>

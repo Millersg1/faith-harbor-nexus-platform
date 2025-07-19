@@ -87,29 +87,6 @@ const BusinessSales = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      name: "David Thompson",
-      business: "Kingdom Construction LLC",
-      content: "Faith Harbor helped us increase profits by 35% while staying true to our Christian values. The AI coaching is incredible!",
-      rating: 5,
-      metric: "35% Profit Increase"
-    },
-    {
-      name: "Rachel Martinez",
-      business: "Blessed Marketing Agency",
-      content: "We streamlined our entire operation and gained 20+ hours per week to focus on serving our clients better.",
-      rating: 5,
-      metric: "20+ Hours Saved/Week"
-    },
-    {
-      name: "James Wilson",
-      business: "Faithful Finance Advisors",
-      content: "The CRM and automation tools helped us scale from 50 to 200 clients while maintaining personal relationships.",
-      rating: 5,
-      metric: "4x Client Growth"
-    }
-  ];
 
   const integrations = [
     "QuickBooks", "Xero", "Stripe", "PayPal", "Salesforce", "HubSpot",
@@ -272,43 +249,6 @@ const BusinessSales = () => {
         </div>
       </section>
 
-      {/* Success Stories */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-yellow-600 mb-6">
-              Real Results from Christian Businesses
-            </h2>
-            <p className="text-xl text-blue-600">
-              See how Faith Harbor is helping businesses grow while staying faithful
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-card rounded-xl p-6 shadow-soft border border-border">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                    ))}
-                  </div>
-                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
-                    {testimonial.metric}
-                  </span>
-                </div>
-                <p className="text-blue-600 mb-4 italic">
-                  "{testimonial.content}"
-                </p>
-                <div>
-                  <div className="font-semibold text-blue-600">{testimonial.name}</div>
-                  <div className="text-sm text-blue-600">{testimonial.business}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Final CTA */}
       <section className="py-20 bg-ministry-gradient text-blue-600">

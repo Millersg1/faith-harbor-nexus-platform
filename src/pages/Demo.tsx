@@ -306,26 +306,6 @@ const Demo = () => {
                 </CardContent>
               </Card>
 
-              {/* Testimonial */}
-              <Card className="border shadow-lg bg-gradient-to-br from-blue-50 to-purple-50">
-                <CardContent className="pt-6">
-                  <div className="text-center">
-                    <div className="flex justify-center gap-1 mb-4">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                    <blockquote className="text-lg font-medium text-gray-900 mb-4">
-                      "Faith Harbor transformed how we manage our church. The demo showed us exactly what we needed, 
-                      and the setup was incredibly smooth. Highly recommend!"
-                    </blockquote>
-                    <div className="text-sm">
-                      <div className="font-medium text-gray-900">Pastor Michael Rodriguez</div>
-                      <div className="text-gray-600">Grace Community Church, Austin TX</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
