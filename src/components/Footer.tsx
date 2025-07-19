@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
 import { Heart, Mail, Phone, MapPin } from "lucide-react";
-import lighthouseTransparent from "@/assets/lighthouse-transparent.png";
+import faithHarborLogo from "@/assets/faith-harbor-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,7 +14,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <img src={lighthouseTransparent} alt="Faith Harbor" className="h-10 w-10" />
+              <img src={faithHarborLogo} alt="Faith Harbor" className="h-10 w-10 rounded-full bg-white p-1" />
               <h3 className="text-2xl font-bold" style={{color: "hsl(var(--gold))"}}>
                 Faith Harbor™
               </h3>
