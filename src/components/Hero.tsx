@@ -30,22 +30,34 @@ const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-white mb-8 animate-fade-in">
-            <Zap className="h-4 w-4 mr-2 text-yellow-300" />
-            <span className="text-sm font-medium">Introducing AI-Powered Ministry Platform</span>
+          <div className="inline-flex items-center px-4 py-2 bg-white/15 backdrop-blur-sm rounded-full border border-white/30 text-white mb-8 animate-fade-in shadow-glow" style={{
+            textShadow: '1px 1px 3px rgba(0,0,0,0.6)',
+            boxShadow: '0 0 20px hsl(var(--gold) / 0.3), inset 0 1px 0 rgba(255,255,255,0.2)'
+          }}>
+            <Zap className="h-4 w-4 mr-2 text-yellow-300 drop-shadow-sm" />
+            <span className="text-sm font-semibold">Introducing AI-Powered Ministry Platform</span>
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in leading-tight" style={{color: "hsl(var(--gold))"}}>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in leading-tight text-white" style={{
+            textShadow: '2px 2px 8px rgba(0,0,0,0.7), 0 0 20px hsl(var(--gold) / 0.6)',
+            filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5))'
+          }}>
             The Complete
-            <span className="block bg-gradient-to-r from-yellow-300 to-yellow-100 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-yellow-200 to-yellow-100 bg-clip-text text-transparent font-extrabold" style={{
+              textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 30px hsl(var(--gold) / 0.8)',
+              filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.6))'
+            }}>
               Ministry Platform
             </span>
             for Modern Churches
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto animate-fade-in leading-relaxed">
+          <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto animate-fade-in leading-relaxed font-semibold" style={{
+            textShadow: '1px 1px 4px rgba(0,0,0,0.7), 0 0 15px rgba(0,0,0,0.5)',
+            filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.4))'
+          }}>
             Comprehensive ministry management features, AI-powered tools, and complete solutions 
             to help grow your ministry and streamline operations in one platform.
           </p>
@@ -67,13 +79,15 @@ const Hero = () => {
           </div>
 
           {/* Trust Indicators */}
-          <div className="text-white mb-12 animate-fade-in">
-            <p className="text-sm mb-4">Built specifically for churches and Christian businesses</p>
-            <div className="flex flex-wrap justify-center gap-8 opacity-75">
-              <span className="text-sm">✓ No Setup Fees</span>
-              <span className="text-sm">✓ Cancel Anytime</span>
-              <span className="text-sm">✓ 24/7 Support</span>
-              <span className="text-sm">✓ SOC 2 Compliant</span>
+          <div className="text-white mb-12 animate-fade-in" style={{
+            textShadow: '1px 1px 3px rgba(0,0,0,0.6)'
+          }}>
+            <p className="text-sm mb-4 font-medium">Built specifically for churches and Christian businesses</p>
+            <div className="flex flex-wrap justify-center gap-8 opacity-90">
+              <span className="text-sm font-medium">✓ No Setup Fees</span>
+              <span className="text-sm font-medium">✓ Cancel Anytime</span>
+              <span className="text-sm font-medium">✓ 24/7 Support</span>
+              <span className="text-sm font-medium">✓ SOC 2 Compliant</span>
             </div>
           </div>
 
