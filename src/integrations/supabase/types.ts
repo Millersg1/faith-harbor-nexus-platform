@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      analytics_events: {
+        Row: {
+          created_at: string
+          event_type: string
+          id: string
+          ip_address: string | null
+          metadata: Json | null
+          user_agent: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          event_type: string
+          id?: string
+          ip_address?: string | null
+          metadata?: Json | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          event_type?: string
+          id?: string
+          ip_address?: string | null
+          metadata?: Json | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       announcements: {
         Row: {
           author_id: string | null
@@ -310,6 +340,98 @@ export type Database = {
         }
         Relationships: []
       }
+      email_campaigns: {
+        Row: {
+          click_count: number | null
+          content: string
+          created_at: string
+          created_by: string | null
+          id: string
+          open_count: number | null
+          recipient_count: number | null
+          scheduled_at: string | null
+          sent_at: string | null
+          status: string | null
+          subject: string
+          template_type: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          click_count?: number | null
+          content: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          open_count?: number | null
+          recipient_count?: number | null
+          scheduled_at?: string | null
+          sent_at?: string | null
+          status?: string | null
+          subject: string
+          template_type?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          click_count?: number | null
+          content?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          open_count?: number | null
+          recipient_count?: number | null
+          scheduled_at?: string | null
+          sent_at?: string | null
+          status?: string | null
+          subject?: string
+          template_type?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      email_tracking: {
+        Row: {
+          bounced_at: string | null
+          campaign_id: string | null
+          clicked_at: string | null
+          id: string
+          opened_at: string | null
+          recipient_email: string
+          sent_at: string | null
+          unsubscribed_at: string | null
+        }
+        Insert: {
+          bounced_at?: string | null
+          campaign_id?: string | null
+          clicked_at?: string | null
+          id?: string
+          opened_at?: string | null
+          recipient_email: string
+          sent_at?: string | null
+          unsubscribed_at?: string | null
+        }
+        Update: {
+          bounced_at?: string | null
+          campaign_id?: string | null
+          clicked_at?: string | null
+          id?: string
+          opened_at?: string | null
+          recipient_email?: string
+          sent_at?: string | null
+          unsubscribed_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "email_tracking_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "email_campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       event_registrations: {
         Row: {
           attendee_email: string
@@ -483,6 +605,42 @@ export type Database = {
         }
         Relationships: []
       }
+      notifications: {
+        Row: {
+          action_url: string | null
+          category: string | null
+          created_at: string
+          id: string
+          message: string
+          read: boolean | null
+          title: string
+          type: string | null
+          user_id: string | null
+        }
+        Insert: {
+          action_url?: string | null
+          category?: string | null
+          created_at?: string
+          id?: string
+          message: string
+          read?: boolean | null
+          title: string
+          type?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          action_url?: string | null
+          category?: string | null
+          created_at?: string
+          id?: string
+          message?: string
+          read?: boolean | null
+          title?: string
+          type?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       prices: {
         Row: {
           active: boolean | null
@@ -644,6 +802,90 @@ export type Database = {
           user_id?: string
           website?: string | null
           zip_code?: string | null
+        }
+        Relationships: []
+      }
+      saved_searches: {
+        Row: {
+          created_at: string
+          filters: Json
+          id: string
+          is_public: boolean | null
+          name: string
+          search_type: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          filters: Json
+          id?: string
+          is_public?: boolean | null
+          name: string
+          search_type: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          filters?: Json
+          id?: string
+          is_public?: boolean | null
+          name?: string
+          search_type?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      sermons: {
+        Row: {
+          audio_url: string | null
+          created_at: string
+          created_by: string | null
+          description: string | null
+          id: string
+          notes_url: string | null
+          scripture_reference: string | null
+          series_name: string | null
+          sermon_date: string
+          speaker_name: string
+          status: string | null
+          tags: string[] | null
+          title: string
+          updated_at: string
+          video_url: string | null
+        }
+        Insert: {
+          audio_url?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          notes_url?: string | null
+          scripture_reference?: string | null
+          series_name?: string | null
+          sermon_date: string
+          speaker_name: string
+          status?: string | null
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+          video_url?: string | null
+        }
+        Update: {
+          audio_url?: string | null
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          id?: string
+          notes_url?: string | null
+          scripture_reference?: string | null
+          series_name?: string | null
+          sermon_date?: string
+          speaker_name?: string
+          status?: string | null
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+          video_url?: string | null
         }
         Relationships: []
       }
