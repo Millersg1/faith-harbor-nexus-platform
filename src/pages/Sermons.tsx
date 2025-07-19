@@ -100,7 +100,15 @@ const Sermons = () => {
       const tagsArray = values.tags ? values.tags.split(',').map(tag => tag.trim()) : [];
 
       const sermonData = {
-        ...values,
+        title: values.title,
+        speaker_name: values.speaker_name,
+        sermon_date: values.sermon_date,
+        scripture_reference: values.scripture_reference || null,
+        description: values.description || null,
+        audio_url: values.audio_url || null,
+        video_url: values.video_url || null,
+        notes_url: values.notes_url || null,
+        series_name: values.series_name || null,
         tags: tagsArray,
         created_by: user.id,
       };

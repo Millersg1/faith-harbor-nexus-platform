@@ -80,7 +80,10 @@ const EmailMarketing = () => {
       if (!user) throw new Error("Not authenticated");
 
       const campaignData = {
-        ...values,
+        title: values.title,
+        subject: values.subject,
+        content: values.content,
+        template_type: values.template_type || 'newsletter',
         created_by: user.id,
         recipient_count: subscribers.length,
         scheduled_at: values.scheduled_at ? new Date(values.scheduled_at).toISOString() : null,
