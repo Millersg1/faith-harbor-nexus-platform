@@ -20,6 +20,9 @@ import Members from "./pages/Members";
 import Events from "./pages/Events";
 import Announcements from "./pages/Announcements";
 import DonationSuccess from "./pages/DonationSuccess";
+import Analytics from "./pages/Analytics";
+import EmailMarketing from "./pages/EmailMarketing";
+import Sermons from "./pages/Sermons";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 
@@ -50,6 +53,9 @@ const App = () => (
                 <Route path="/events" element={<Events />} />
                 <Route path="/announcements" element={<Announcements />} />
                 <Route path="/donation-success" element={<DonationSuccess />} />
+                <Route path="/analytics" element={<Analytics />} />
+                <Route path="/email-marketing" element={<EmailMarketing />} />
+                <Route path="/sermons" element={<Sermons />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
