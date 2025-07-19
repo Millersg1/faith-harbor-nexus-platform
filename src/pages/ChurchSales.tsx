@@ -129,7 +129,7 @@ const ChurchSales = () => {
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
               Everything Your Church Needs
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-blue-600 max-w-3xl mx-auto">
               Replace multiple systems with one comprehensive platform designed for ministry excellence.
             </p>
           </div>
