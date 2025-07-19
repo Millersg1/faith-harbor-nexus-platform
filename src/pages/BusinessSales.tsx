@@ -313,7 +313,7 @@ const BusinessSales = () => {
       {/* Final CTA */}
       <section className="py-20 bg-ministry-gradient text-blue-600">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
             Ready to Scale Your Christian Business?
           </h2>
           <p className="text-xl mb-8 opacity-90">
