@@ -73,7 +73,7 @@ const FeatureShowcase = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-blue-600 mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold mb-6" style={{color: "hsl(var(--gold))"}}>
             Everything Your Ministry Needs
             <span className="block text-primary">In One Platform</span>
           </h2>
@@ -94,7 +94,7 @@ const FeatureShowcase = () => {
                 <feature.icon className="h-6 w-6 text-white" />
               </div>
               
-              <h3 className="text-xl font-semibold text-blue-600 mb-3 group-hover:text-primary transition-colors">
+              <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors" style={{color: "hsl(var(--gold))"}}>
                 {feature.title}
               </h3>
               
@@ -116,7 +116,7 @@ const FeatureShowcase = () => {
 
         {/* Additional Features */}
         <div className="bg-muted/30 rounded-2xl p-8 mb-12">
-          <h3 className="text-2xl font-bold text-center text-blue-600 mb-8">
+          <h3 className="text-2xl font-bold text-center mb-8" style={{color: "hsl(var(--gold))"}}>
             Plus 590+ Additional Features
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -125,7 +125,7 @@ const FeatureShowcase = () => {
                 <div className="inline-flex p-3 rounded-lg bg-white shadow-soft mb-3">
                   <feature.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h4 className="font-semibold text-blue-600 mb-1">{feature.title}</h4>
+                <h4 className="font-semibold mb-1" style={{color: "hsl(var(--gold))"}}>{feature.title}</h4>
                 <p className="text-sm text-blue-600">{feature.desc}</p>
               </div>
             ))}
@@ -134,7 +134,7 @@ const FeatureShowcase = () => {
 
         {/* CTA Section */}
         <div className="text-center bg-lighthouse-gradient rounded-2xl p-8 text-white">
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">
+          <h3 className="text-2xl md:text-3xl font-bold mb-4" style={{color: "hsl(var(--gold))"}}>
             Ready to Transform Your Ministry?
           </h3>
           <p className="text-xl mb-6 opacity-90">

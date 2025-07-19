@@ -29,6 +29,10 @@
     --accent: 268 74 59; /* #7c3aed - Spiritual purple */
     --accent-foreground: 248 250 252;
 
+    /* Gold - Premium and divine */
+    --gold: 45 93 58; /* #eab308 - Premium gold */
+    --gold-foreground: 22 30 46;
+
     /* Neutral tones */
     --muted: 248 250 252;
     --muted-foreground: 107 114 128; /* #6b7280 - Subtle gray */
