@@ -45,7 +45,7 @@ const DemoVideo = () => {
               See Faith Harbor 
               <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent"> in Action</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-blue-600 max-w-3xl mx-auto">
               Watch our comprehensive demo video to see how Faith Harbor can transform 
               your ministry operations and help you focus on what matters most.
             </p>
