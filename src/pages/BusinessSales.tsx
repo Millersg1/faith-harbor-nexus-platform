@@ -172,7 +172,7 @@ const BusinessSales = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-blue-600 mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-yellow-600 mb-6">
               Everything Your Business Needs to Thrive
             </h2>
             <p className="text-xl text-blue-600 max-w-3xl mx-auto">
@@ -184,7 +184,7 @@ const BusinessSales = () => {
             {businessFeatures.map((feature, index) => (
               <div key={index} className="bg-card rounded-xl p-6 shadow-soft border border-border hover:shadow-medium transition-all duration-300">
                 <div className="text-3xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold text-blue-600 mb-3">
+                <h3 className="text-xl font-semibold text-yellow-600 mb-3">
                   {feature.title}
                 </h3>
                 <p className="text-blue-600">
@@ -196,7 +196,7 @@ const BusinessSales = () => {
 
           {/* Integrations */}
           <div className="mt-16 text-center">
-            <h3 className="text-2xl font-bold text-blue-600 mb-8">
+            <h3 className="text-2xl font-bold text-yellow-600 mb-8">
               Seamlessly Integrates With Your Favorite Tools
             </h3>
             <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
@@ -217,7 +217,7 @@ const BusinessSales = () => {
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-blue-600 mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-yellow-600 mb-6">
               Invest in Your Business Growth
             </h2>
             <p className="text-xl text-blue-600">
@@ -242,7 +242,7 @@ const BusinessSales = () => {
                 )}
                 
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-blue-600 mb-2">{plan.name}</h3>
+                  <h3 className="text-2xl font-bold text-yellow-600 mb-2">{plan.name}</h3>
                   <div className="mb-3">
                     <span className="text-4xl font-bold text-blue-600">${plan.price}</span>
                     <span className="text-blue-600">/month</span>
@@ -276,7 +276,7 @@ const BusinessSales = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-blue-600 mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold text-yellow-600 mb-6">
               Real Results from Christian Businesses
             </h2>
             <p className="text-xl text-blue-600">
