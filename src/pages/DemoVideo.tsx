@@ -121,16 +121,16 @@ const DemoVideo = () => {
                 <CardContent className="pt-6">
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold text-primary">New</div>
-                      <div className="text-xs text-muted-foreground">Platform</div>
+                      <div className="text-2xl font-bold text-blue-600">New</div>
+                      <div className="text-xs text-blue-600">Platform</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-primary">AI</div>
-                      <div className="text-xs text-muted-foreground">Powered</div>
+                      <div className="text-2xl font-bold text-blue-600">AI</div>
+                      <div className="text-xs text-blue-600">Powered</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-primary">SOC 2</div>
-                      <div className="text-xs text-muted-foreground">Ready</div>
+                      <div className="text-2xl font-bold text-blue-600">SOC 2</div>
+                      <div className="text-xs text-blue-600">Ready</div>
                     </div>
                   </div>
                 </CardContent>
