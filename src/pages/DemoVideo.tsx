@@ -55,12 +55,12 @@ const DemoVideo = () => {
           <div className="mb-16">
             <Card className="overflow-hidden">
               <div className="relative aspect-video bg-slate-900 flex items-center justify-center">
-                <div className="text-center text-white">
+                <div className="text-center text-blue-600">
                   <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-4 mx-auto hover:bg-primary/90 transition-colors cursor-pointer">
                     <Play className="h-8 w-8 ml-1" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">Faith Harbor Demo Video</h3>
-                  <p className="text-white/80">Click to watch the complete platform overview</p>
+                  <p className="text-blue-600/80">Click to watch the complete platform overview</p>
                 </div>
                 <div className="absolute top-4 right-4 flex gap-2">
                   <Button size="sm" variant="secondary">
