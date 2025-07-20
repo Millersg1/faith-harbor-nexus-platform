@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { DollarSign, TrendingUp, Receipt, PiggyBank, Calendar, FileText } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import Navigation from "@/components/Navigation";
+import { ScriptureQuote } from "@/components/ScriptureQuote";
 
 interface Budget {
   id: string;
@@ -224,7 +226,15 @@ const FinancialManagement = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <div className="container mx-auto px-4 py-8 pt-20">
+        <ScriptureQuote 
+          verse="Honor the Lord with your wealth, with the firstfruits of all your crops; then your barns will be filled to overflowing, and your vats will brim over with new wine."
+          reference="Proverbs 3:9-10"
+          theme="stewardship"
+        />
+        <div className="mt-8">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold">Financial Management</h1>
@@ -595,6 +605,8 @@ const FinancialManagement = () => {
           </div>
         </TabsContent>
       </Tabs>
+        </div>
+      </div>
     </div>
   );
 };

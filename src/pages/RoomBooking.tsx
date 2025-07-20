@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import Navigation from "@/components/Navigation";
+import { ScriptureQuote } from "@/components/ScriptureQuote";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -220,7 +222,15 @@ const RoomBooking = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <div className="container mx-auto px-4 py-8 pt-20">
+        <ScriptureQuote 
+          verse="And let us consider how we may spur one another on toward love and good deeds, not giving up meeting together, as some are in the habit of doing, but encouraging one another."
+          reference="Hebrews 10:24-25"
+          theme="community"
+        />
+        <div className="mt-8">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold">Room Booking</h1>
@@ -497,7 +507,9 @@ const RoomBooking = () => {
             )}
           </div>
         </div>
+        </div>
       </div>
+    </div>
 
       {/* Room Details Dialog */}
       {selectedRoom && (

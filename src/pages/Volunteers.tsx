@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Heart, Clock, Users, MapPin, Calendar, AlertCircle, Search, Plus } from "lucide-react";
+import { ScriptureQuote } from "@/components/ScriptureQuote";
 
 interface VolunteerOpportunity {
   id: string;

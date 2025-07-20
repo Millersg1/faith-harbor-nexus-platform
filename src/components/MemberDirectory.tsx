@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { Search, Users, MapPin } from "lucide-react";
+import { ScriptureQuote } from "./ScriptureQuote";
 
 interface Member {
   id: string;
@@ -78,7 +79,12 @@ export const MemberDirectory = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      <div className="mb-8">
+      <ScriptureQuote 
+        verse="Just as a body, though one, has many parts, but all its many parts form one body, so it is with Christ."
+        reference="1 Corinthians 12:12"
+        theme="community"
+      />
+      <div className="mb-8 mt-8">
         <div className="flex items-center gap-3 mb-4">
           <Users className="h-8 w-8 text-primary" />
           <div>

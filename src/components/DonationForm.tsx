@@ -11,6 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { Heart, CreditCard, Repeat } from "lucide-react";
+import { ScriptureQuote } from "./ScriptureQuote";
 
 export const DonationForm = () => {
   const { user } = useAuth();
@@ -96,7 +97,12 @@ export const DonationForm = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <Card>
+      <ScriptureQuote 
+        verse="Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
+        reference="2 Corinthians 9:7"
+        theme="giving"
+      />
+      <Card className="mt-6">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <Heart className="h-12 w-12 text-primary" />

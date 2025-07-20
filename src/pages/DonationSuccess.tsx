@@ -4,6 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { CheckCircle, Heart, Home } from "lucide-react";
+import Navigation from "@/components/Navigation";
+import { ScriptureQuote } from "@/components/ScriptureQuote";
 
 const DonationSuccess = () => {
   const [searchParams] = useSearchParams();
@@ -46,8 +48,16 @@ const DonationSuccess = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6">
-      <Card className="max-w-md w-full">
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <div className="flex items-center justify-center p-6 pt-20">
+        <div className="max-w-2xl w-full space-y-6">
+          <ScriptureQuote 
+            verse="Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver."
+            reference="2 Corinthians 9:7"
+            theme="giving"
+          />
+          <Card className="max-w-md w-full mx-auto">
         <CardHeader className="text-center">
           <div className="flex justify-center mb-4">
             <CheckCircle className="h-16 w-16 text-green-500" />
@@ -96,7 +106,9 @@ const DonationSuccess = () => {
             </div>
           </div>
         </CardContent>
-      </Card>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 };

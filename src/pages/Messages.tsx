@@ -15,6 +15,7 @@ import { useToast } from "@/hooks/use-toast";
 import { MessageCircle, Send, User, Clock, Reply, Phone } from "lucide-react";
 import { format } from "date-fns";
 import TwilioFlexPanel from "@/components/TwilioFlexPanel";
+import { ScriptureQuote } from "@/components/ScriptureQuote";
 
 interface Message {
   id: string;
@@ -187,8 +188,13 @@ const Messages = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <div className="container mx-auto px-4 py-8">
-      <div className="flex justify-between items-center mb-8">
+      <div className="container mx-auto px-4 py-8 pt-20">
+        <ScriptureQuote 
+          verse="Therefore encourage one another and build each other up, just as in fact you are doing."
+          reference="1 Thessalonians 5:11"
+          theme="community"
+        />
+        <div className="flex justify-between items-center mb-8 mt-8">
         <div>
           <h1 className="text-3xl font-bold">Messages & Support</h1>
           <p className="text-muted-foreground">Internal messaging and Twilio Flex support center</p>
