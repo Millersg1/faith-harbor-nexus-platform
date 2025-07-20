@@ -51,10 +51,14 @@ import MemoryBooks from "./pages/MemoryBooks";
 import Marketplace from "./pages/Marketplace";
 import SEOManagement from "./pages/SEOManagement";
 import CustomDomainManager from "./components/CustomDomainManager";
+import PWAFeaturesPage from "./pages/PWAFeatures";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import IntelligentChatbot from "./components/IntelligentChatbot";
 import NotificationSystem from "./components/NotificationSystem";
+import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
+import { PWAManager } from "./components/PWAManager";
+import { OfflineIndicator } from "./components/OfflineIndicator";
 import ActivityTrackerWrapper from "./components/ActivityTrackerWrapper";
 import AdminActivityMonitorPage from "./pages/AdminActivityMonitor";
 import DashboardNavigation from "./components/DashboardNavigation";
@@ -123,6 +127,7 @@ const App = () => (
                 <Route path="/marketplace" element={<Marketplace />} />
                 <Route path="/seo-management" element={<SEOManagement />} />
                 <Route path="/custom-domains" element={<CustomDomainManager />} />
+                <Route path="/pwa-features" element={<PWAFeaturesPage />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
@@ -131,6 +136,9 @@ const App = () => (
             <CookieConsent />
             <IntelligentChatbot position="bottom-right" />
             <NotificationSystem position="top-right" />
+            <PWAInstallPrompt />
+            <PWAManager />
+            <OfflineIndicator />
             </div>
           </ActivityTrackerWrapper>
         </AuthProvider>
