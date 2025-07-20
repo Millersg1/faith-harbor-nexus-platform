@@ -2374,6 +2374,75 @@ export type Database = {
         }
         Relationships: []
       }
+      provider_profiles: {
+        Row: {
+          average_rating: number | null
+          bio: string | null
+          business_name: string | null
+          certifications: string[] | null
+          contact_email: string | null
+          contact_phone: string | null
+          created_at: string
+          id: string
+          is_verified: boolean | null
+          portfolio_images: Json | null
+          service_area: string | null
+          social_links: Json | null
+          specialties: string[] | null
+          total_bookings: number | null
+          total_reviews: number | null
+          updated_at: string
+          user_id: string | null
+          verification_documents: Json | null
+          website_url: string | null
+          years_experience: number | null
+        }
+        Insert: {
+          average_rating?: number | null
+          bio?: string | null
+          business_name?: string | null
+          certifications?: string[] | null
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          id?: string
+          is_verified?: boolean | null
+          portfolio_images?: Json | null
+          service_area?: string | null
+          social_links?: Json | null
+          specialties?: string[] | null
+          total_bookings?: number | null
+          total_reviews?: number | null
+          updated_at?: string
+          user_id?: string | null
+          verification_documents?: Json | null
+          website_url?: string | null
+          years_experience?: number | null
+        }
+        Update: {
+          average_rating?: number | null
+          bio?: string | null
+          business_name?: string | null
+          certifications?: string[] | null
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          id?: string
+          is_verified?: boolean | null
+          portfolio_images?: Json | null
+          service_area?: string | null
+          social_links?: Json | null
+          specialties?: string[] | null
+          total_bookings?: number | null
+          total_reviews?: number | null
+          updated_at?: string
+          user_id?: string | null
+          verification_documents?: Json | null
+          website_url?: string | null
+          years_experience?: number | null
+        }
+        Relationships: []
+      }
       room_bookings: {
         Row: {
           approved_by: string | null
@@ -2556,6 +2625,107 @@ export type Database = {
         }
         Relationships: []
       }
+      service_bookings: {
+        Row: {
+          booking_date: string | null
+          cancellation_reason: string | null
+          cancelled_at: string | null
+          cancelled_by: string | null
+          completed_at: string | null
+          created_at: string
+          customer_id: string | null
+          customer_notes: string | null
+          duration_minutes: number | null
+          id: string
+          payment_intent_id: string | null
+          payment_status: string | null
+          provider_id: string | null
+          provider_notes: string | null
+          service_id: string | null
+          status: string
+          total_amount: number
+          updated_at: string
+        }
+        Insert: {
+          booking_date?: string | null
+          cancellation_reason?: string | null
+          cancelled_at?: string | null
+          cancelled_by?: string | null
+          completed_at?: string | null
+          created_at?: string
+          customer_id?: string | null
+          customer_notes?: string | null
+          duration_minutes?: number | null
+          id?: string
+          payment_intent_id?: string | null
+          payment_status?: string | null
+          provider_id?: string | null
+          provider_notes?: string | null
+          service_id?: string | null
+          status?: string
+          total_amount: number
+          updated_at?: string
+        }
+        Update: {
+          booking_date?: string | null
+          cancellation_reason?: string | null
+          cancelled_at?: string | null
+          cancelled_by?: string | null
+          completed_at?: string | null
+          created_at?: string
+          customer_id?: string | null
+          customer_notes?: string | null
+          duration_minutes?: number | null
+          id?: string
+          payment_intent_id?: string | null
+          payment_status?: string | null
+          provider_id?: string | null
+          provider_notes?: string | null
+          service_id?: string | null
+          status?: string
+          total_amount?: number
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "service_bookings_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      service_categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          icon_name: string | null
+          id: string
+          is_active: boolean | null
+          name: string
+          sort_order: number | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          icon_name?: string | null
+          id?: string
+          is_active?: boolean | null
+          name: string
+          sort_order?: number | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          icon_name?: string | null
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          sort_order?: number | null
+        }
+        Relationships: []
+      }
       service_elements: {
         Row: {
           assigned_to: string | null
@@ -2650,6 +2820,146 @@ export type Database = {
           worship_leader?: string | null
         }
         Relationships: []
+      }
+      service_reviews: {
+        Row: {
+          booking_id: string | null
+          created_at: string
+          id: string
+          is_public: boolean | null
+          provider_id: string | null
+          rating: number
+          review_text: string | null
+          reviewer_id: string | null
+          service_id: string | null
+        }
+        Insert: {
+          booking_id?: string | null
+          created_at?: string
+          id?: string
+          is_public?: boolean | null
+          provider_id?: string | null
+          rating: number
+          review_text?: string | null
+          reviewer_id?: string | null
+          service_id?: string | null
+        }
+        Update: {
+          booking_id?: string | null
+          created_at?: string
+          id?: string
+          is_public?: boolean | null
+          provider_id?: string | null
+          rating?: number
+          review_text?: string | null
+          reviewer_id?: string | null
+          service_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "service_reviews_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "service_bookings"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "service_reviews_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      services: {
+        Row: {
+          available_days: string[] | null
+          available_hours: Json | null
+          cancellation_policy: string | null
+          category_id: string | null
+          created_at: string
+          description: string
+          duration_minutes: number | null
+          hourly_rate: number | null
+          id: string
+          images: Json | null
+          is_active: boolean | null
+          is_featured: boolean | null
+          location_details: string | null
+          location_type: string
+          max_advance_booking_days: number | null
+          min_advance_booking_hours: number | null
+          price_amount: number | null
+          price_type: string
+          provider_id: string | null
+          requirements: string | null
+          short_description: string | null
+          tags: string[] | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          available_days?: string[] | null
+          available_hours?: Json | null
+          cancellation_policy?: string | null
+          category_id?: string | null
+          created_at?: string
+          description: string
+          duration_minutes?: number | null
+          hourly_rate?: number | null
+          id?: string
+          images?: Json | null
+          is_active?: boolean | null
+          is_featured?: boolean | null
+          location_details?: string | null
+          location_type: string
+          max_advance_booking_days?: number | null
+          min_advance_booking_hours?: number | null
+          price_amount?: number | null
+          price_type: string
+          provider_id?: string | null
+          requirements?: string | null
+          short_description?: string | null
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          available_days?: string[] | null
+          available_hours?: Json | null
+          cancellation_policy?: string | null
+          category_id?: string | null
+          created_at?: string
+          description?: string
+          duration_minutes?: number | null
+          hourly_rate?: number | null
+          id?: string
+          images?: Json | null
+          is_active?: boolean | null
+          is_featured?: boolean | null
+          location_details?: string | null
+          location_type?: string
+          max_advance_booking_days?: number | null
+          min_advance_booking_hours?: number | null
+          price_amount?: number | null
+          price_type?: string
+          provider_id?: string | null
+          requirements?: string | null
+          short_description?: string | null
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "services_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "service_categories"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       small_group_members: {
         Row: {
