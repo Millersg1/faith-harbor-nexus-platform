@@ -13,6 +13,7 @@ import { DollarSign, TrendingUp, Receipt, PiggyBank, Calendar, FileText } from "
 import { Progress } from "@/components/ui/progress";
 import Navigation from "@/components/Navigation";
 import { ScriptureQuote } from "@/components/ScriptureQuote";
+import OCRDocumentScanner from "@/components/OCRDocumentScanner";
 
 interface Budget {
   id: string;
@@ -99,6 +100,21 @@ const FinancialManagement = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleOCRData = (data: any) => {
+    setExpenseForm(prev => ({
+      ...prev,
+      amount: data.amount ? data.amount.toString() : prev.amount,
+      vendor: data.vendor || prev.vendor,
+      expense_date: data.date || prev.expense_date,
+      description: data.description || prev.description
+    }));
+    
+    toast({
+      title: "OCR Data Applied",
+      description: "Document data has been extracted and applied to the form",
+    });
   };
 
   const handleSubmitExpense = async (e: React.FormEvent) => {
@@ -248,13 +264,17 @@ const FinancialManagement = () => {
                 Submit Expense
               </Button>
             </DialogTrigger>
-            <DialogContent>
+            <DialogContent className="max-w-2xl">
               <DialogHeader>
                 <DialogTitle>Submit New Expense</DialogTitle>
                 <DialogDescription>
-                  Submit an expense for review and approval.
+                  Submit an expense for review and approval. You can scan receipts and documents to auto-fill the form.
                 </DialogDescription>
               </DialogHeader>
+              
+              <div className="flex justify-center mb-4">
+                <OCRDocumentScanner onExtractedData={handleOCRData} />
+              </div>
               <form onSubmit={handleSubmitExpense} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="amount">Amount ($)</Label>
