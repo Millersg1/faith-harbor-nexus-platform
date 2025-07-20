@@ -45,6 +45,8 @@ import WebsiteFunnelBuilder from "./pages/WebsiteFunnelBuilder";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import IntelligentChatbot from "./components/IntelligentChatbot";
+import ActivityTrackerWrapper from "./components/ActivityTrackerWrapper";
+import AdminActivityMonitorPage from "./pages/AdminActivityMonitor";
 
 const queryClient = new QueryClient();
 
@@ -55,7 +57,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AuthProvider>
-          <div className="min-h-screen flex flex-col">
+          <ActivityTrackerWrapper>
+            <div className="min-h-screen flex flex-col">
             <div className="flex-1">
               <Routes>
                 <Route path="/" element={<Index />} />
@@ -86,6 +89,7 @@ const App = () => (
                 <Route path="/room-booking" element={<RoomBooking />} />
                 <Route path="/advanced-analytics" element={<AdvancedAnalytics />} />
                 <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/admin/activity" element={<AdminActivityMonitorPage />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:id" element={<Blog />} />
                 <Route path="/ai-companion" element={<AICompanion />} />
@@ -103,7 +107,8 @@ const App = () => (
             <Footer />
             <CookieConsent />
             <IntelligentChatbot position="bottom-right" />
-          </div>
+            </div>
+          </ActivityTrackerWrapper>
         </AuthProvider>
       </BrowserRouter>
     </TooltipProvider>

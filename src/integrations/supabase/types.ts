@@ -2224,6 +2224,42 @@ export type Database = {
         }
         Relationships: []
       }
+      user_activity_logs: {
+        Row: {
+          activity_description: string
+          activity_type: string
+          created_at: string
+          id: string
+          ip_address: string | null
+          metadata: Json | null
+          page_url: string | null
+          user_agent: string | null
+          user_id: string
+        }
+        Insert: {
+          activity_description: string
+          activity_type: string
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          metadata?: Json | null
+          page_url?: string | null
+          user_agent?: string | null
+          user_id: string
+        }
+        Update: {
+          activity_description?: string
+          activity_type?: string
+          created_at?: string
+          id?: string
+          ip_address?: string | null
+          metadata?: Json | null
+          page_url?: string | null
+          user_agent?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_funnels: {
         Row: {
           analytics_data: Json | null
@@ -2273,6 +2309,39 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      user_presence: {
+        Row: {
+          created_at: string
+          current_page: string | null
+          id: string
+          last_seen: string
+          session_id: string | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          current_page?: string | null
+          id?: string
+          last_seen?: string
+          session_id?: string | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          current_page?: string | null
+          id?: string
+          last_seen?: string
+          session_id?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       user_roles: {
         Row: {
