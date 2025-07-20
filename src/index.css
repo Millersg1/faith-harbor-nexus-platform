@@ -6,43 +6,39 @@
 
 @layer base {
   :root {
-    /* Faith Harbor Brand Colors */
-    --background: 248 250 252; /* #f8fafc - Clean light background */
-    --foreground: 31 41 55; /* #1f2937 - Dark text */
+    /* Faith Harbor Brand Colors - All HSL values for proper color functions */
+    --background: 210 20% 98%; /* Clean light background */
+    --foreground: 220 13% 18%; /* Dark readable text */
 
-    --card: 255 255 255; /* Pure white cards */
-    --card-foreground: 31 41 55;
+    --card: 0 0% 100%; /* Pure white cards */
+    --card-foreground: 220 13% 18%;
 
-    --popover: 255 255 255;
-    --popover-foreground: 31 41 55;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
 
     /* Primary Blue - Faith Harbor brand */
-    --primary: 218 70 59; /* #2563eb - Professional blue */
-    --primary-foreground: 248 250 252;
-    --primary-glow: 218 70 70; /* Lighter blue for effects */
+    --primary: 217 91% 60%; /* Professional blue */
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 217 91% 70%; /* Lighter blue for effects */
 
-    /* Secondary Green - Growth and prosperity */
-    --secondary: 162 72 48; /* #059669 - Ministry green */
-    --secondary-foreground: 248 250 252;
+    /* Secondary Teal - Growth and prosperity */
+    --secondary: 173 58% 39%; /* Professional teal instead of green */
+    --secondary-foreground: 0 0% 98%;
 
-    /* Accent Purple - Spiritual depth */
-    --accent: 268 74 59; /* #7c3aed - Spiritual purple */
-    --accent-foreground: 248 250 252;
-
-    /* Gold - Premium and divine */
-    --gold: 45 93 58; /* #eab308 - Premium gold */
-    --gold-foreground: 22 30 46;
+    /* Accent Indigo - Spiritual depth */
+    --accent: 238 75% 65%; /* Softer indigo */
+    --accent-foreground: 0 0% 98%;
 
     /* Neutral tones */
-    --muted: 248 250 252;
-    --muted-foreground: 107 114 128; /* #6b7280 - Subtle gray */
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%; /* Better contrast gray */
 
-    --destructive: 0 72 51;
-    --destructive-foreground: 248 250 252;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 226 232 240; /* #e2e8f0 - Subtle borders */
-    --input: 226 232 240;
-    --ring: 218 70 59; /* Primary blue for focus rings */
+    --border: 214 32% 91%; /* Subtle borders */
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%; /* Primary blue for focus rings */
 
     /* Faith Harbor specific design tokens */
     --lighthouse-gradient: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
