@@ -3991,6 +3991,10 @@ export type Database = {
         Args: { enrollment_uuid: string }
         Returns: number
       }
+      create_sample_websites_for_user: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
       has_role: {
         Args: {
           _user_id: string

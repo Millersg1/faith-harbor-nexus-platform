@@ -47,7 +47,26 @@ const CustomDomainManager = () => {
   useEffect(() => {
     loadWebsites();
     loadDomainVerifications();
+    createSampleWebsitesIfNeeded();
   }, []);
+
+  const createSampleWebsitesIfNeeded = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      // Call the function to create sample websites
+      const { error } = await supabase.rpc('create_sample_websites_for_user');
+      if (error) {
+        console.error('Error creating sample websites:', error);
+      } else {
+        // Reload websites after creating samples
+        setTimeout(loadWebsites, 1000);
+      }
+    } catch (error) {
+      console.error('Error in createSampleWebsitesIfNeeded:', error);
+    }
+  };
 
   const loadWebsites = async () => {
     try {

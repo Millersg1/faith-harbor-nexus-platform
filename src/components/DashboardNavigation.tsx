@@ -8,7 +8,8 @@ import {
   Users, 
   Activity,
   BarChart3,
-  Shield
+  Shield,
+  Globe
 } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 
@@ -34,6 +35,12 @@ const DashboardNavigation = () => {
       icon: Activity,
       label: 'Activity Monitor',
       description: 'Real-time user activity tracking'
+    },
+    {
+      href: '/custom-domains',
+      icon: Globe,
+      label: 'Custom Domains',
+      description: 'Manage custom domains for your websites'
     }
   ];
 
