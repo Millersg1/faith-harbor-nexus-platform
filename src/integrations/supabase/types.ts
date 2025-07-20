@@ -859,6 +859,89 @@ export type Database = {
           },
         ]
       }
+      funnel_analytics: {
+        Row: {
+          conversion_count: number | null
+          created_at: string
+          date_recorded: string | null
+          funnel_id: string | null
+          id: string
+          step_index: number
+          visitor_count: number | null
+        }
+        Insert: {
+          conversion_count?: number | null
+          created_at?: string
+          date_recorded?: string | null
+          funnel_id?: string | null
+          id?: string
+          step_index: number
+          visitor_count?: number | null
+        }
+        Update: {
+          conversion_count?: number | null
+          created_at?: string
+          date_recorded?: string | null
+          funnel_id?: string | null
+          id?: string
+          step_index?: number
+          visitor_count?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "funnel_analytics_funnel_id_fkey"
+            columns: ["funnel_id"]
+            isOneToOne: false
+            referencedRelation: "user_funnels"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      funnel_templates: {
+        Row: {
+          conversion_rate: number | null
+          created_at: string
+          description: string | null
+          funnel_type: string
+          id: string
+          is_premium: boolean | null
+          name: string
+          niche: string
+          preview_images: string[] | null
+          steps: number | null
+          template_data: Json
+          updated_at: string
+        }
+        Insert: {
+          conversion_rate?: number | null
+          created_at?: string
+          description?: string | null
+          funnel_type: string
+          id?: string
+          is_premium?: boolean | null
+          name: string
+          niche: string
+          preview_images?: string[] | null
+          steps?: number | null
+          template_data?: Json
+          updated_at?: string
+        }
+        Update: {
+          conversion_rate?: number | null
+          created_at?: string
+          description?: string | null
+          funnel_type?: string
+          id?: string
+          is_premium?: boolean | null
+          name?: string
+          niche?: string
+          preview_images?: string[] | null
+          steps?: number | null
+          template_data?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
       member_engagement: {
         Row: {
           activity_details: Json | null
@@ -2066,6 +2149,56 @@ export type Database = {
         }
         Relationships: []
       }
+      user_funnels: {
+        Row: {
+          analytics_data: Json | null
+          created_at: string
+          funnel_type: string
+          id: string
+          is_active: boolean | null
+          name: string
+          settings: Json | null
+          steps_data: Json
+          template_id: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          analytics_data?: Json | null
+          created_at?: string
+          funnel_type: string
+          id?: string
+          is_active?: boolean | null
+          name: string
+          settings?: Json | null
+          steps_data?: Json
+          template_id?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          analytics_data?: Json | null
+          created_at?: string
+          funnel_type?: string
+          id?: string
+          is_active?: boolean | null
+          name?: string
+          settings?: Json | null
+          steps_data?: Json
+          template_id?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_funnels_template_id_fkey"
+            columns: ["template_id"]
+            isOneToOne: false
+            referencedRelation: "funnel_templates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           active: boolean | null
@@ -2092,6 +2225,62 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      user_websites: {
+        Row: {
+          analytics_data: Json | null
+          content_data: Json
+          created_at: string
+          custom_domain: string | null
+          domain: string | null
+          id: string
+          is_published: boolean | null
+          name: string
+          published_at: string | null
+          seo_settings: Json | null
+          template_id: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          analytics_data?: Json | null
+          content_data?: Json
+          created_at?: string
+          custom_domain?: string | null
+          domain?: string | null
+          id?: string
+          is_published?: boolean | null
+          name: string
+          published_at?: string | null
+          seo_settings?: Json | null
+          template_id?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          analytics_data?: Json | null
+          content_data?: Json
+          created_at?: string
+          custom_domain?: string | null
+          domain?: string | null
+          id?: string
+          is_published?: boolean | null
+          name?: string
+          published_at?: string | null
+          seo_settings?: Json | null
+          template_id?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_websites_template_id_fkey"
+            columns: ["template_id"]
+            isOneToOne: false
+            referencedRelation: "website_templates"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       volunteer_applications: {
         Row: {
@@ -2205,6 +2394,48 @@ export type Database = {
           status?: string | null
           time_commitment?: string | null
           title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      website_templates: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          features: string[] | null
+          id: string
+          is_premium: boolean | null
+          name: string
+          niche: string
+          preview_image: string | null
+          template_data: Json
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description?: string | null
+          features?: string[] | null
+          id?: string
+          is_premium?: boolean | null
+          name: string
+          niche: string
+          preview_image?: string | null
+          template_data?: Json
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          features?: string[] | null
+          id?: string
+          is_premium?: boolean | null
+          name?: string
+          niche?: string
+          preview_image?: string | null
+          template_data?: Json
           updated_at?: string
         }
         Relationships: []

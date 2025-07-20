@@ -20,9 +20,9 @@ const Navigation = () => {
   ];
 
   const features = [
+    { title: "Website & Funnel Builder", href: "/website-funnel-builder", desc: "Create stunning websites and funnels" },
+    { title: "Mobile App Builder", href: "/mobile-app-builder", desc: "Build native mobile apps" },
     { title: "Live Streaming", href: "/live-streaming", desc: "Multi-platform broadcasting" },
-    { title: "Volunteer Management", href: "/volunteer-management", desc: "Volunteer coordination" },
-    { title: "Children's Ministry", href: "/childrens-ministry", desc: "Kids program management" },
     { title: "Coaching Platform", href: "/coaching-platform", desc: "Professional coaching tools" },
   ];
 
