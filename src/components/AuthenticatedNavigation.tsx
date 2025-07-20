@@ -18,7 +18,10 @@ import {
   MessageSquare,
   DollarSign,
   FileText,
-  Bot
+  Bot,
+  BookOpen,
+  Heart,
+  Store
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
@@ -66,6 +69,9 @@ const AuthenticatedNavigation = () => {
 
   const advancedFeatures = [
     { title: "AI Companion", href: "/ai-companion", icon: Bot, desc: "Spiritual guidance" },
+    { title: "Memory Books", href: "/memory-books", icon: BookOpen, desc: "Printable memory books" },
+    { title: "Grief Support", href: "/grief-support", icon: Heart, desc: "Bereavement care" },
+    { title: "Marketplace", href: "/marketplace", icon: Store, desc: "Member services" },
     { title: "Sermons", href: "/sermons", icon: FileText, desc: "Sermon management" },
     { title: "Small Groups", href: "/small-groups", icon: Users, desc: "Group coordination" },
     { title: "Volunteers", href: "/volunteers", icon: Users, desc: "Volunteer management" },
