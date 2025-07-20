@@ -12,19 +12,20 @@ import { User, Settings, Save, Lock, Upload, X, Image } from "lucide-react";
 
 interface Profile {
   user_id: string;
-  first_name: string | null;
-  last_name: string | null;
-  display_name: string | null;
-  organization_name: string | null;
-  organization_type: string | null;
-  phone: string | null;
-  website: string | null;
-  bio: string | null;
-  avatar_url: string | null;
-  logo_url: string | null;
-  bio_name: string | null;
-  bio_room: string | null;
-  admin_notes: string | null;
+  first_name?: string | null;
+  last_name?: string | null;
+  display_name?: string | null;
+  organization_name?: string | null;
+  organization_type?: string | null;
+  phone?: string | null;
+  website?: string | null;
+  bio?: string | null;
+  avatar_url?: string | null;
+  logo_url?: string | null;
+  bio_name?: string | null;
+  bio_room?: string | null;
+  admin_notes?: string | null;
+  [key: string]: any; // Allow additional fields from database
 }
 
 interface UserRole {
@@ -64,22 +65,27 @@ const ProfileSection = () => {
         throw error;
       }
 
-      setProfile(data || {
-        user_id: user?.id || '',
-        first_name: null,
-        last_name: null,
-        display_name: null,
-        organization_name: null,
-        organization_type: null,
-        phone: null,
-        website: null,
-        bio: null,
-        avatar_url: null,
-        logo_url: null,
-        bio_name: null,
-        bio_room: null,
-        admin_notes: null
-      });
+      if (data) {
+        setProfile(data);
+      } else {
+        // Create default profile structure if no data exists
+        setProfile({
+          user_id: user?.id || '',
+          first_name: null,
+          last_name: null,
+          display_name: null,
+          organization_name: null,
+          organization_type: null,
+          phone: null,
+          website: null,
+          bio: null,
+          avatar_url: null,
+          logo_url: null,
+          bio_name: null,
+          bio_room: null,
+          admin_notes: null
+        });
+      }
     } catch (error) {
       console.error('Error fetching profile:', error);
       toast({

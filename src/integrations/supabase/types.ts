@@ -1560,6 +1560,7 @@ export type Database = {
           id: string
           interests: string[] | null
           last_name: string | null
+          logo_url: string | null
           marital_status: string | null
           member_status: string | null
           membership_type: string | null
@@ -1598,6 +1599,7 @@ export type Database = {
           id?: string
           interests?: string[] | null
           last_name?: string | null
+          logo_url?: string | null
           marital_status?: string | null
           member_status?: string | null
           membership_type?: string | null
@@ -1636,6 +1638,7 @@ export type Database = {
           id?: string
           interests?: string[] | null
           last_name?: string | null
+          logo_url?: string | null
           marital_status?: string | null
           member_status?: string | null
           membership_type?: string | null
