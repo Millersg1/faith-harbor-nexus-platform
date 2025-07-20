@@ -152,6 +152,59 @@ export type Database = {
           },
         ]
       }
+      bereavement_care: {
+        Row: {
+          care_coordinator_id: string | null
+          care_type: string
+          completed_date: string | null
+          created_at: string
+          description: string | null
+          family_member_id: string | null
+          id: string
+          memorial_id: string | null
+          notes: string | null
+          scheduled_date: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          care_coordinator_id?: string | null
+          care_type: string
+          completed_date?: string | null
+          created_at?: string
+          description?: string | null
+          family_member_id?: string | null
+          id?: string
+          memorial_id?: string | null
+          notes?: string | null
+          scheduled_date?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          care_coordinator_id?: string | null
+          care_type?: string
+          completed_date?: string | null
+          created_at?: string
+          description?: string | null
+          family_member_id?: string | null
+          id?: string
+          memorial_id?: string | null
+          notes?: string | null
+          scheduled_date?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bereavement_care_memorial_id_fkey"
+            columns: ["memorial_id"]
+            isOneToOne: false
+            referencedRelation: "memorials"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       blog_categories: {
         Row: {
           created_at: string | null
@@ -1189,6 +1242,95 @@ export type Database = {
         }
         Relationships: []
       }
+      grief_session_registrations: {
+        Row: {
+          attendance_status: string | null
+          id: string
+          notes: string | null
+          participant_id: string | null
+          registration_date: string
+          session_id: string | null
+        }
+        Insert: {
+          attendance_status?: string | null
+          id?: string
+          notes?: string | null
+          participant_id?: string | null
+          registration_date?: string
+          session_id?: string | null
+        }
+        Update: {
+          attendance_status?: string | null
+          id?: string
+          notes?: string | null
+          participant_id?: string | null
+          registration_date?: string
+          session_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "grief_session_registrations_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "grief_support_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      grief_support_sessions: {
+        Row: {
+          cost: number | null
+          created_at: string
+          description: string | null
+          duration_minutes: number | null
+          facilitator_id: string | null
+          id: string
+          location: string | null
+          max_participants: number | null
+          registration_required: boolean | null
+          resources: string | null
+          session_date: string
+          session_type: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          cost?: number | null
+          created_at?: string
+          description?: string | null
+          duration_minutes?: number | null
+          facilitator_id?: string | null
+          id?: string
+          location?: string | null
+          max_participants?: number | null
+          registration_required?: boolean | null
+          resources?: string | null
+          session_date: string
+          session_type: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          cost?: number | null
+          created_at?: string
+          description?: string | null
+          duration_minutes?: number | null
+          facilitator_id?: string | null
+          id?: string
+          location?: string | null
+          max_participants?: number | null
+          registration_required?: boolean | null
+          resources?: string | null
+          session_date?: string
+          session_type?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       member_connections: {
         Row: {
           created_at: string
@@ -1365,6 +1507,95 @@ export type Database = {
           role_description?: string | null
           role_name?: string
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      memorial_tributes: {
+        Row: {
+          author_id: string | null
+          author_name: string | null
+          created_at: string
+          id: string
+          is_public: boolean | null
+          memorial_id: string | null
+          tribute_text: string
+        }
+        Insert: {
+          author_id?: string | null
+          author_name?: string | null
+          created_at?: string
+          id?: string
+          is_public?: boolean | null
+          memorial_id?: string | null
+          tribute_text: string
+        }
+        Update: {
+          author_id?: string | null
+          author_name?: string | null
+          created_at?: string
+          id?: string
+          is_public?: boolean | null
+          memorial_id?: string | null
+          tribute_text?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "memorial_tributes_memorial_id_fkey"
+            columns: ["memorial_id"]
+            isOneToOne: false
+            referencedRelation: "memorials"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      memorials: {
+        Row: {
+          biography: string | null
+          created_at: string
+          created_by: string | null
+          date_of_birth: string | null
+          date_of_passing: string
+          deceased_name: string
+          family_contact_info: string | null
+          id: string
+          memorial_fund_info: string | null
+          photo_url: string | null
+          service_date: string | null
+          service_location: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          biography?: string | null
+          created_at?: string
+          created_by?: string | null
+          date_of_birth?: string | null
+          date_of_passing: string
+          deceased_name: string
+          family_contact_info?: string | null
+          id?: string
+          memorial_fund_info?: string | null
+          photo_url?: string | null
+          service_date?: string | null
+          service_location?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          biography?: string | null
+          created_at?: string
+          created_by?: string | null
+          date_of_birth?: string | null
+          date_of_passing?: string
+          deceased_name?: string
+          family_contact_info?: string | null
+          id?: string
+          memorial_fund_info?: string | null
+          photo_url?: string | null
+          service_date?: string | null
+          service_location?: string | null
+          status?: string
+          updated_at?: string
         }
         Relationships: []
       }
