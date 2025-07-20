@@ -1189,6 +1189,84 @@ export type Database = {
         }
         Relationships: []
       }
+      member_connections: {
+        Row: {
+          created_at: string
+          id: string
+          message: string | null
+          requested_id: string
+          requester_id: string
+          status: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          message?: string | null
+          requested_id: string
+          requester_id: string
+          status?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          message?: string | null
+          requested_id?: string
+          requester_id?: string
+          status?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      member_directory: {
+        Row: {
+          contact_preferences: Json | null
+          created_at: string
+          directory_bio: string | null
+          id: string
+          is_visible: boolean | null
+          show_address: boolean | null
+          show_birthday: boolean | null
+          show_email: boolean | null
+          show_ministry_interests: boolean | null
+          show_phone: boolean | null
+          show_skills: boolean | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          contact_preferences?: Json | null
+          created_at?: string
+          directory_bio?: string | null
+          id?: string
+          is_visible?: boolean | null
+          show_address?: boolean | null
+          show_birthday?: boolean | null
+          show_email?: boolean | null
+          show_ministry_interests?: boolean | null
+          show_phone?: boolean | null
+          show_skills?: boolean | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          contact_preferences?: Json | null
+          created_at?: string
+          directory_bio?: string | null
+          id?: string
+          is_visible?: boolean | null
+          show_address?: boolean | null
+          show_birthday?: boolean | null
+          show_email?: boolean | null
+          show_ministry_interests?: boolean | null
+          show_phone?: boolean | null
+          show_skills?: boolean | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       member_engagement: {
         Row: {
           activity_details: Json | null

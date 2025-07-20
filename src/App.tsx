@@ -45,6 +45,7 @@ import WebsiteFunnelBuilder from "./pages/WebsiteFunnelBuilder";
 import Training from "./pages/Training";
 import Tutorials from "./pages/Tutorials";
 import MemberPortal from "./pages/MemberPortal";
+import MemberDirectory from "./pages/MemberDirectory";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import IntelligentChatbot from "./components/IntelligentChatbot";
@@ -111,6 +112,7 @@ const App = () => (
                 <Route path="/training" element={<Training />} />
                 <Route path="/tutorials" element={<Tutorials />} />
                 <Route path="/member-portal" element={<MemberPortal />} />
+                <Route path="/member-directory" element={<MemberDirectory />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
