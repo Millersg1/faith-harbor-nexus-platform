@@ -23,7 +23,7 @@ const Hero = () => {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="absolute inset-0 bg-hero-gradient"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-accent/40"></div>
       </div>
 
       {/* Content */}
