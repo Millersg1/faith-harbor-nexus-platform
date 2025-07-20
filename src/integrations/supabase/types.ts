@@ -1599,6 +1599,192 @@ export type Database = {
         }
         Relationships: []
       }
+      memory_book_pages: {
+        Row: {
+          canvas_data: Json
+          created_at: string
+          id: string
+          memory_book_id: string | null
+          page_number: number
+          template_id: string
+          updated_at: string
+        }
+        Insert: {
+          canvas_data?: Json
+          created_at?: string
+          id?: string
+          memory_book_id?: string | null
+          page_number: number
+          template_id: string
+          updated_at?: string
+        }
+        Update: {
+          canvas_data?: Json
+          created_at?: string
+          id?: string
+          memory_book_id?: string | null
+          page_number?: number
+          template_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "memory_book_pages_memory_book_id_fkey"
+            columns: ["memory_book_id"]
+            isOneToOne: false
+            referencedRelation: "memory_books"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      memory_book_templates: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          id: string
+          is_premium: boolean | null
+          name: string
+          preview_image_url: string | null
+          template_data: Json
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_premium?: boolean | null
+          name: string
+          preview_image_url?: string | null
+          template_data?: Json
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          is_premium?: boolean | null
+          name?: string
+          preview_image_url?: string | null
+          template_data?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      memory_books: {
+        Row: {
+          allow_comments: boolean | null
+          canvas_data: Json
+          created_at: string
+          creator_id: string | null
+          description: string | null
+          id: string
+          is_public: boolean | null
+          is_published: boolean | null
+          memorial_id: string | null
+          settings: Json | null
+          template_id: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          allow_comments?: boolean | null
+          canvas_data?: Json
+          created_at?: string
+          creator_id?: string | null
+          description?: string | null
+          id?: string
+          is_public?: boolean | null
+          is_published?: boolean | null
+          memorial_id?: string | null
+          settings?: Json | null
+          template_id: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          allow_comments?: boolean | null
+          canvas_data?: Json
+          created_at?: string
+          creator_id?: string | null
+          description?: string | null
+          id?: string
+          is_public?: boolean | null
+          is_published?: boolean | null
+          memorial_id?: string | null
+          settings?: Json | null
+          template_id?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "memory_books_memorial_id_fkey"
+            columns: ["memorial_id"]
+            isOneToOne: false
+            referencedRelation: "memorials"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      memory_comments: {
+        Row: {
+          approved_at: string | null
+          approved_by: string | null
+          author_email: string | null
+          author_id: string | null
+          author_name: string | null
+          comment_text: string
+          id: string
+          is_approved: boolean | null
+          is_included: boolean | null
+          memory_book_id: string | null
+          memory_title: string | null
+          photo_url: string | null
+          submitted_at: string
+        }
+        Insert: {
+          approved_at?: string | null
+          approved_by?: string | null
+          author_email?: string | null
+          author_id?: string | null
+          author_name?: string | null
+          comment_text: string
+          id?: string
+          is_approved?: boolean | null
+          is_included?: boolean | null
+          memory_book_id?: string | null
+          memory_title?: string | null
+          photo_url?: string | null
+          submitted_at?: string
+        }
+        Update: {
+          approved_at?: string | null
+          approved_by?: string | null
+          author_email?: string | null
+          author_id?: string | null
+          author_name?: string | null
+          comment_text?: string
+          id?: string
+          is_approved?: boolean | null
+          is_included?: boolean | null
+          memory_book_id?: string | null
+          memory_title?: string | null
+          photo_url?: string | null
+          submitted_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "memory_comments_memory_book_id_fkey"
+            columns: ["memory_book_id"]
+            isOneToOne: false
+            referencedRelation: "memory_books"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       message_threads: {
         Row: {
           created_at: string | null
