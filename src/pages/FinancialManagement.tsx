@@ -13,6 +13,8 @@ import { DollarSign, TrendingUp, Receipt, PiggyBank, Calendar, FileText } from "
 import { Progress } from "@/components/ui/progress";
 import Navigation from "@/components/Navigation";
 import { ScriptureQuote } from "@/components/ScriptureQuote";
+import { FinancialReports } from "@/components/FinancialReports";
+import { DynamicScriptureQuote } from "@/components/DynamicScriptureQuote";
 import OCRDocumentScanner from "@/components/OCRDocumentScanner";
 
 interface Budget {
@@ -53,6 +55,7 @@ const FinancialManagement = () => {
   const [budgets, setBudgets] = useState<Budget[]>([]);
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [pledges, setPledges] = useState<Pledge[]>([]);
+  const [donations, setDonations] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [isExpenseDialogOpen, setIsExpenseDialogOpen] = useState(false);
   const [isPledgeDialogOpen, setIsPledgeDialogOpen] = useState(false);
@@ -77,19 +80,22 @@ const FinancialManagement = () => {
 
   const fetchData = async () => {
     try {
-      const [budgetsResult, expensesResult, pledgesResult] = await Promise.all([
+      const [budgetsResult, expensesResult, pledgesResult, donationsResult] = await Promise.all([
         supabase.from("budgets").select("*").order("fiscal_year", { ascending: false }),
         supabase.from("expenses").select("*").order("expense_date", { ascending: false }),
-        supabase.from("pledges").select("*").order("start_date", { ascending: false })
+        supabase.from("pledges").select("*").order("start_date", { ascending: false }),
+        supabase.from("donations").select("*").eq("status", "completed").order("created_at", { ascending: false })
       ]);
 
       if (budgetsResult.error) throw budgetsResult.error;
       if (expensesResult.error) throw expensesResult.error;
       if (pledgesResult.error) throw pledgesResult.error;
+      if (donationsResult.error) throw donationsResult.error;
 
       setBudgets(budgetsResult.data || []);
       setExpenses(expensesResult.data || []);
       setPledges(pledgesResult.data || []);
+      setDonations(donationsResult.data || []);
     } catch (error) {
       console.error("Error fetching financial data:", error);
       toast({
@@ -245,9 +251,8 @@ const FinancialManagement = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <div className="container mx-auto px-4 py-8 pt-20">
-        <ScriptureQuote 
-          verse="Honor the Lord with your wealth, with the firstfruits of all your crops; then your barns will be filled to overflowing, and your vats will brim over with new wine."
-          reference="Proverbs 3:9-10"
+        <DynamicScriptureQuote 
+          variant="random"
           theme="stewardship"
         />
         <div className="mt-8">
@@ -458,12 +463,19 @@ const FinancialManagement = () => {
         </Card>
       </div>
 
-      <Tabs defaultValue="budgets" className="space-y-6">
+      <Tabs defaultValue="overview" className="space-y-6">
         <TabsList>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
           <TabsTrigger value="budgets">Budgets</TabsTrigger>
           <TabsTrigger value="expenses">Expenses</TabsTrigger>
           <TabsTrigger value="pledges">Pledges</TabsTrigger>
+          <TabsTrigger value="donations">Donations</TabsTrigger>
+          <TabsTrigger value="reports">Reports</TabsTrigger>
         </TabsList>
+
+        <TabsContent value="overview">
+          <FinancialReports />
+        </TabsContent>
 
         <TabsContent value="budgets">
           <div className="space-y-4">
@@ -623,6 +635,77 @@ const FinancialManagement = () => {
               ))
             )}
           </div>
+        </TabsContent>
+
+        <TabsContent value="donations">
+          <div className="space-y-4">
+            {donations.length === 0 ? (
+              <Card>
+                <CardContent className="flex flex-col items-center justify-center py-16">
+                  <DollarSign className="h-12 w-12 text-muted-foreground mb-4" />
+                  <h3 className="text-lg font-semibold mb-2">No donations found</h3>
+                  <p className="text-muted-foreground text-center">
+                    Donations will appear here once they are processed.
+                  </p>
+                </CardContent>
+              </Card>
+            ) : (
+              donations.map((donation) => (
+                <Card key={donation.id}>
+                  <CardHeader>
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <CardTitle className="text-lg">
+                          {donation.anonymous ? 'Anonymous Donation' : donation.donor_name}
+                        </CardTitle>
+                        <p className="text-sm text-muted-foreground">
+                          {donation.donation_type.replace('_', ' ')} • {donation.category.replace('_', ' ')}
+                        </p>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-2xl font-bold">{formatCurrency(donation.amount)}</div>
+                        <Badge className={getStatusColor(donation.status)}>
+                          {donation.status}
+                        </Badge>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                      <div>
+                        <span className="font-medium">Date:</span>
+                        <p className="text-muted-foreground">
+                          {new Date(donation.created_at).toLocaleDateString()}
+                        </p>
+                      </div>
+                      {donation.recurring_frequency && (
+                        <div>
+                          <span className="font-medium">Frequency:</span>
+                          <p className="text-muted-foreground">{donation.recurring_frequency}</p>
+                        </div>
+                      )}
+                      <div>
+                        <span className="font-medium">Method:</span>
+                        <p className="text-muted-foreground">
+                          {donation.donation_type === 'recurring' ? 'Recurring' : 'One-time'}
+                        </p>
+                      </div>
+                    </div>
+                    {donation.message && (
+                      <div className="mt-4 p-3 bg-muted rounded-lg">
+                        <span className="font-medium text-sm">Message:</span>
+                        <p className="text-sm text-muted-foreground mt-1">{donation.message}</p>
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              ))
+            )}
+          </div>
+        </TabsContent>
+
+        <TabsContent value="reports">
+          <FinancialReports />
         </TabsContent>
       </Tabs>
         </div>
