@@ -223,9 +223,9 @@ const Dashboard = () => {
             <TabsContent value="features" className="space-y-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Upcoming Features</CardTitle>
+                  <CardTitle>Live Features</CardTitle>
                   <CardDescription>
-                    Features currently in development or planned for future releases
+                    Core features that are now live and ready to use
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
