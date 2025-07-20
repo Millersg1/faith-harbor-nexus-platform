@@ -44,6 +44,7 @@ import LiveStreaming from "./pages/LiveStreaming";
 import WebsiteFunnelBuilder from "./pages/WebsiteFunnelBuilder";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
+import IntelligentChatbot from "./components/IntelligentChatbot";
 
 const queryClient = new QueryClient();
 
@@ -101,6 +102,7 @@ const App = () => (
             </div>
             <Footer />
             <CookieConsent />
+            <IntelligentChatbot position="bottom-right" />
           </div>
         </AuthProvider>
       </BrowserRouter>
