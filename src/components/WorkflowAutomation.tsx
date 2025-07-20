@@ -37,18 +37,18 @@ const WorkflowAutomation = () => {
   const [draggedStep, setDraggedStep] = useState<string | null>(null);
   const { toast } = useToast();
 
-  const predefinedWorkflows = [
+  const predefinedWorkflows: WorkflowTemplate[] = [
     {
       id: '1',
       name: 'New Member Welcome Series',
       description: 'Automated welcome emails and onboarding tasks for new members',
       category: 'Member Management',
       steps: [
-        { id: 'trigger-1', type: 'trigger', name: 'New Member Registration', config: { event: 'member_signup' }, position: { x: 50, y: 50 } },
-        { id: 'delay-1', type: 'delay', name: 'Wait 1 Hour', config: { duration: '1h' }, position: { x: 200, y: 50 } },
-        { id: 'action-1', type: 'action', name: 'Send Welcome Email', config: { template: 'welcome' }, position: { x: 350, y: 50 } },
-        { id: 'delay-2', type: 'delay', name: 'Wait 3 Days', config: { duration: '3d' }, position: { x: 500, y: 50 } },
-        { id: 'action-2', type: 'action', name: 'Schedule Pastor Meeting', config: { type: 'meeting' }, position: { x: 650, y: 50 } }
+        { id: 'trigger-1', type: 'trigger' as const, name: 'New Member Registration', config: { event: 'member_signup' }, position: { x: 50, y: 50 } },
+        { id: 'delay-1', type: 'delay' as const, name: 'Wait 1 Hour', config: { duration: '1h' }, position: { x: 200, y: 50 } },
+        { id: 'action-1', type: 'action' as const, name: 'Send Welcome Email', config: { template: 'welcome' }, position: { x: 350, y: 50 } },
+        { id: 'delay-2', type: 'delay' as const, name: 'Wait 3 Days', config: { duration: '3d' }, position: { x: 500, y: 50 } },
+        { id: 'action-2', type: 'action' as const, name: 'Schedule Pastor Meeting', config: { type: 'meeting' }, position: { x: 650, y: 50 } }
       ],
       isActive: true,
       triggerCount: 23,
@@ -60,10 +60,10 @@ const WorkflowAutomation = () => {
       description: 'Automated reminders and check-ins for event attendees',
       category: 'Events',
       steps: [
-        { id: 'trigger-2', type: 'trigger', name: 'Event Registration', config: { event: 'event_signup' }, position: { x: 50, y: 50 } },
-        { id: 'action-3', type: 'action', name: 'Send Confirmation', config: { template: 'event_confirmation' }, position: { x: 200, y: 50 } },
-        { id: 'delay-3', type: 'delay', name: 'Wait Until 1 Day Before', config: { duration: 'event_minus_1d' }, position: { x: 350, y: 50 } },
-        { id: 'action-4', type: 'action', name: 'Send Reminder', config: { template: 'event_reminder' }, position: { x: 500, y: 50 } }
+        { id: 'trigger-2', type: 'trigger' as const, name: 'Event Registration', config: { event: 'event_signup' }, position: { x: 50, y: 50 } },
+        { id: 'action-3', type: 'action' as const, name: 'Send Confirmation', config: { template: 'event_confirmation' }, position: { x: 200, y: 50 } },
+        { id: 'delay-3', type: 'delay' as const, name: 'Wait Until 1 Day Before', config: { duration: 'event_minus_1d' }, position: { x: 350, y: 50 } },
+        { id: 'action-4', type: 'action' as const, name: 'Send Reminder', config: { template: 'event_reminder' }, position: { x: 500, y: 50 } }
       ],
       isActive: true,
       triggerCount: 156,
@@ -75,10 +75,10 @@ const WorkflowAutomation = () => {
       description: 'Personalized thank you messages and follow-up for donors',
       category: 'Fundraising',
       steps: [
-        { id: 'trigger-3', type: 'trigger', name: 'Donation Received', config: { event: 'donation_completed' }, position: { x: 50, y: 50 } },
-        { id: 'condition-1', type: 'condition', name: 'Check Amount > $100', config: { field: 'amount', operator: '>', value: 100 }, position: { x: 200, y: 50 } },
-        { id: 'action-5', type: 'action', name: 'Send Personal Thank You', config: { template: 'personal_thanks' }, position: { x: 350, y: 30 } },
-        { id: 'action-6', type: 'action', name: 'Send Standard Thank You', config: { template: 'standard_thanks' }, position: { x: 350, y: 90 } }
+        { id: 'trigger-3', type: 'trigger' as const, name: 'Donation Received', config: { event: 'donation_completed' }, position: { x: 50, y: 50 } },
+        { id: 'condition-1', type: 'condition' as const, name: 'Check Amount > $100', config: { field: 'amount', operator: '>', value: 100 }, position: { x: 200, y: 50 } },
+        { id: 'action-5', type: 'action' as const, name: 'Send Personal Thank You', config: { template: 'personal_thanks' }, position: { x: 350, y: 30 } },
+        { id: 'action-6', type: 'action' as const, name: 'Send Standard Thank You', config: { template: 'standard_thanks' }, position: { x: 350, y: 90 } }
       ],
       isActive: false,
       triggerCount: 89,
