@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -50,6 +51,7 @@ interface UserPresence {
 
 const AdminActivityMonitor = () => {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const { toast } = useToast();
   const [activityLogs, setActivityLogs] = useState<ActivityLog[]>([]);
   const [userPresence, setUserPresence] = useState<UserPresence[]>([]);
@@ -245,20 +247,20 @@ const AdminActivityMonitor = () => {
         <div>
           <h1 className="text-3xl font-bold flex items-center gap-2">
             <Activity className="h-8 w-8 text-primary" />
-            Admin Activity Monitor
+            {t('admin.activityMonitor')}
           </h1>
-          <p className="text-muted-foreground">Monitor member activities and presence in real-time</p>
+          <p className="text-muted-foreground">{t('admin.monitorDescription')}</p>
         </div>
         <Button onClick={() => { fetchActivityLogs(); fetchUserPresence(); }} variant="outline">
           <RefreshCw className="h-4 w-4 mr-2" />
-          Refresh
+          {t('admin.refresh')}
         </Button>
       </div>
 
       <Tabs defaultValue="presence" className="space-y-6">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="presence">Live Presence</TabsTrigger>
-          <TabsTrigger value="activity">Activity Logs</TabsTrigger>
+          <TabsTrigger value="presence">{t('admin.livePresence')}</TabsTrigger>
+          <TabsTrigger value="activity">{t('admin.activityLogs')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="presence" className="space-y-6">

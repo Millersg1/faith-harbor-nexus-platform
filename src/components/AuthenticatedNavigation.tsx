@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -21,10 +22,12 @@ import {
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
+import LanguageSwitcher from "./LanguageSwitcher";
 import faithHarborLogo from "@/assets/faith-harbor-logo.png";
 
 const AuthenticatedNavigation = () => {
   const { user, signOut, isAdmin, userRoles } = useAuth();
+  const { t } = useTranslation();
   const { toast } = useToast();
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,7 +55,7 @@ const AuthenticatedNavigation = () => {
   };
 
   const mainFeatures = [
-    { title: "Dashboard", href: "/dashboard", icon: Home, desc: "Ministry overview" },
+    { title: "Dashboard", href: "/dashboards", icon: Home, desc: "Dashboard hub" },
     { title: "Analytics", href: "/analytics", icon: BarChart3, desc: "Insights & reports" },
     { title: "Members", href: "/members", icon: Users, desc: "Member management" },
     { title: "Events", href: "/events", icon: Calendar, desc: "Event planning" },
@@ -168,6 +171,7 @@ const AuthenticatedNavigation = () => {
 
           {/* User Menu */}
           <div className="hidden lg:flex items-center space-x-4">
+            <LanguageSwitcher />
             {isAdmin && (
               <Badge variant="secondary" className="text-xs">
                 <Shield className="h-3 w-3 mr-1" />
@@ -207,16 +211,16 @@ const AuthenticatedNavigation = () => {
                       <span>Settings</span>
                     </Link>
                     
-                    <button
-                      onClick={() => {
-                        setActiveDropdown(null);
-                        handleSignOut();
-                      }}
-                      className="w-full flex items-center space-x-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
-                    >
-                      <LogOut className="h-4 w-4" />
-                      <span>Sign Out</span>
-                    </button>
+                     <button
+                       onClick={() => {
+                         setActiveDropdown(null);
+                         handleSignOut();
+                       }}
+                       className="w-full flex items-center space-x-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                     >
+                       <LogOut className="h-4 w-4" />
+                       <span>{t('nav.logout')}</span>
+                     </button>
                   </div>
                 </div>
               )}

@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import AuthenticatedNavigation from "./AuthenticatedNavigation";
+import LanguageSwitcher from "./LanguageSwitcher";
 import faithHarborLogo from "@/assets/faith-harbor-logo.png";
 
 const Navigation = () => {
   const { user } = useAuth();
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
@@ -121,11 +124,12 @@ const Navigation = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
+            <LanguageSwitcher />
             <Link to="/auth">
-              <Button variant="ghost">Sign In</Button>
+              <Button variant="ghost">{t('nav.login')}</Button>
             </Link>
             <Link to="/auth">
-              <Button variant="cta">Join Early Access</Button>
+              <Button variant="cta">{t('nav.signup')}</Button>
             </Link>
           </div>
 

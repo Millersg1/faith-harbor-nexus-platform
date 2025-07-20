@@ -47,6 +47,7 @@ import CookieConsent from "./components/CookieConsent";
 import IntelligentChatbot from "./components/IntelligentChatbot";
 import ActivityTrackerWrapper from "./components/ActivityTrackerWrapper";
 import AdminActivityMonitorPage from "./pages/AdminActivityMonitor";
+import DashboardNavigation from "./components/DashboardNavigation";
 
 const queryClient = new QueryClient();
 
@@ -88,6 +89,9 @@ const App = () => (
                 <Route path="/service-planning" element={<ServicePlanning />} />
                 <Route path="/room-booking" element={<RoomBooking />} />
                 <Route path="/advanced-analytics" element={<AdvancedAnalytics />} />
+                <Route path="/dashboards" element={<DashboardNavigation />} />
+                <Route path="/admin-dashboard" element={<AdminDashboard />} />
+                <Route path="/admin-activity-monitor" element={<AdminActivityMonitorPage />} />
                 <Route path="/admin" element={<AdminDashboard />} />
                 <Route path="/admin/activity" element={<AdminActivityMonitorPage />} />
                 <Route path="/blog" element={<Blog />} />
