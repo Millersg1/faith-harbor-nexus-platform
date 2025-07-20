@@ -193,7 +193,13 @@ const MultiTenant = () => {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Custom Domain (Optional)</label>
-                <Input placeholder="yourdomain.com" />
+                <Input 
+                  placeholder="yourdomain.com" 
+                  onChange={(e) => {
+                    // Store domain for later use when creating organization
+                    console.log('Custom domain:', e.target.value);
+                  }}
+                />
               </div>
             </div>
 
