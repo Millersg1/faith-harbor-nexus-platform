@@ -832,6 +832,48 @@ export type Database = {
           },
         ]
       }
+      domain_verifications: {
+        Row: {
+          created_at: string | null
+          dns_records: Json | null
+          domain: string
+          id: string
+          last_checked: string | null
+          ssl_status: string
+          status: string
+          updated_at: string | null
+          user_id: string | null
+          verification_token: string
+          verified_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          dns_records?: Json | null
+          domain: string
+          id?: string
+          last_checked?: string | null
+          ssl_status?: string
+          status?: string
+          updated_at?: string | null
+          user_id?: string | null
+          verification_token?: string
+          verified_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          dns_records?: Json | null
+          domain?: string
+          id?: string
+          last_checked?: string | null
+          ssl_status?: string
+          status?: string
+          updated_at?: string | null
+          user_id?: string | null
+          verification_token?: string
+          verified_at?: string | null
+        }
+        Relationships: []
+      }
       donations: {
         Row: {
           amount: number
