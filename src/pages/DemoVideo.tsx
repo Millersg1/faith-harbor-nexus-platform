@@ -1,18 +1,65 @@
 import Navigation from "@/components/Navigation";
+import { VideoPlayer } from "@/components/VideoPlayer";
+import { VideoSection } from "@/components/VideoSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Play, Clock, Users, Star, ArrowRight, Download, Share2 } from "lucide-react";
+import { Play, Clock, Users, Star, ArrowRight, Download, Share2, BookOpen, Target, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const DemoVideo = () => {
   const videoFeatures = [
     "Complete platform overview",
-    "Member management system",
+    "Member management system", 
     "Event planning tools",
     "Financial tracking",
     "Communication features",
     "Reporting dashboard"
+  ];
+
+  const trainingVideos = [
+    {
+      title: "Platform Overview & Setup",
+      description: "Get started with Faith Harbor™ and learn the basics",
+      duration: "8:45",
+      category: "Getting Started",
+      thumbnail: "/placeholder.svg"
+    },
+    {
+      title: "Advanced Member Management",
+      description: "Deep dive into member profiles, groups, and permissions",
+      duration: "12:30",
+      category: "Members",
+      thumbnail: "/placeholder.svg"
+    },
+    {
+      title: "Event Management Masterclass",
+      description: "Plan, organize, and track events like a pro",
+      duration: "15:20",
+      category: "Events",
+      thumbnail: "/placeholder.svg"
+    },
+    {
+      title: "Financial Systems & Reporting",
+      description: "Master donation tracking and financial reports",
+      duration: "10:15",
+      category: "Finance",
+      thumbnail: "/placeholder.svg"
+    },
+    {
+      title: "Communication & Outreach",
+      description: "Effective member communication strategies",
+      duration: "9:30",
+      category: "Communication",
+      thumbnail: "/placeholder.svg"
+    },
+    {
+      title: "Analytics & Growth Insights",
+      description: "Use data to grow your ministry effectively",
+      duration: "11:45",
+      category: "Analytics",
+      thumbnail: "/placeholder.svg"
+    }
   ];
 
 
@@ -37,29 +84,15 @@ const DemoVideo = () => {
             </p>
           </div>
 
-          {/* Video Player */}
+          {/* Main Demo Video */}
           <div className="mb-16">
-            <Card className="overflow-hidden">
-              <div className="relative aspect-video bg-slate-900 flex items-center justify-center">
-                <div className="text-center text-blue-600">
-                  <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-4 mx-auto hover:bg-primary/90 transition-colors cursor-pointer">
-                    <Play className="h-8 w-8 ml-1 text-blue-600" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">Faith Harbor™ Demo Video</h3>
-                  <p className="text-blue-600/80">Click to watch the complete platform overview</p>
-                </div>
-                <div className="absolute top-4 right-4 flex gap-2">
-                  <Button size="sm" variant="secondary">
-                    <Download className="h-4 w-4 mr-1" />
-                    Download
-                  </Button>
-                  <Button size="sm" variant="secondary">
-                    <Share2 className="h-4 w-4 mr-1" />
-                    Share
-                  </Button>
-                </div>
-              </div>
-            </Card>
+            <VideoPlayer
+              title="Faith Harbor™ Complete Demo"
+              description="Watch our comprehensive platform overview and see how Faith Harbor™ can transform your ministry"
+              duration="2:00"
+              thumbnail="/placeholder.svg"
+              className="max-w-4xl mx-auto"
+            />
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
@@ -133,6 +166,104 @@ const DemoVideo = () => {
                       <div className="text-xs text-blue-600">Ready</div>
                     </div>
                   </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Training Video Library */}
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <Badge variant="secondary" className="mb-4">
+                <BookOpen className="h-3 w-3 mr-1" />
+                Training Library
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Master Every Feature with Our 
+                <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent"> Training Videos</span>
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Comprehensive step-by-step guides to help you become a Faith Harbor™ expert
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {trainingVideos.map((video, index) => (
+                <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow group">
+                  <div className="relative">
+                    <VideoPlayer
+                      title={video.title}
+                      description={video.description}
+                      duration={video.duration}
+                      thumbnail={video.thumbnail}
+                      showControls={false}
+                      className="border-0"
+                    />
+                  </div>
+                  
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <Badge variant="secondary" className="text-xs">
+                        {video.category}
+                      </Badge>
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <Clock className="h-3 w-3" />
+                        {video.duration}
+                      </div>
+                    </div>
+                    <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                      {video.title}
+                    </CardTitle>
+                    <CardDescription>{video.description}</CardDescription>
+                  </CardHeader>
+                  
+                  <CardContent className="pt-0">
+                    <Button variant="outline" size="sm" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <Play className="h-3 w-3 mr-2" />
+                      Watch Tutorial
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Learning Outcomes */}
+          <div className="mt-20">
+            <div className="grid lg:grid-cols-3 gap-8">
+              <Card className="text-center">
+                <CardContent className="pt-8">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Target className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">Practical Skills</h3>
+                  <p className="text-muted-foreground">
+                    Learn hands-on techniques you can implement immediately in your ministry
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center">
+                <CardContent className="pt-8">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <BookOpen className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">Step-by-Step</h3>
+                  <p className="text-muted-foreground">
+                    Follow along with detailed guides that make complex features simple
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center">
+                <CardContent className="pt-8">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <TrendingUp className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">Best Practices</h3>
+                  <p className="text-muted-foreground">
+                    Discover proven strategies from successful ministry leaders
+                  </p>
                 </CardContent>
               </Card>
             </div>

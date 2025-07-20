@@ -42,6 +42,8 @@ import MobileAppBuilder from "./pages/MobileAppBuilder";
 import CoachingPlatform from "./pages/CoachingPlatform";
 import LiveStreaming from "./pages/LiveStreaming";
 import WebsiteFunnelBuilder from "./pages/WebsiteFunnelBuilder";
+import Training from "./pages/Training";
+import Tutorials from "./pages/Tutorials";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import IntelligentChatbot from "./components/IntelligentChatbot";
@@ -104,6 +106,8 @@ const App = () => (
                 <Route path="/coaching-platform" element={<CoachingPlatform />} />
                 <Route path="/live-streaming" element={<LiveStreaming />} />
                 <Route path="/website-funnel-builder" element={<WebsiteFunnelBuilder />} />
+                <Route path="/training" element={<Training />} />
+                <Route path="/tutorials" element={<Tutorials />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
