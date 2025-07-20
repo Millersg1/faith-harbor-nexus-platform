@@ -13,7 +13,9 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Heart, Clock, CheckCircle } from "lucide-react";
+import { Plus, Heart, Clock, CheckCircle, MessageCircle, Search, Filter } from "lucide-react";
+import { DynamicScriptureQuote } from "@/components/DynamicScriptureQuote";
+import { PrayerUpdates } from "@/components/PrayerUpdates";
 
 interface PrayerRequest {
   id: string;
@@ -34,6 +36,8 @@ const PrayerRequests = () => {
   const { toast } = useToast();
   const [requests, setRequests] = useState<PrayerRequest[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("all");
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [filter, setFilter] = useState("all");
   const [formData, setFormData] = useState({
@@ -56,12 +60,12 @@ const PrayerRequests = () => {
     if (user) {
       fetchPrayerRequests();
     }
-  }, [filter, user]);
+  }, [filter, searchTerm, categoryFilter, user]);
 
   const fetchPrayerRequests = async () => {
     try {
       let query = supabase
-        .from('prayer_requests' as any)
+        .from('prayer_requests')
         .select('*')
         .order('created_at', { ascending: false });
 
@@ -72,7 +76,23 @@ const PrayerRequests = () => {
       const { data, error } = await query;
 
       if (error) throw error;
-      setRequests(data as any || []);
+      
+      // Apply client-side filtering for search and category
+      let filteredData = data || [];
+      
+      if (searchTerm) {
+        filteredData = filteredData.filter(request => 
+          request.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          request.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (request.requester_name && request.requester_name.toLowerCase().includes(searchTerm.toLowerCase()))
+        );
+      }
+      
+      if (categoryFilter !== "all") {
+        filteredData = filteredData.filter(request => request.category === categoryFilter);
+      }
+      
+      setRequests(filteredData);
     } catch (error) {
       console.error('Error fetching prayer requests:', error);
       toast({
@@ -101,7 +121,7 @@ const PrayerRequests = () => {
       };
 
       const { error } = await supabase
-        .from('prayer_requests' as any)
+        .from('prayer_requests')
         .insert([requestData]);
 
       if (error) throw error;
@@ -175,12 +195,46 @@ const PrayerRequests = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+        
+        <DynamicScriptureQuote 
+          variant="random"
+          theme="faith"
+        />
+        
+        <div className="mt-8 mb-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
           <div>
             <h1 className="text-4xl font-bold text-foreground mb-2">Prayer Requests</h1>
             <p className="text-muted-foreground">Submit and view prayer requests from our community</p>
           </div>
           
+          
+          {/* Filters and Search */}
+          <div className="flex flex-col lg:flex-row gap-4">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Input
+                placeholder="Search prayer requests..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+            
+            <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Categories</SelectItem>
+                <SelectItem value="general">General</SelectItem>
+                <SelectItem value="healing">Healing</SelectItem>
+                <SelectItem value="family">Family</SelectItem>
+                <SelectItem value="ministry">Ministry</SelectItem>
+                <SelectItem value="guidance">Guidance</SelectItem>
+              </SelectContent>
+            </Select>
+            
           <div className="flex flex-col sm:flex-row gap-4">
             <Select value={filter} onValueChange={setFilter}>
               <SelectTrigger className="w-[180px]">
@@ -313,6 +367,8 @@ const PrayerRequests = () => {
               </DialogContent>
             </Dialog>
           </div>
+          </div>
+          </div>
         </div>
 
         <div className="grid gap-6">
@@ -372,6 +428,14 @@ const PrayerRequests = () => {
                       )}
                     </div>
                   )}
+                  
+                  {/* Prayer Updates Section */}
+                  <div className="mt-6 pt-4 border-t">
+                    <PrayerUpdates 
+                      prayerRequestId={request.id}
+                      onUpdateAdded={fetchPrayerRequests}
+                    />
+                  </div>
                 </CardContent>
               </Card>
             ))
