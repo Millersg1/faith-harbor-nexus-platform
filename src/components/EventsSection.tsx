@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
-import { Calendar, MapPin, Users, Clock, DollarSign } from "lucide-react";
+import { Calendar, MapPin, Users, Clock, DollarSign, Search, Filter } from "lucide-react";
 import { format } from "date-fns";
 import { DynamicScriptureQuote } from "./DynamicScriptureQuote";
+import { EventRegistrationDialog } from "./EventRegistrationDialog";
 
 interface Event {
   id: string;
@@ -31,12 +34,17 @@ export const EventsSection = () => {
   const { user } = useAuth();
   const { toast } = useToast();
   const [events, setEvents] = useState<Event[]>([]);
+  const [userRegistrations, setUserRegistrations] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
-  const [registering, setRegistering] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("all");
 
   useEffect(() => {
     fetchEvents();
-  }, []);
+    if (user) {
+      fetchUserRegistrations();
+    }
+  }, [user]);
 
   const fetchEvents = async () => {
     try {
@@ -59,56 +67,53 @@ export const EventsSection = () => {
     }
   };
 
-  const handleRegister = async (eventId: string) => {
-    if (!user) {
-      toast({
-        title: "Sign in required",
-        description: "Please sign in to register for events",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    setRegistering(eventId);
+  const fetchUserRegistrations = async () => {
+    if (!user) return;
+    
     try {
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from('event_registrations')
-        .insert({
-          event_id: eventId,
-          user_id: user.id,
-          attendee_name: user.user_metadata?.full_name || user.email,
-          attendee_email: user.email,
-          payment_status: 'free'
-        });
+        .select('event_id')
+        .eq('user_id', user.id);
 
-      if (error) {
-        if (error.code === '23505') {
-          toast({
-            title: "Already registered",
-            description: "You're already registered for this event",
-            variant: "destructive"
-          });
-        } else {
-          throw error;
-        }
-      } else {
-        toast({
-          title: "Registration successful!",
-          description: "You've been registered for the event",
-        });
-        fetchEvents(); // Refresh to update registration counts
-      }
+      if (error) throw error;
+      setUserRegistrations(data?.map(reg => reg.event_id) || []);
     } catch (error) {
-      console.error('Registration error:', error);
-      toast({
-        title: "Registration failed",
-        description: "Please try again later",
-        variant: "destructive"
-      });
-    } finally {
-      setRegistering(null);
+      console.error('Error fetching user registrations:', error);
     }
   };
+
+  const handleRegistrationComplete = () => {
+    fetchEvents();
+    fetchUserRegistrations();
+  };
+
+  const isUserRegistered = (eventId: string) => {
+    return userRegistrations.includes(eventId);
+  };
+
+  const getCategoryColor = (category: string) => {
+    const colors = {
+      worship: "bg-blue-100 text-blue-800",
+      youth: "bg-green-100 text-green-800",
+      family: "bg-purple-100 text-purple-800",
+      outreach: "bg-orange-100 text-orange-800",
+      retreat: "bg-indigo-100 text-indigo-800",
+      fellowship: "bg-pink-100 text-pink-800",
+      music: "bg-teal-100 text-teal-800",
+      general: "bg-gray-100 text-gray-800"
+    };
+    return colors[category as keyof typeof colors] || colors.general;
+  };
+
+  const filteredEvents = events.filter(event => {
+    const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         event.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         event.location.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = categoryFilter === "all" || event.category === categoryFilter;
+    
+    return matchesSearch && matchesCategory;
+  });
 
   if (loading) {
     return (
@@ -130,24 +135,61 @@ export const EventsSection = () => {
         theme="community"
       />
       <div className="mb-8 mt-8">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center gap-3 mb-6">
           <Calendar className="h-8 w-8 text-primary" />
           <div>
             <h1 className="text-3xl font-bold">Upcoming Events</h1>
             <p className="text-muted-foreground">Join us for fellowship and community</p>
           </div>
         </div>
+
+        {/* Filters */}
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            <Input
+              placeholder="Search events..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10"
+            />
+          </div>
+          
+          <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Category" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Categories</SelectItem>
+              <SelectItem value="worship">Worship</SelectItem>
+              <SelectItem value="youth">Youth</SelectItem>
+              <SelectItem value="family">Family</SelectItem>
+              <SelectItem value="outreach">Outreach</SelectItem>
+              <SelectItem value="retreat">Retreat</SelectItem>
+              <SelectItem value="fellowship">Fellowship</SelectItem>
+              <SelectItem value="music">Music</SelectItem>
+              <SelectItem value="general">General</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
-      {events.length === 0 ? (
+      {filteredEvents.length === 0 ? (
         <div className="text-center py-12">
           <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-          <h3 className="text-lg font-semibold mb-2">No upcoming events</h3>
-          <p className="text-muted-foreground">Check back soon for new events and activities</p>
+          <h3 className="text-lg font-semibold mb-2">
+            {events.length === 0 ? "No upcoming events" : "No events found"}
+          </h3>
+          <p className="text-muted-foreground">
+            {events.length === 0 
+              ? "Check back soon for new events and activities"
+              : "Try adjusting your search or filter criteria"
+            }
+          </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {events.map((event) => (
+          {filteredEvents.map((event) => (
             <Card key={event.id} className="hover:shadow-lg transition-shadow">
               {event.image_url && (
                 <div className="aspect-video relative overflow-hidden rounded-t-lg">
@@ -167,8 +209,8 @@ export const EventsSection = () => {
                       {event.description}
                     </CardDescription>
                   </div>
-                  <Badge variant="secondary" className="ml-2">
-                    {event.category}
+                  <Badge className={`ml-2 ${getCategoryColor(event.category)}`}>
+                    {event.category.replace('_', ' ')}
                   </Badge>
                 </div>
               </CardHeader>
@@ -213,17 +255,23 @@ export const EventsSection = () => {
                 </div>
                 
                 {event.registration_required && (
-                  <Button
-                    onClick={() => handleRegister(event.id)}
-                    disabled={
-                      registering === event.id ||
-                      (event.max_capacity && (event.registrations?.length || 0) >= event.max_capacity) ||
-                      (event.registration_deadline && new Date(event.registration_deadline) < new Date())
-                    }
-                    className="w-full"
-                  >
-                    {registering === event.id ? "Registering..." : "Register"}
-                  </Button>
+                  <>
+                    {isUserRegistered(event.id) ? (
+                      <Badge className="w-full justify-center bg-green-100 text-green-800 py-2">
+                        <Users className="h-4 w-4 mr-2" />
+                        Registered
+                      </Badge>
+                    ) : (
+                      <EventRegistrationDialog
+                        event={event}
+                        onRegistrationComplete={handleRegistrationComplete}
+                        disabled={
+                          (event.max_capacity && (event.registrations?.length || 0) >= event.max_capacity) ||
+                          (event.registration_deadline && new Date(event.registration_deadline) < new Date())
+                        }
+                      />
+                    )}
+                  </>
                 )}
                 
                 {event.registration_deadline && (
