@@ -15,7 +15,10 @@ interface Member {
   organization_name: string;
   phone: string;
   bio: string;
+  bio_name: string;
+  bio_room: string;
   avatar_url: string;
+  logo_url: string;
   member_status: string;
   membership_type: string;
   date_joined: string;
@@ -109,7 +112,7 @@ export const MemberDirectory = () => {
                 </AvatarFallback>
               </Avatar>
               <CardTitle className="text-lg">
-                {member.display_name || `${member.first_name} ${member.last_name}`}
+                {member.bio_name || member.display_name || `${member.first_name} ${member.last_name}`}
               </CardTitle>
               {member.organization_name && (
                 <CardDescription>{member.organization_name}</CardDescription>
@@ -134,6 +137,13 @@ export const MemberDirectory = () => {
               )}
               
               <div className="space-y-2 text-sm">
+                {member.bio_room && (
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <MapPin className="h-4 w-4" />
+                    <span>Room: {member.bio_room}</span>
+                  </div>
+                )}
+                
                 {member.phone && (
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <Phone className="h-4 w-4" />
