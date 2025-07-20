@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { User, Settings, Save, Lock } from "lucide-react";
+import { User, Settings, Save, Lock, Upload, X, Image } from "lucide-react";
 
 interface Profile {
   user_id: string;
@@ -21,6 +21,7 @@ interface Profile {
   website: string | null;
   bio: string | null;
   avatar_url: string | null;
+  logo_url: string | null;
   bio_name: string | null;
   bio_room: string | null;
   admin_notes: string | null;
@@ -38,6 +39,7 @@ const ProfileSection = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState<{avatar?: boolean, logo?: boolean}>({});
 
   const isAdmin = userRoles.some(role => 
     ['admin', 'pastor', 'staff'].includes(role.role_name)
@@ -73,6 +75,7 @@ const ProfileSection = () => {
         website: null,
         bio: null,
         avatar_url: null,
+        logo_url: null,
         bio_name: null,
         bio_room: null,
         admin_notes: null
@@ -139,6 +142,77 @@ const ProfileSection = () => {
     setProfile(prev => prev ? { ...prev, [field]: value } : null);
   };
 
+  const handleFileUpload = async (file: File, type: 'avatar' | 'logo') => {
+    if (!user || !file) return;
+
+    setUploading(prev => ({ ...prev, [type]: true }));
+
+    try {
+      // Create a unique filename
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${user.id}/${type}-${Date.now()}.${fileExt}`;
+
+      // Upload file to Supabase Storage
+      const { error: uploadError } = await supabase.storage
+        .from('profile-images')
+        .upload(fileName, file, {
+          upsert: true
+        });
+
+      if (uploadError) throw uploadError;
+
+      // Get the public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('profile-images')
+        .getPublicUrl(fileName);
+
+      // Update profile with the new URL
+      const fieldName = type === 'avatar' ? 'avatar_url' : 'logo_url';
+      handleInputChange(fieldName, publicUrl);
+
+      toast({
+        title: "Success",
+        description: `${type === 'avatar' ? 'Profile picture' : 'Logo'} uploaded successfully`,
+      });
+    } catch (error) {
+      console.error(`Error uploading ${type}:`, error);
+      toast({
+        title: "Error",
+        description: `Failed to upload ${type === 'avatar' ? 'profile picture' : 'logo'}`,
+        variant: "destructive",
+      });
+    } finally {
+      setUploading(prev => ({ ...prev, [type]: false }));
+    }
+  };
+
+  const handleRemoveImage = async (type: 'avatar' | 'logo') => {
+    const fieldName = type === 'avatar' ? 'avatar_url' : 'logo_url';
+    const currentUrl = profile?.[fieldName];
+    
+    if (currentUrl) {
+      try {
+        // Extract filename from URL
+        const urlParts = currentUrl.split('/');
+        const fileName = urlParts[urlParts.length - 1];
+        const fullPath = `${user?.id}/${fileName}`;
+
+        // Remove from storage
+        await supabase.storage
+          .from('profile-images')
+          .remove([fullPath]);
+      } catch (error) {
+        console.error(`Error removing ${type} from storage:`, error);
+      }
+    }
+
+    handleInputChange(fieldName, '');
+    toast({
+      title: "Success",
+      description: `${type === 'avatar' ? 'Profile picture' : 'Logo'} removed`,
+    });
+  };
+
   if (loading) {
     return (
       <Card>
@@ -178,7 +252,116 @@ const ProfileSection = () => {
             </Button>
           </div>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-6">
+          {/* Image Upload Section */}
+          <div className="space-y-4">
+            <h4 className="font-semibold text-primary">Profile Images</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Profile Picture Upload */}
+              <div className="space-y-3">
+                <Label>Profile Picture</Label>
+                <div className="flex flex-col items-center space-y-3">
+                  {profile?.avatar_url ? (
+                    <div className="relative group">
+                      <img
+                        src={profile.avatar_url}
+                        alt="Profile"
+                        className="w-24 h-24 rounded-full object-cover border-2 border-muted"
+                      />
+                      {isEditing && (
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                          onClick={() => handleRemoveImage('avatar')}
+                        >
+                          <X className="h-3 w-3" />
+                        </Button>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="w-24 h-24 rounded-full bg-muted border-2 border-dashed border-muted-foreground/50 flex items-center justify-center">
+                      <User className="h-8 w-8 text-muted-foreground" />
+                    </div>
+                  )}
+                  {isEditing && (
+                    <div className="flex flex-col items-center space-y-2">
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) handleFileUpload(file, 'avatar');
+                        }}
+                        className="w-full"
+                        disabled={uploading.avatar}
+                      />
+                      {uploading.avatar && (
+                        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
+                          <span>Uploading...</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Logo Upload */}
+              <div className="space-y-3">
+                <Label>Organization Logo</Label>
+                <div className="flex flex-col items-center space-y-3">
+                  {profile?.logo_url ? (
+                    <div className="relative group">
+                      <img
+                        src={profile.logo_url}
+                        alt="Logo"
+                        className="w-24 h-24 rounded-lg object-cover border-2 border-muted"
+                      />
+                      {isEditing && (
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                          onClick={() => handleRemoveImage('logo')}
+                        >
+                          <X className="h-3 w-3" />
+                        </Button>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="w-24 h-24 rounded-lg bg-muted border-2 border-dashed border-muted-foreground/50 flex items-center justify-center">
+                      <Image className="h-8 w-8 text-muted-foreground" />
+                    </div>
+                  )}
+                  {isEditing && (
+                    <div className="flex flex-col items-center space-y-2">
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) handleFileUpload(file, 'logo');
+                        }}
+                        className="w-full"
+                        disabled={uploading.logo}
+                      />
+                      {uploading.logo && (
+                        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
+                          <span>Uploading...</span>
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <Separator />
+
+          {/* Basic Information */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <Label htmlFor="email">Email</Label>
