@@ -2571,6 +2571,86 @@ export type Database = {
         }
         Relationships: []
       }
+      seo_analytics: {
+        Row: {
+          avg_session_duration: number | null
+          bounce_rate: number | null
+          created_at: string
+          date_recorded: string
+          id: string
+          keyword_rankings: Json | null
+          organic_traffic: number | null
+          page_id: string | null
+        }
+        Insert: {
+          avg_session_duration?: number | null
+          bounce_rate?: number | null
+          created_at?: string
+          date_recorded?: string
+          id?: string
+          keyword_rankings?: Json | null
+          organic_traffic?: number | null
+          page_id?: string | null
+        }
+        Update: {
+          avg_session_duration?: number | null
+          bounce_rate?: number | null
+          created_at?: string
+          date_recorded?: string
+          id?: string
+          keyword_rankings?: Json | null
+          organic_traffic?: number | null
+          page_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "seo_analytics_page_id_fkey"
+            columns: ["page_id"]
+            isOneToOne: false
+            referencedRelation: "seo_pages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      seo_pages: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          focus_keyword: string | null
+          id: string
+          last_updated: string
+          meta_description: string | null
+          meta_keywords: string[] | null
+          page_title: string
+          page_url: string
+          seo_score: number | null
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          focus_keyword?: string | null
+          id?: string
+          last_updated?: string
+          meta_description?: string | null
+          meta_keywords?: string[] | null
+          page_title: string
+          page_url: string
+          seo_score?: number | null
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          focus_keyword?: string | null
+          id?: string
+          last_updated?: string
+          meta_description?: string | null
+          meta_keywords?: string[] | null
+          page_title?: string
+          page_url?: string
+          seo_score?: number | null
+        }
+        Relationships: []
+      }
       sermons: {
         Row: {
           audio_url: string | null
@@ -2960,6 +3040,39 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      sitemap_config: {
+        Row: {
+          created_at: string
+          excluded_pages: Json | null
+          id: string
+          last_generated: string | null
+          priority_pages: Json | null
+          site_url: string
+          update_frequency: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          excluded_pages?: Json | null
+          id?: string
+          last_generated?: string | null
+          priority_pages?: Json | null
+          site_url: string
+          update_frequency?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          excluded_pages?: Json | null
+          id?: string
+          last_generated?: string | null
+          priority_pages?: Json | null
+          site_url?: string
+          update_frequency?: string | null
+          updated_at?: string
+        }
+        Relationships: []
       }
       small_group_members: {
         Row: {

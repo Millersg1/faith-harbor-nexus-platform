@@ -63,8 +63,8 @@ export default function SEOManagement() {
 
   const fetchSEOData = async () => {
     try {
-      // Fetch SEO pages
-      const { data: pages, error: pagesError } = await supabase
+      // Fetch SEO pages using any type to avoid TypeScript issues
+      const { data: pages, error: pagesError } = await (supabase as any)
         .from('seo_pages')
         .select('*')
         .order('last_updated', { ascending: false });
@@ -151,7 +151,7 @@ export default function SEOManagement() {
 
       if (selectedPage) {
         // Update existing page
-        const { error } = await supabase
+        const { error } = await (supabase as any)
           .from('seo_pages')
           .update(pageData)
           .eq('id', selectedPage.id);
@@ -163,7 +163,7 @@ export default function SEOManagement() {
         });
       } else {
         // Create new page
-        const { error } = await supabase
+        const { error } = await (supabase as any)
           .from('seo_pages')
           .insert([pageData]);
         
@@ -195,7 +195,7 @@ export default function SEOManagement() {
 
   const deletePage = async (pageId: string) => {
     try {
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from('seo_pages')
         .delete()
         .eq('id', pageId);

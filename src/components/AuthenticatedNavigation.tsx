@@ -21,7 +21,8 @@ import {
   Bot,
   BookOpen,
   Heart,
-  Store
+  Store,
+  Search
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
@@ -72,6 +73,7 @@ const AuthenticatedNavigation = () => {
     { title: "Memory Books", href: "/memory-books", icon: BookOpen, desc: "Printable memory books" },
     { title: "Grief Support", href: "/grief-support", icon: Heart, desc: "Bereavement care" },
     { title: "Marketplace", href: "/marketplace", icon: Store, desc: "Member services" },
+    { title: "SEO Management", href: "/seo-management", icon: Search, desc: "Search optimization" },
     { title: "Sermons", href: "/sermons", icon: FileText, desc: "Sermon management" },
     { title: "Small Groups", href: "/small-groups", icon: Users, desc: "Group coordination" },
     { title: "Volunteers", href: "/volunteers", icon: Users, desc: "Volunteer management" },

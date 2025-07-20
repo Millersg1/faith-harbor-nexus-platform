@@ -49,6 +49,7 @@ import MemberDirectory from "./pages/MemberDirectory";
 import GriefSupport from "./pages/GriefSupport";
 import MemoryBooks from "./pages/MemoryBooks";
 import Marketplace from "./pages/Marketplace";
+import SEOManagement from "./pages/SEOManagement";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import IntelligentChatbot from "./components/IntelligentChatbot";
@@ -119,6 +120,7 @@ const App = () => (
                 <Route path="/grief-support" element={<GriefSupport />} />
                 <Route path="/memory-books" element={<MemoryBooks />} />
                 <Route path="/marketplace" element={<Marketplace />} />
+                <Route path="/seo-management" element={<SEOManagement />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
