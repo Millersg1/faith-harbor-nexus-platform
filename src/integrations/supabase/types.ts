@@ -1542,8 +1542,11 @@ export type Database = {
       profiles: {
         Row: {
           address: string | null
+          admin_notes: string | null
           avatar_url: string | null
           bio: string | null
+          bio_name: string | null
+          bio_room: string | null
           church_role: string | null
           city: string | null
           created_at: string
@@ -1577,8 +1580,11 @@ export type Database = {
         }
         Insert: {
           address?: string | null
+          admin_notes?: string | null
           avatar_url?: string | null
           bio?: string | null
+          bio_name?: string | null
+          bio_room?: string | null
           church_role?: string | null
           city?: string | null
           created_at?: string
@@ -1612,8 +1618,11 @@ export type Database = {
         }
         Update: {
           address?: string | null
+          admin_notes?: string | null
           avatar_url?: string | null
           bio?: string | null
+          bio_name?: string | null
+          bio_room?: string | null
           church_role?: string | null
           city?: string | null
           created_at?: string

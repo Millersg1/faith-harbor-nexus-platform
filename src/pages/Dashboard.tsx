@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import Navigation from "@/components/Navigation";
+import ProfileSection from "@/components/ProfileSection";
 import { 
   User, 
   Settings, 
@@ -275,34 +276,7 @@ const Dashboard = () => {
             </TabsContent>
             
             <TabsContent value="profile" className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <User className="h-5 w-5 mr-2" />
-                    Profile Information
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <label className="text-sm font-medium">Email</label>
-                      <p className="text-muted-foreground">{user.email}</p>
-                    </div>
-                    <Separator />
-                    <div>
-                      <label className="text-sm font-medium">Member Since</label>
-                      <p className="text-muted-foreground">
-                        {new Date(user.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                    <Separator />
-                    <Button variant="outline">
-                      <Settings className="h-4 w-4 mr-2" />
-                      Edit Profile
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+              <ProfileSection />
             </TabsContent>
           </Tabs>
         </div>
