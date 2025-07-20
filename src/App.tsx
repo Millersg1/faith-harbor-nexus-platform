@@ -33,6 +33,9 @@ import ServicePlanning from "./pages/ServicePlanning";
 import RoomBooking from "./pages/RoomBooking";
 import AdvancedAnalytics from "./pages/AdvancedAnalytics";
 import AdminDashboard from "./pages/AdminDashboard";
+import Blog from "./pages/Blog";
+import AICompanion from "./pages/AICompanion";
+import FinancialCoaching from "./pages/FinancialCoaching";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 
@@ -76,6 +79,10 @@ const App = () => (
                 <Route path="/room-booking" element={<RoomBooking />} />
                 <Route path="/advanced-analytics" element={<AdvancedAnalytics />} />
                 <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:id" element={<Blog />} />
+                <Route path="/ai-companion" element={<AICompanion />} />
+                <Route path="/financial-coaching" element={<FinancialCoaching />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
