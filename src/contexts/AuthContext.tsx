@@ -6,6 +6,8 @@ interface AuthContextType {
   user: User | null;
   session: Session | null;
   loading: boolean;
+  isAdmin: boolean;
+  userRoles: string[];
   signUp: (email: string, password: string, userData?: any) => Promise<{ error: any }>;
   signIn: (email: string, password: string) => Promise<{ error: any }>;
   signOut: () => Promise<{ error: any }>;
@@ -29,6 +31,26 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [userRoles, setUserRoles] = useState<string[]>([]);
+
+  const checkUserRoles = async (userId: string) => {
+    try {
+      const { data } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', userId)
+        .eq('active', true);
+      
+      const roles = data?.map(r => r.role) || [];
+      setUserRoles(roles);
+      setIsAdmin(roles.includes('admin'));
+    } catch (error) {
+      console.error('Error checking user roles:', error);
+      setUserRoles([]);
+      setIsAdmin(false);
+    }
+  };
 
   useEffect(() => {
     // Get initial session
@@ -37,6 +59,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         const { data: { session } } = await supabase.auth.getSession();
         setSession(session);
         setUser(session?.user ?? null);
+        
+        if (session?.user) {
+          await checkUserRoles(session.user.id);
+        }
       } catch (error) {
         console.error('Error getting initial session:', error);
       } finally {
@@ -51,6 +77,16 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       async (event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
+        
+        if (session?.user) {
+          setTimeout(() => {
+            checkUserRoles(session.user.id);
+          }, 0);
+        } else {
+          setUserRoles([]);
+          setIsAdmin(false);
+        }
+        
         setLoading(false);
       }
     );
@@ -84,6 +120,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signOut = async () => {
     const { error } = await supabase.auth.signOut();
+    if (!error) {
+      setUserRoles([]);
+      setIsAdmin(false);
+    }
     return { error };
   };
 
@@ -91,6 +131,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     user,
     session,
     loading,
+    isAdmin,
+    userRoles,
     signUp,
     signIn,
     signOut,

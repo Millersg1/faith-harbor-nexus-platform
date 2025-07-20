@@ -2,11 +2,19 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import AuthenticatedNavigation from "./AuthenticatedNavigation";
 import faithHarborLogo from "@/assets/faith-harbor-logo.png";
 
 const Navigation = () => {
+  const { user } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
+  // Show authenticated navigation if user is logged in
+  if (user) {
+    return <AuthenticatedNavigation />;
+  }
 
   const handleDropdownToggle = (dropdown: string) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
