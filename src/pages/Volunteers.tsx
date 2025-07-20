@@ -12,8 +12,10 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Heart, Clock, Users, MapPin, Calendar, AlertCircle, Search, Plus } from "lucide-react";
+import { Heart, Clock, Users, MapPin, Calendar, AlertCircle, Search, Plus, BarChart3 } from "lucide-react";
 import { ScriptureQuote } from "@/components/ScriptureQuote";
+import { DynamicScriptureQuote } from "@/components/DynamicScriptureQuote";
+import { VolunteerDashboard } from "@/components/VolunteerDashboard";
 
 interface VolunteerOpportunity {
   id: string;
@@ -52,6 +54,7 @@ const Volunteers = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [departmentFilter, setDepartmentFilter] = useState("all");
   const [timeFilter, setTimeFilter] = useState("all");
+  const [currentView, setCurrentView] = useState<'opportunities' | 'dashboard'>('opportunities');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedOpportunity, setSelectedOpportunity] = useState<VolunteerOpportunity | null>(null);
   const [applicationForm, setApplicationForm] = useState({
@@ -231,11 +234,41 @@ const Volunteers = () => {
       <Navigation />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2">Volunteer Opportunities</h1>
-          <p className="text-muted-foreground">Make a difference by volunteering in our various ministry areas</p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-4xl font-bold text-foreground mb-2">Volunteer Ministry</h1>
+              <p className="text-muted-foreground">Make a difference by volunteering in our various ministry areas</p>
+            </div>
+            <div className="flex gap-2">
+              <Button
+                variant={currentView === 'opportunities' ? 'default' : 'outline'}
+                onClick={() => setCurrentView('opportunities')}
+              >
+                <Search className="h-4 w-4 mr-2" />
+                Browse Opportunities
+              </Button>
+              <Button
+                variant={currentView === 'dashboard' ? 'default' : 'outline'}
+                onClick={() => setCurrentView('dashboard')}
+              >
+                <BarChart3 className="h-4 w-4 mr-2" />
+                My Dashboard
+              </Button>
+            </div>
+          </div>
         </div>
 
-        {/* Filters */}
+        {currentView === 'dashboard' ? (
+          <VolunteerDashboard />
+        ) : (
+          <>
+            <DynamicScriptureQuote 
+              variant="random"
+              theme="service"
+            />
+
+            
+            {/* Filters */}
         <div className="flex flex-col md:flex-row gap-4 mb-8">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -459,6 +492,8 @@ const Volunteers = () => {
             </form>
           </DialogContent>
         </Dialog>
+          </>
+        )}
       </div>
     </div>
   );
