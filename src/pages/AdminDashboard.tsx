@@ -12,6 +12,10 @@ import TwilioFlexPanel from "@/components/TwilioFlexPanel";
 import AIAssistant from "@/components/AIAssistant";
 import SecurityCenter from "@/components/SecurityCenter";
 import PerformanceOptimization from "@/components/PerformanceOptimization";
+import WorkflowAutomation from "@/components/WorkflowAutomation";
+import BusinessIntelligence from "@/components/BusinessIntelligence";
+import MultiTenant from "@/components/MultiTenant";
+import IntegrationHub from "@/components/IntegrationHub";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -41,43 +45,19 @@ const AdminDashboard = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-9">
-            <TabsTrigger value="overview" className="flex items-center gap-2">
-              <BarChart3 className="h-4 w-4" />
-              Overview
-            </TabsTrigger>
-            <TabsTrigger value="analytics" className="flex items-center gap-2">
-              <Zap className="h-4 w-4" />
-              Real-time
-            </TabsTrigger>
-            <TabsTrigger value="ai" className="flex items-center gap-2">
-              <Brain className="h-4 w-4" />
-              AI Insights
-            </TabsTrigger>
-            <TabsTrigger value="assistant" className="flex items-center gap-2">
-              <Brain className="h-4 w-4" />
-              AI Chat
-            </TabsTrigger>
-            <TabsTrigger value="mobile" className="flex items-center gap-2">
-              <Smartphone className="h-4 w-4" />
-              Mobile
-            </TabsTrigger>
-            <TabsTrigger value="communication" className="flex items-center gap-2">
-              <Globe className="h-4 w-4" />
-              Twilio
-            </TabsTrigger>
-            <TabsTrigger value="users" className="flex items-center gap-2">
-              <Users className="h-4 w-4" />
-              Users
-            </TabsTrigger>
-            <TabsTrigger value="security" className="flex items-center gap-2">
-              <Shield className="h-4 w-4" />
-              Security
-            </TabsTrigger>
-            <TabsTrigger value="performance" className="flex items-center gap-2">
-              <Zap className="h-4 w-4" />
-              Performance
-            </TabsTrigger>
+          <TabsList className="grid w-full grid-cols-12">
+            <TabsTrigger value="overview">Overview</TabsTrigger>
+            <TabsTrigger value="analytics">Real-time</TabsTrigger>
+            <TabsTrigger value="ai">AI Insights</TabsTrigger>
+            <TabsTrigger value="assistant">AI Chat</TabsTrigger>
+            <TabsTrigger value="workflows">Workflows</TabsTrigger>
+            <TabsTrigger value="business-intel">BI Dashboard</TabsTrigger>
+            <TabsTrigger value="multi-tenant">Multi-Tenant</TabsTrigger>
+            <TabsTrigger value="integrations">Integrations</TabsTrigger>
+            <TabsTrigger value="mobile">Mobile</TabsTrigger>
+            <TabsTrigger value="communication">Twilio</TabsTrigger>
+            <TabsTrigger value="security">Security</TabsTrigger>
+            <TabsTrigger value="performance">Performance</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
@@ -214,6 +194,22 @@ const AdminDashboard = () => {
 
           <TabsContent value="assistant">
             <AIAssistant />
+          </TabsContent>
+
+          <TabsContent value="workflows">
+            <WorkflowAutomation />
+          </TabsContent>
+
+          <TabsContent value="business-intel">
+            <BusinessIntelligence />
+          </TabsContent>
+
+          <TabsContent value="multi-tenant">
+            <MultiTenant />
+          </TabsContent>
+
+          <TabsContent value="integrations">
+            <IntegrationHub />
           </TabsContent>
 
           <TabsContent value="mobile">
