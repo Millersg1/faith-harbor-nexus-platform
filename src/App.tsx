@@ -39,6 +39,8 @@ import FinancialCoaching from "./pages/FinancialCoaching";
 import WebinarStudio from "./pages/WebinarStudio";
 import PodcastStudio from "./pages/PodcastStudio";
 import MobileAppBuilder from "./pages/MobileAppBuilder";
+import CoachingPlatform from "./pages/CoachingPlatform";
+import LiveStreaming from "./pages/LiveStreaming";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 
@@ -89,6 +91,8 @@ const App = () => (
                 <Route path="/webinar-studio" element={<WebinarStudio />} />
                 <Route path="/podcast-studio" element={<PodcastStudio />} />
                 <Route path="/mobile-app-builder" element={<MobileAppBuilder />} />
+                <Route path="/coaching-platform" element={<CoachingPlatform />} />
+                <Route path="/live-streaming" element={<LiveStreaming />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

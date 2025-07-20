@@ -1395,6 +1395,7 @@ export type Database = {
           address: string | null
           avatar_url: string | null
           bio: string | null
+          church_role: string | null
           city: string | null
           created_at: string
           date_joined: string | null
@@ -1410,6 +1411,7 @@ export type Database = {
           marital_status: string | null
           member_status: string | null
           membership_type: string | null
+          ministry_interests: string[] | null
           occupation: string | null
           onboarding_completed: boolean | null
           organization_name: string | null
@@ -1428,6 +1430,7 @@ export type Database = {
           address?: string | null
           avatar_url?: string | null
           bio?: string | null
+          church_role?: string | null
           city?: string | null
           created_at?: string
           date_joined?: string | null
@@ -1443,6 +1446,7 @@ export type Database = {
           marital_status?: string | null
           member_status?: string | null
           membership_type?: string | null
+          ministry_interests?: string[] | null
           occupation?: string | null
           onboarding_completed?: boolean | null
           organization_name?: string | null
@@ -1461,6 +1465,7 @@ export type Database = {
           address?: string | null
           avatar_url?: string | null
           bio?: string | null
+          church_role?: string | null
           city?: string | null
           created_at?: string
           date_joined?: string | null
@@ -1476,6 +1481,7 @@ export type Database = {
           marital_status?: string | null
           member_status?: string | null
           membership_type?: string | null
+          ministry_interests?: string[] | null
           occupation?: string | null
           onboarding_completed?: boolean | null
           organization_name?: string | null
@@ -1917,6 +1923,45 @@ export type Database = {
           },
         ]
       }
+      system_upgrades: {
+        Row: {
+          completed_at: string | null
+          id: string
+          notes: string | null
+          performed_by: string | null
+          rollback_data: Json | null
+          started_at: string | null
+          status: string
+          upgrade_type: string
+          version_from: string
+          version_to: string
+        }
+        Insert: {
+          completed_at?: string | null
+          id?: string
+          notes?: string | null
+          performed_by?: string | null
+          rollback_data?: Json | null
+          started_at?: string | null
+          status?: string
+          upgrade_type?: string
+          version_from: string
+          version_to: string
+        }
+        Update: {
+          completed_at?: string | null
+          id?: string
+          notes?: string | null
+          performed_by?: string | null
+          rollback_data?: Json | null
+          started_at?: string | null
+          status?: string
+          upgrade_type?: string
+          version_from?: string
+          version_to?: string
+        }
+        Relationships: []
+      }
       team_members: {
         Row: {
           id: string
@@ -2018,6 +2063,33 @@ export type Database = {
           name?: string
           thumbnail_url?: string | null
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          active: boolean | null
+          assigned_at: string | null
+          assigned_by: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          active?: boolean | null
+          assigned_at?: string | null
+          assigned_by?: string | null
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          active?: boolean | null
+          assigned_at?: string | null
+          assigned_by?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
         }
         Relationships: []
       }
@@ -2142,10 +2214,16 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _user_id: string
+          _role: Database["public"]["Enums"]["app_role"]
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "pastor" | "staff" | "member" | "volunteer" | "guest"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -2272,6 +2350,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "pastor", "staff", "member", "volunteer", "guest"],
+    },
   },
 } as const
