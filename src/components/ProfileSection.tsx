@@ -23,7 +23,6 @@ interface Profile {
   avatar_url?: string | null;
   logo_url?: string | null;
   bio_name?: string | null;
-  bio_room?: string | null;
   admin_notes?: string | null;
   [key: string]: any; // Allow additional fields from database
 }
@@ -82,7 +81,6 @@ const ProfileSection = () => {
           avatar_url: null,
           logo_url: null,
           bio_name: null,
-          bio_room: null,
           admin_notes: null
         });
       }
@@ -430,7 +428,7 @@ const ProfileSection = () => {
           {/* Bio Section */}
           <div className="space-y-4">
             <h4 className="font-semibold text-primary">Bio Information</h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               <div>
                 <Label htmlFor="bio_name">Bio Name</Label>
                 <Input
@@ -439,16 +437,6 @@ const ProfileSection = () => {
                   onChange={(e) => handleInputChange('bio_name', e.target.value)}
                   disabled={!isEditing}
                   placeholder="Name for bio display"
-                />
-              </div>
-              <div>
-                <Label htmlFor="bio_room">Room</Label>
-                <Input
-                  id="bio_room"
-                  value={profile?.bio_room || ''}
-                  onChange={(e) => handleInputChange('bio_room', e.target.value)}
-                  disabled={!isEditing}
-                  placeholder="Room number or location"
                 />
               </div>
             </div>

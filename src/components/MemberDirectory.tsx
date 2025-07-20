@@ -16,7 +16,6 @@ interface Member {
   phone: string;
   bio: string;
   bio_name: string;
-  bio_room: string;
   avatar_url: string;
   logo_url: string;
   member_status: string;
