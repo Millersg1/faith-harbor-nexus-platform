@@ -37,12 +37,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const checkUserRoles = async (userId: string) => {
     try {
       const { data } = await supabase
-        .from('user_roles')
-        .select('role')
+        .from('member_roles')
+        .select('role_name')
         .eq('user_id', userId)
         .eq('active', true);
       
-      const roles = data?.map(r => r.role) || [];
+      const roles = data?.map(r => r.role_name) || [];
       setUserRoles(roles);
       setIsAdmin(roles.includes('admin'));
     } catch (error) {
