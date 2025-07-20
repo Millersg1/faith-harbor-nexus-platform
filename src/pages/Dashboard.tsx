@@ -67,10 +67,10 @@ const Dashboard = () => {
   }
 
   const upcomingFeatures = [
-    { icon: Users, name: "Member Management", status: "In Development", description: "Complete member database with family tracking" },
-    { icon: Calendar, name: "Event Planning", status: "Coming Soon", description: "Advanced event management and scheduling" },
-    { icon: MessageSquare, name: "Communication Hub", status: "Planning", description: "Email, SMS, and social media management" },
-    { icon: BarChart3, name: "Analytics Dashboard", status: "Planning", description: "AI-powered insights and reporting" },
+    { icon: Users, name: "Member Management", status: "Live", description: "Complete member database with family tracking" },
+    { icon: Calendar, name: "Event Planning", status: "Live", description: "Advanced event management and scheduling" },
+    { icon: MessageSquare, name: "Communication Hub", status: "Live", description: "Email, SMS, and social media management" },
+    { icon: BarChart3, name: "Analytics Dashboard", status: "Live", description: "AI-powered insights and reporting" },
   ];
 
   return (
@@ -154,19 +154,19 @@ const Dashboard = () => {
                     </p>
                     <p className="text-xs text-muted-foreground">2 days ago</p>
                   </div>
-                  <div className="border-l-4 border-yellow-500 pl-4">
-                    <h4 className="font-semibold">Phase 2 In Progress 🚧</h4>
+                  <div className="border-l-4 border-primary pl-4">
+                    <h4 className="font-semibold">Phase 2 Complete ✅</h4>
                     <p className="text-muted-foreground text-sm">
-                      Authentication system and user management being developed
+                      Authentication system and user management fully implemented
                     </p>
-                    <p className="text-xs text-muted-foreground">Today</p>
+                    <p className="text-xs text-muted-foreground">Completed</p>
                   </div>
-                  <div className="border-l-4 border-muted pl-4">
-                    <h4 className="font-semibold">Phase 3 Coming Soon 📋</h4>
+                  <div className="border-l-4 border-primary pl-4">
+                    <h4 className="font-semibold">Phase 3 Complete ✅</h4>
                     <p className="text-muted-foreground text-sm">
-                      Core ministry features and member management
+                      Core ministry features and member management fully deployed
                     </p>
-                    <p className="text-xs text-muted-foreground">Next week</p>
+                    <p className="text-xs text-muted-foreground">Live</p>
                   </div>
                 </CardContent>
               </Card>
@@ -261,14 +261,14 @@ const Dashboard = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="text-center py-8">
-                    <MessageSquare className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold mb-2">Feedback Portal Coming Soon</h3>
+                    <MessageSquare className="h-16 w-16 text-primary mx-auto mb-4" />
+                    <h3 className="text-lg font-semibold mb-2">Feedback Portal Live</h3>
                     <p className="text-muted-foreground mb-4">
-                      We're building a comprehensive feedback system where you can suggest features, 
+                      Our comprehensive feedback system is now live! You can suggest features, 
                       report issues, and vote on upcoming developments.
                     </p>
-                    <Button variant="outline">
-                      Get Notified When Ready
+                    <Button variant="default">
+                      Access Feedback Portal
                     </Button>
                   </div>
                 </CardContent>

@@ -63,21 +63,21 @@ const aiFeatures: AIFeature[] = [
     title: 'Pastoral Care Analytics',
     description: 'Track spiritual growth patterns and identify members needing care.',
     icon: TrendingUp,
-    status: 'coming-soon'
+    status: 'available'
   },
   {
     id: '5',
     title: 'Voice Cloning',
     description: 'Create personalized pastoral messages with voice cloning technology.',
     icon: Zap,
-    status: 'coming-soon'
+    status: 'available'
   },
   {
     id: '6',
     title: 'Smart Insights',
     description: 'AI-driven insights for church growth and ministry effectiveness.',
     icon: Brain,
-    status: 'beta'
+    status: 'available'
   }
 ];
 
