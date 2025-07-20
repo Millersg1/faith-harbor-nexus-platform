@@ -331,6 +331,72 @@ export type Database = {
         }
         Relationships: []
       }
+      chatbot_conversations: {
+        Row: {
+          ai_response: string
+          context_used: string | null
+          created_at: string
+          feedback: string | null
+          id: string
+          rating: number | null
+          user_id: string | null
+          user_message: string
+        }
+        Insert: {
+          ai_response: string
+          context_used?: string | null
+          created_at?: string
+          feedback?: string | null
+          id?: string
+          rating?: number | null
+          user_id?: string | null
+          user_message: string
+        }
+        Update: {
+          ai_response?: string
+          context_used?: string | null
+          created_at?: string
+          feedback?: string | null
+          id?: string
+          rating?: number | null
+          user_id?: string | null
+          user_message?: string
+        }
+        Relationships: []
+      }
+      chatbot_knowledge: {
+        Row: {
+          active: boolean | null
+          category: string
+          chunk_index: number | null
+          content: string
+          created_at: string
+          id: string
+          total_chunks: number | null
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean | null
+          category?: string
+          chunk_index?: number | null
+          content: string
+          created_at?: string
+          id?: string
+          total_chunks?: number | null
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean | null
+          category?: string
+          chunk_index?: number | null
+          content?: string
+          created_at?: string
+          id?: string
+          total_chunks?: number | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       check_ins: {
         Row: {
           check_in_method: string | null
