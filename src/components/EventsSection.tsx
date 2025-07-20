@@ -7,7 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { Calendar, MapPin, Users, Clock, DollarSign } from "lucide-react";
 import { format } from "date-fns";
-import { ScriptureQuote } from "./ScriptureQuote";
+import { DynamicScriptureQuote } from "./DynamicScriptureQuote";
 
 interface Event {
   id: string;
@@ -125,9 +125,8 @@ export const EventsSection = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      <ScriptureQuote 
-        verse="And let us consider how we may spur one another on toward love and good deeds, not giving up meeting together, as some are in the habit of doing, but encouraging one another."
-        reference="Hebrews 10:24-25"
+      <DynamicScriptureQuote 
+        variant="random"
         theme="community"
       />
       <div className="mb-8 mt-8">

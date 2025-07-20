@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import Navigation from "@/components/Navigation";
 import ProfileSection from "@/components/ProfileSection";
-import { ScriptureQuote } from "@/components/ScriptureQuote";
+import { DynamicScriptureQuote } from "@/components/DynamicScriptureQuote";
 import { 
   User, 
   Settings, 
@@ -78,9 +78,8 @@ const Dashboard = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <div className="container mx-auto px-4 py-8 pt-20">
-        <ScriptureQuote 
-          verse="For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, to give you hope and a future."
-          reference="Jeremiah 29:11"
+        <DynamicScriptureQuote 
+          variant="daily"
           theme="business"
         />
       </div>
