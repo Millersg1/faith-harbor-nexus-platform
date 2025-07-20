@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
-import { Search, Users, Mail, Phone, MapPin } from "lucide-react";
+import { Search, Users, MapPin } from "lucide-react";
 
 interface Member {
   id: string;
@@ -144,12 +144,6 @@ export const MemberDirectory = () => {
                   </div>
                 )}
                 
-                {member.phone && (
-                  <div className="flex items-center gap-2 text-muted-foreground">
-                    <Phone className="h-4 w-4" />
-                    <span>{member.phone}</span>
-                  </div>
-                )}
                 
                 {(member.city || member.state) && (
                   <div className="flex items-center gap-2 text-muted-foreground">
