@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, MapPin, Clock, DollarSign, User } from "lucide-react";
+import { ServiceBookingDialog } from "./ServiceBookingDialog";
 
 interface Service {
   id: string;
@@ -30,6 +32,7 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({ service }: ServiceCardProps) {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
   const formatPrice = () => {
     if (service.price_type === 'quote') return 'Quote';
     if (service.price_type === 'donation') return 'Donation';
@@ -121,10 +124,16 @@ export function ServiceCard({ service }: ServiceCardProps) {
           <Button className="flex-1" size="sm">
             View Details
           </Button>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" onClick={() => setIsBookingOpen(true)}>
             Book Now
           </Button>
         </div>
+        
+        <ServiceBookingDialog
+          service={service}
+          open={isBookingOpen}
+          onOpenChange={setIsBookingOpen}
+        />
       </CardContent>
     </Card>
   );
