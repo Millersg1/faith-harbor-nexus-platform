@@ -9,6 +9,9 @@ import RealTimeAnalytics from "@/components/RealTimeAnalytics";
 import AIInsights from "@/components/AIInsights";
 import MobileAppPreview from "@/components/MobileAppPreview";
 import TwilioFlexPanel from "@/components/TwilioFlexPanel";
+import AIAssistant from "@/components/AIAssistant";
+import SecurityCenter from "@/components/SecurityCenter";
+import PerformanceOptimization from "@/components/PerformanceOptimization";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -38,7 +41,7 @@ const AdminDashboard = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-8">
+          <TabsList className="grid w-full grid-cols-9">
             <TabsTrigger value="overview" className="flex items-center gap-2">
               <BarChart3 className="h-4 w-4" />
               Overview
@@ -50,6 +53,10 @@ const AdminDashboard = () => {
             <TabsTrigger value="ai" className="flex items-center gap-2">
               <Brain className="h-4 w-4" />
               AI Insights
+            </TabsTrigger>
+            <TabsTrigger value="assistant" className="flex items-center gap-2">
+              <Brain className="h-4 w-4" />
+              AI Chat
             </TabsTrigger>
             <TabsTrigger value="mobile" className="flex items-center gap-2">
               <Smartphone className="h-4 w-4" />
@@ -67,9 +74,9 @@ const AdminDashboard = () => {
               <Shield className="h-4 w-4" />
               Security
             </TabsTrigger>
-            <TabsTrigger value="settings" className="flex items-center gap-2">
-              <Settings className="h-4 w-4" />
-              Settings
+            <TabsTrigger value="performance" className="flex items-center gap-2">
+              <Zap className="h-4 w-4" />
+              Performance
             </TabsTrigger>
           </TabsList>
 
@@ -205,6 +212,10 @@ const AdminDashboard = () => {
             <AIInsights />
           </TabsContent>
 
+          <TabsContent value="assistant">
+            <AIAssistant />
+          </TabsContent>
+
           <TabsContent value="mobile">
             <MobileAppPreview />
           </TabsContent>
@@ -249,88 +260,11 @@ const AdminDashboard = () => {
           </TabsContent>
 
           <TabsContent value="security" className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Security Alerts</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {securityAlerts.map((alert, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
-                      <div className="flex items-center space-x-3">
-                        <div className={`w-2 h-2 rounded-full ${
-                          alert.type === 'success' ? 'bg-green-500' :
-                          alert.type === 'warning' ? 'bg-yellow-500' : 'bg-blue-500'
-                        }`}></div>
-                        <span>{alert.message}</span>
-                      </div>
-                      <span className="text-sm text-muted-foreground">{alert.time}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Security Settings</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <h3 className="font-semibold">Two-Factor Authentication</h3>
-                      <p className="text-sm text-muted-foreground">Additional security layer</p>
-                    </div>
-                    <Badge variant="default">Enabled</Badge>
-                  </div>
-                  
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <h3 className="font-semibold">SSL Certificate</h3>
-                      <p className="text-sm text-muted-foreground">Expires in 89 days</p>
-                    </div>
-                    <Badge variant="default">Valid</Badge>
-                  </div>
-                  
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <h3 className="font-semibold">Backup Encryption</h3>
-                      <p className="text-sm text-muted-foreground">AES-256 encryption</p>
-                    </div>
-                    <Badge variant="default">Active</Badge>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <SecurityCenter />
           </TabsContent>
 
-          <TabsContent value="settings" className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>System Configuration</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <Button variant="outline" className="w-full justify-start">
-                    <Settings className="h-4 w-4 mr-2" />
-                    General Settings
-                  </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    <Globe className="h-4 w-4 mr-2" />
-                    Integration Settings
-                  </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    <Shield className="h-4 w-4 mr-2" />
-                    Security Configuration
-                  </Button>
-                  <Button variant="outline" className="w-full justify-start">
-                    <Zap className="h-4 w-4 mr-2" />
-                    Performance Optimization
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+          <TabsContent value="performance" className="space-y-6">
+            <PerformanceOptimization />
           </TabsContent>
         </Tabs>
       </div>
