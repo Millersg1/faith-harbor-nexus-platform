@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -27,7 +29,8 @@ interface PrayerRequest {
 }
 
 const PrayerRequests = () => {
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [requests, setRequests] = useState<PrayerRequest[]>([]);
   const [loading, setLoading] = useState(true);
@@ -44,8 +47,16 @@ const PrayerRequests = () => {
   });
 
   useEffect(() => {
-    fetchPrayerRequests();
-  }, [filter]);
+    if (!authLoading && !user) {
+      navigate("/auth");
+    }
+  }, [user, authLoading, navigate]);
+
+  useEffect(() => {
+    if (user) {
+      fetchPrayerRequests();
+    }
+  }, [filter, user]);
 
   const fetchPrayerRequests = async () => {
     try {
@@ -141,9 +152,18 @@ const PrayerRequests = () => {
     return colors[status as keyof typeof colors] || colors.open;
   };
 
+  if (authLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return null;
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
+        <Navigation />
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">Loading prayer requests...</div>
         </div>
@@ -153,6 +173,7 @@ const PrayerRequests = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
           <div>

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -40,7 +42,8 @@ interface VolunteerApplication {
 }
 
 const Volunteers = () => {
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [opportunities, setOpportunities] = useState<VolunteerOpportunity[]>([]);
   const [applications, setApplications] = useState<VolunteerApplication[]>([]);
@@ -57,8 +60,14 @@ const Volunteers = () => {
   });
 
   useEffect(() => {
-    fetchOpportunities();
+    if (!authLoading && !user) {
+      navigate("/auth");
+    }
+  }, [user, authLoading, navigate]);
+
+  useEffect(() => {
     if (user) {
+      fetchOpportunities();
       fetchUserApplications();
     }
   }, [user]);
@@ -197,9 +206,18 @@ const Volunteers = () => {
     return matchesSearch && matchesDepartment && matchesTime;
   });
 
+  if (authLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return null;
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
+        <Navigation />
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">Loading volunteer opportunities...</div>
         </div>
@@ -209,6 +227,7 @@ const Volunteers = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-foreground mb-2">Volunteer Opportunities</h1>

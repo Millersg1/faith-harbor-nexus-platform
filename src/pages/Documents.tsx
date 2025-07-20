@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -28,7 +30,8 @@ interface Document {
 }
 
 const Documents = () => {
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [documents, setDocuments] = useState<Document[]>([]);
   const [loading, setLoading] = useState(true);
@@ -37,8 +40,16 @@ const Documents = () => {
   const [typeFilter, setTypeFilter] = useState("all");
 
   useEffect(() => {
-    fetchDocuments();
-  }, []);
+    if (!authLoading && !user) {
+      navigate("/auth");
+    }
+  }, [user, authLoading, navigate]);
+
+  useEffect(() => {
+    if (user) {
+      fetchDocuments();
+    }
+  }, [user]);
 
   const fetchDocuments = async () => {
     try {
@@ -143,9 +154,18 @@ const Documents = () => {
     return matchesSearch && matchesCategory && matchesType;
   });
 
+  if (authLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return null;
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
+        <Navigation />
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">Loading documents...</div>
         </div>
@@ -155,6 +175,7 @@ const Documents = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navigation />
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-foreground mb-2">Document Library</h1>
