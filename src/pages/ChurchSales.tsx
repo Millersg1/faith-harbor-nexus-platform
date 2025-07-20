@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import lighthouseHarbor from "@/assets/lighthouse-harbor-cross.jpg";
 import { 
   Users, 
   Calendar, 
@@ -77,27 +78,38 @@ const ChurchSales = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative py-24 bg-hero-gradient text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 text-white overflow-hidden min-h-[80vh] flex items-center">
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${lighthouseHarbor})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          <div className="absolute inset-0 bg-hero-gradient"></div>
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/20 text-white border-white/30">
+            <Badge className="mb-6 bg-white/20 text-white border-white/30 backdrop-blur-sm">
               Built Specifically for Churches
             </Badge>
             
             <h1 className="heading-hero mb-6" style={{
               textShadow: '2px 2px 8px rgba(0,0,0,0.7)'
             }}>
-              Transform Your Church with
+              Guide Your Flock with
               <span className="block" style={{color: "hsl(var(--gold))"}}>
                 Faith Harbor
               </span>
             </h1>
             
-            <p className="body-xl mb-8 text-white/90" style={{
+            <p className="body-xl mb-8 text-white/90 max-w-3xl mx-auto" style={{
               textShadow: '1px 1px 4px rgba(0,0,0,0.6)'
             }}>
-              A complete ministry management platform designed by church leaders, for church leaders. 
-              Streamline operations, engage members, and grow your ministry with AI-powered tools.
+              Like a lighthouse guides ships safely to harbor, Faith Harbor guides churches 
+              toward deeper ministry impact through comprehensive management tools built on biblical principles.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Star, TrendingUp, Shield, Zap, ArrowRight, Play, BarChart3 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
+import lighthouseHarbor from "@/assets/lighthouse-harbor-cross.jpg";
 
 const BusinessSales = () => {
   const pricingPlans = [
@@ -98,16 +99,33 @@ const BusinessSales = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="bg-ministry-gradient text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative text-white py-20 min-h-[80vh] flex items-center">
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${lighthouseHarbor})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        >
+          <div className="absolute inset-0 bg-ministry-gradient"></div>
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Grow Your Christian Business
-              <span className="block text-yellow-300">With Faith-Based Tools</span>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight" style={{
+              textShadow: '2px 2px 8px rgba(0,0,0,0.7)'
+            }}>
+              Navigate Your Business to
+              <span className="block text-yellow-300" style={{
+                textShadow: '2px 2px 8px rgba(0,0,0,0.8)'
+              }}>Greater Purpose</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
-              The complete business management platform designed for Christian entrepreneurs. 
-              Manage operations, finances, and growth while staying true to your values.
+            <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed max-w-3xl mx-auto" style={{
+              textShadow: '1px 1px 4px rgba(0,0,0,0.6)'
+            }}>
+              Chart a course toward Kingdom impact with Faith Harbor's comprehensive business platform. 
+              Manage operations, finances, and growth while honoring God in every decision.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">

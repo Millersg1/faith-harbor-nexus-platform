@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Play, ArrowRight, Star, Users, Shield, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroBackground from "@/assets/hero-background.jpg";
+import lighthouseHarbor from "@/assets/lighthouse-harbor-cross.jpg";
 
 const Hero = () => {
   const stats = [
@@ -17,7 +17,7 @@ const Hero = () => {
       <div 
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url(${heroBackground})`,
+          backgroundImage: `url(${lighthouseHarbor})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -43,15 +43,15 @@ const Hero = () => {
             textShadow: '2px 2px 8px rgba(0,0,0,0.7), 0 0 20px hsl(var(--gold) / 0.6)',
             filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5))'
           }}>
-            The Complete
+            Be the Light in Your
             <span className="block font-extrabold" style={{
               color: 'hsl(var(--gold))',
               textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 30px hsl(var(--gold) / 0.8)',
               filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.6))'
             }}>
-              Ministry Platform
+              Community
             </span>
-            for Modern Churches
+            with Faith Harbor
           </h1>
 
           {/* Subheadline */}
@@ -59,8 +59,8 @@ const Hero = () => {
             textShadow: '1px 1px 4px rgba(0,0,0,0.7), 0 0 15px rgba(0,0,0,0.5)',
             filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.4))'
           }}>
-            Comprehensive ministry management features, AI-powered tools, and complete solutions 
-            to help grow your ministry and streamline operations in one platform.
+            The complete ministry platform designed to guide churches and Christian businesses 
+            toward deeper faith, stronger communities, and meaningful impact in God's kingdom.
           </p>
 
           {/* CTA Buttons */}
