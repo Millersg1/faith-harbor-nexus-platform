@@ -55,6 +55,7 @@ const AuthenticatedNavigation = () => {
   };
 
   const mainFeatures = [
+    { title: "Member Portal", href: "/member-portal", icon: User, desc: "Personal dashboard" },
     { title: "Dashboard", href: "/dashboards", icon: Home, desc: "Dashboard hub" },
     { title: "Analytics", href: "/analytics", icon: BarChart3, desc: "Insights & reports" },
     { title: "Members", href: "/members", icon: Users, desc: "Member management" },
@@ -201,6 +202,15 @@ const AuthenticatedNavigation = () => {
                       </p>
                       <p className="text-xs text-muted-foreground">{user?.email}</p>
                     </div>
+                    
+                    <Link
+                      to="/member-portal"
+                      className="flex items-center space-x-2 px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+                      onClick={() => setActiveDropdown(null)}
+                    >
+                      <User className="h-4 w-4" />
+                      <span>Member Portal</span>
+                    </Link>
                     
                     <Link
                       to="/settings"

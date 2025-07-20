@@ -44,9 +44,11 @@ import LiveStreaming from "./pages/LiveStreaming";
 import WebsiteFunnelBuilder from "./pages/WebsiteFunnelBuilder";
 import Training from "./pages/Training";
 import Tutorials from "./pages/Tutorials";
+import MemberPortal from "./pages/MemberPortal";
 import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import IntelligentChatbot from "./components/IntelligentChatbot";
+import NotificationSystem from "./components/NotificationSystem";
 import ActivityTrackerWrapper from "./components/ActivityTrackerWrapper";
 import AdminActivityMonitorPage from "./pages/AdminActivityMonitor";
 import DashboardNavigation from "./components/DashboardNavigation";
@@ -108,6 +110,7 @@ const App = () => (
                 <Route path="/website-funnel-builder" element={<WebsiteFunnelBuilder />} />
                 <Route path="/training" element={<Training />} />
                 <Route path="/tutorials" element={<Tutorials />} />
+                <Route path="/member-portal" element={<MemberPortal />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
@@ -115,6 +118,7 @@ const App = () => (
             <Footer />
             <CookieConsent />
             <IntelligentChatbot position="bottom-right" />
+            <NotificationSystem position="top-right" />
             </div>
           </ActivityTrackerWrapper>
         </AuthProvider>
