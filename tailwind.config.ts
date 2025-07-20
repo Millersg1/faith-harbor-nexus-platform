@@ -53,6 +53,10 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				gold: {
+					DEFAULT: 'hsl(var(--gold))',
+					foreground: 'hsl(var(--gold-foreground))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -73,7 +77,8 @@ export default {
 				'lighthouse-gradient': 'var(--lighthouse-gradient)',
 				'ministry-gradient': 'var(--ministry-gradient)',
 				'spiritual-gradient': 'var(--spiritual-gradient)',
-				'hero-gradient': 'var(--hero-gradient)'
+				'hero-gradient': 'var(--hero-gradient)',
+				'gold-gradient': 'var(--gold-gradient)'
 			},
 			boxShadow: {
 				'soft': 'var(--shadow-soft)',

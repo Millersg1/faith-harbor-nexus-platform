@@ -72,40 +72,40 @@ const FeatureShowcase = () => {
     <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6" style={{color: "hsl(var(--gold))"}}>
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gold">
             Everything Your Ministry Needs
             <span className="block text-primary">In One Platform</span>
           </h2>
-          <p className="text-xl text-blue-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4 sm:px-0">
             Replace 20+ separate tools with our comprehensive ministry management platform. 
             Built specifically for churches and Christian businesses.
           </p>
         </div>
 
         {/* Core Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 px-4 sm:px-0">
           {coreFeatures.map((feature, index) => (
             <div 
               key={index} 
-              className="group bg-card rounded-xl p-6 shadow-soft hover:shadow-medium transition-all duration-300 border border-border hover:border-primary/20"
+              className="group bg-card rounded-xl p-4 sm:p-6 shadow-soft hover:shadow-medium transition-all duration-300 border border-border hover:border-primary/20"
             >
               <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${feature.gradient} mb-4`}>
-                <feature.icon className="h-6 w-6 text-white" />
+                <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
               </div>
               
-              <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors" style={{color: "hsl(var(--gold))"}}>
+              <h3 className="text-lg sm:text-xl font-semibold mb-3 group-hover:text-primary transition-colors text-gold">
                 {feature.title}
               </h3>
               
-              <p className="text-blue-600 mb-4 leading-relaxed">
+              <p className="text-muted-foreground mb-4 leading-relaxed text-sm sm:text-base">
                 {feature.description}
               </p>
               
               <ul className="space-y-2">
                 {feature.benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-center text-sm text-blue-600">
-                    <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
+                  <li key={idx} className="flex items-center text-xs sm:text-sm text-muted-foreground">
+                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-primary mr-2 flex-shrink-0" />
                     {benefit}
                   </li>
                 ))}
@@ -115,42 +115,42 @@ const FeatureShowcase = () => {
         </div>
 
         {/* Additional Features */}
-        <div className="bg-muted/30 rounded-2xl p-8 mb-12">
-          <h3 className="text-2xl font-bold text-center mb-8" style={{color: "hsl(var(--gold))"}}>
+        <div className="bg-muted/30 rounded-2xl p-6 sm:p-8 mb-8 sm:mb-12 mx-4 sm:mx-0">
+          <h3 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 text-gold">
             Plus Many Additional Features
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {additionalFeatures.map((feature, index) => (
               <div key={index} className="text-center">
-                <div className="inline-flex p-3 rounded-lg bg-white shadow-soft mb-3">
-                  <feature.icon className="h-6 w-6 text-primary" />
+                <div className="inline-flex p-2 sm:p-3 rounded-lg bg-white shadow-soft mb-2 sm:mb-3">
+                  <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                 </div>
-                <h4 className="font-semibold mb-1" style={{color: "hsl(var(--gold))"}}>{feature.title}</h4>
-                <p className="text-sm text-blue-600">{feature.desc}</p>
+                <h4 className="font-semibold mb-1 text-sm sm:text-base text-gold">{feature.title}</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground">{feature.desc}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* CTA Section */}
-        <div className="text-center bg-lighthouse-gradient rounded-2xl p-8 text-white">
-          <h3 className="text-2xl md:text-3xl font-bold mb-4" style={{color: "hsl(var(--gold))"}}>
+        <div className="text-center bg-lighthouse-gradient rounded-2xl p-6 sm:p-8 text-white mx-4 sm:mx-0">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-gold">
             Ready to Transform Your Ministry?
           </h3>
-          <p className="text-xl mb-6 opacity-90">
+          <p className="text-lg sm:text-xl mb-4 sm:mb-6 opacity-90">
             Be among the first to experience the future of ministry management
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link to="/sales-churches">
-              <Button size="lg" variant="premium" className="px-8">
+              <Button size="lg" variant="premium" className="w-full sm:w-auto px-6 sm:px-8">
                 Explore Church Solutions
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </Link>
             <Link to="/sales-business">
-              <Button size="lg" variant="premium" className="px-8">
+              <Button size="lg" variant="premium" className="w-full sm:w-auto px-6 sm:px-8">
                 View Business Features
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </Link>
           </div>

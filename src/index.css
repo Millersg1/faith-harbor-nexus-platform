@@ -29,6 +29,10 @@
     --accent: 238 75% 65%; /* Softer indigo */
     --accent-foreground: 0 0% 98%;
 
+    /* Faith Harbor Gold - Premium branding */
+    --gold: 43 96% 56%; /* Rich gold color */
+    --gold-foreground: 220 13% 18%;
+
     /* Neutral tones */
     --muted: 210 20% 96%;
     --muted-foreground: 215 16% 47%; /* Better contrast gray */
@@ -45,6 +49,7 @@
     --ministry-gradient: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--primary)));
     --spiritual-gradient: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--primary)));
     --hero-gradient: linear-gradient(135deg, hsl(var(--primary) / 0.95), hsl(var(--accent) / 0.95));
+    --gold-gradient: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold) / 0.8));
     
     /* Professional shadows */
     --shadow-soft: 0 4px 6px -1px hsl(var(--primary) / 0.1);
@@ -59,19 +64,12 @@
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 

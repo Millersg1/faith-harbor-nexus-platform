@@ -39,11 +39,11 @@ const Hero = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in leading-tight text-white" style={{
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in leading-tight text-white" style={{
             textShadow: '2px 2px 8px rgba(0,0,0,0.7), 0 0 20px hsl(var(--gold) / 0.6)',
             filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.5))'
           }}>
-            Be the Light in Your
+            <span className="block sm:inline">Be the Light in Your</span>
             <span className="block font-extrabold" style={{
               color: 'hsl(var(--gold))',
               textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 30px hsl(var(--gold) / 0.8)',
@@ -51,11 +51,11 @@ const Hero = () => {
             }}>
               Community
             </span>
-            with Faith Harbor
+            <span className="block sm:inline">with Faith Harbor</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto animate-fade-in leading-relaxed font-semibold" style={{
+          <p className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8 max-w-3xl mx-auto animate-fade-in leading-relaxed font-semibold px-4 sm:px-0" style={{
             textShadow: '1px 1px 4px rgba(0,0,0,0.7), 0 0 15px rgba(0,0,0,0.5)',
             filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.4))'
           }}>
@@ -64,16 +64,16 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-scale-in">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-12 animate-scale-in px-4 sm:px-0">
             <Link to="/auth">
-              <Button size="lg" variant="hero" className="px-8 py-4 text-lg">
+              <Button size="lg" variant="hero" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg">
                 Join Early Access Program
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </Link>
             <Link to="/demo-video">
-              <Button size="lg" variant="premium" className="px-8 py-4 text-lg">
-                <Play className="mr-2 h-5 w-5" />
+              <Button size="lg" variant="premium" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg">
+                <Play className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 Watch Preview
               </Button>
             </Link>
@@ -93,16 +93,16 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto animate-fade-in">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto animate-fade-in px-4 sm:px-0">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="flex justify-center mb-3">
-                  <stat.icon className="h-8 w-8 text-yellow-300" />
+                <div className="flex justify-center mb-2 sm:mb-3">
+                  <stat.icon className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-300" />
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-white mb-1">
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1">
                   {stat.value}
                 </div>
-                <div className="text-sm text-white">
+                <div className="text-xs sm:text-sm text-white px-1">
                   {stat.label}
                 </div>
               </div>
