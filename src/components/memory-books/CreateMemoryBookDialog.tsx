@@ -41,6 +41,7 @@ export function CreateMemoryBookDialog({ open, onOpenChange, onBookCreated }: Cr
 
   useEffect(() => {
     if (open) {
+      console.log('Dialog opened, fetching data...');
       fetchMemorials();
       fetchTemplates();
     }
@@ -63,12 +64,14 @@ export function CreateMemoryBookDialog({ open, onOpenChange, onBookCreated }: Cr
 
   const fetchTemplates = async () => {
     try {
+      console.log('Fetching templates...');
       const { data, error } = await supabase
         .from('memory_book_templates')
         .select('id, name, description, category')
         .order('category', { ascending: true });
 
       if (error) throw error;
+      console.log('Templates fetched:', data?.length || 0);
       setTemplates(data || []);
     } catch (error) {
       console.error('Error fetching templates:', error);
