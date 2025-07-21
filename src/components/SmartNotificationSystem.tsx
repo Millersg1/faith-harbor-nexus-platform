@@ -348,7 +348,13 @@ const SmartNotificationSystem = () => {
 
       {/* Smart Notifications Panel */}
       {isOpen && (
-        <Card className="absolute top-16 right-0 w-96 max-w-[90vw] shadow-2xl border-2 bg-background/98 backdrop-blur-md">
+        <>
+          {/* Backdrop to close when clicking outside */}
+          <div 
+            className="fixed inset-0 bg-transparent z-40" 
+            onClick={() => setIsOpen(false)}
+          />
+          <Card className="absolute top-16 right-0 w-96 max-w-[90vw] shadow-2xl border-2 bg-background/98 backdrop-blur-md z-50">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
@@ -474,6 +480,7 @@ const SmartNotificationSystem = () => {
             </Tabs>
           </CardContent>
         </Card>
+        </>
       )}
     </div>
   );

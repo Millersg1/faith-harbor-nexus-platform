@@ -50,7 +50,7 @@ export const PWAInstallPrompt = () => {
   }
 
   return (
-    <Card className="fixed bottom-4 right-4 z-50 max-w-sm animate-in slide-in-from-bottom-2">
+    <Card className="fixed bottom-4 right-4 z-[60] max-w-sm animate-in slide-in-from-bottom-2">
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between">
           <CardTitle className="text-sm">Install Faith Harbor</CardTitle>
