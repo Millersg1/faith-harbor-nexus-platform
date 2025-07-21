@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
+import useScrollToTop from "@/hooks/useScrollToTop";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
@@ -48,6 +49,7 @@ import MemberPortal from "./pages/MemberPortal";
 import MemberDirectory from "./pages/MemberDirectory";
 import GriefSupport from "./pages/GriefSupport";
 import MemoryBooks from "./pages/MemoryBooks";
+import Settings from "./pages/Settings";
 import Marketplace from "./pages/Marketplace";
 import SEOManagement from "./pages/SEOManagement";
 import CustomDomainManager from "./components/CustomDomainManager";
@@ -77,9 +79,10 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AuthProvider>
-          <ActivityTrackerWrapper>
-            <div className="min-h-screen flex flex-col">
-            <div className="flex-1">
+          <ScrollToTopWrapper>
+            <ActivityTrackerWrapper>
+              <div className="min-h-screen flex flex-col">
+              <div className="flex-1">
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/auth" element={<Auth />} />
@@ -130,6 +133,7 @@ const App = () => (
                 <Route path="/grief-support" element={<GriefSupport />} />
                 <Route path="/memory-books" element={<MemoryBooks />} />
                 <Route path="/marketplace" element={<Marketplace />} />
+                <Route path="/settings" element={<Settings />} />
                 <Route path="/seo-management" element={<SEOManagement />} />
                 <Route path="/custom-domains" element={<CustomDomainManager />} />
                 <Route path="/pwa-features" element={<PWAFeaturesPage />} />
