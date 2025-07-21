@@ -60,6 +60,7 @@ import SmartNotificationSystem from "./components/SmartNotificationSystem";
 import EmergencyBroadcastSystem from "./components/EmergencyBroadcastSystem";
 import EnhancedMobileNavigation from "./components/EnhancedMobileNavigation";
 import RoboCallingSystem from "./components/RoboCallingSystem";
+import VoiceCloningStudio from "./components/VoiceCloningStudio";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
 import { PWAManager } from "./components/PWAManager";
 import { OfflineIndicator } from "./components/OfflineIndicator";
@@ -134,6 +135,7 @@ const App = () => (
                 <Route path="/pwa-features" element={<PWAFeaturesPage />} />
                 <Route path="/emergency-broadcast" element={<EmergencyBroadcastSystem />} />
                 <Route path="/robo-calling" element={<RoboCallingSystem />} />
+                <Route path="/voice-cloning" element={<VoiceCloningStudio />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
