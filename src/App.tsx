@@ -144,7 +144,6 @@ const App = () => (
             <CookieConsent />
             <IntelligentChatbot position="bottom-right" />
             <SmartNotificationSystem />
-            <EnhancedMobileNavigation />
             <PWAInstallPrompt />
             <PWAManager />
             <OfflineIndicator />
