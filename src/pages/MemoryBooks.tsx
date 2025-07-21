@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Plus, BookOpen, MessageSquare, Printer, Eye } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
+import Navigation from "@/components/Navigation";
+import AuthenticatedNavigation from "@/components/AuthenticatedNavigation";
 import { CreateMemoryBookDialog } from "@/components/memory-books/CreateMemoryBookDialog";
 import { MemoryBookCard } from "@/components/memory-books/MemoryBookCard";
 import { MemoryBookEditor } from "@/components/memory-books/MemoryBookEditor";
@@ -102,12 +104,15 @@ export default function MemoryBooks() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-subtle p-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center py-20">
-            <div className="animate-pulse">
-              <div className="h-8 bg-muted rounded w-64 mx-auto mb-4"></div>
-              <div className="h-4 bg-muted rounded w-96 mx-auto"></div>
+      <div className="min-h-screen bg-gradient-subtle">
+        <Navigation />
+        <div className="p-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center py-20">
+              <div className="animate-pulse">
+                <div className="h-8 bg-muted rounded w-64 mx-auto mb-4"></div>
+                <div className="h-4 bg-muted rounded w-96 mx-auto"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -119,6 +124,7 @@ export default function MemoryBooks() {
   if (isAuthenticated === false) {
     return (
       <div className="min-h-screen bg-gradient-subtle">
+        <Navigation />
         <div className="container mx-auto px-4 py-8">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center mb-4">
@@ -163,6 +169,7 @@ export default function MemoryBooks() {
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
+      <AuthenticatedNavigation />
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="text-center mb-8">
