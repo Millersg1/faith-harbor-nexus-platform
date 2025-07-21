@@ -286,10 +286,8 @@ const EnhancedMobileNavigation = () => {
         {/* Mobile Header */}
         <div className="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border">
           <div className="flex items-center justify-between p-4">
-            <SidebarTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-              </Button>
+            <SidebarTrigger>
+              <Menu className="h-5 w-5" />
             </SidebarTrigger>
             
             <div className="flex items-center space-x-2">
