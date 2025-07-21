@@ -2693,6 +2693,45 @@ export type Database = {
         }
         Relationships: []
       }
+      sermon_transcriptions: {
+        Row: {
+          audio_url: string | null
+          created_at: string
+          duration_seconds: number | null
+          id: string
+          status: string
+          title: string
+          transcription_text: string | null
+          updated_at: string
+          user_id: string
+          word_count: number | null
+        }
+        Insert: {
+          audio_url?: string | null
+          created_at?: string
+          duration_seconds?: number | null
+          id?: string
+          status?: string
+          title: string
+          transcription_text?: string | null
+          updated_at?: string
+          user_id: string
+          word_count?: number | null
+        }
+        Update: {
+          audio_url?: string | null
+          created_at?: string
+          duration_seconds?: number | null
+          id?: string
+          status?: string
+          title?: string
+          transcription_text?: string | null
+          updated_at?: string
+          user_id?: string
+          word_count?: number | null
+        }
+        Relationships: []
+      }
       sermons: {
         Row: {
           audio_url: string | null
