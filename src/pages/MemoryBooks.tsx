@@ -42,7 +42,7 @@ export default function MemoryBooks() {
         .from('memory_books')
         .select(`
           *,
-          memorial:memorials(deceased_name)
+          memorial:memorials!memorial_id(deceased_name)
         `)
         .order('created_at', { ascending: false });
 
