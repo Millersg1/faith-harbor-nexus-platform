@@ -27,6 +27,8 @@ interface CreateMemoryBookDialogProps {
 }
 
 export function CreateMemoryBookDialog({ open, onOpenChange, onBookCreated }: CreateMemoryBookDialogProps) {
+  console.log('CreateMemoryBookDialog rendering, open:', open);
+  
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -138,10 +140,15 @@ export function CreateMemoryBookDialog({ open, onOpenChange, onBookCreated }: Cr
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="max-w-2xl bg-white">
         <DialogHeader>
           <DialogTitle>Create Memory Book</DialogTitle>
         </DialogHeader>
+        
+        <div className="p-4 border border-gray-200">
+          <p>Dialog is open: {open ? 'Yes' : 'No'}</p>
+          <p>Templates loaded: {templates.length}</p>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid gap-4 md:grid-cols-2">
