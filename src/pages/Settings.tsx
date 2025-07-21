@@ -11,6 +11,8 @@ import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import AuthenticatedNavigation from "@/components/AuthenticatedNavigation";
+import { APIKeyManager } from "@/components/APIKeyManager";
+import { useAuth } from "@/contexts/AuthContext";
 import { 
   Settings as SettingsIcon, 
   Palette, 
@@ -22,7 +24,8 @@ import {
   Save,
   Eye,
   Smartphone,
-  Shield
+  Shield,
+  Key
 } from "lucide-react";
 
 interface BrandingSettings {
@@ -161,7 +164,7 @@ export default function Settings() {
           </div>
 
           <Tabs defaultValue="branding" className="space-y-6">
-            <TabsList className="grid w-full grid-cols-4">
+            <TabsList className="grid w-full grid-cols-5">
               <TabsTrigger value="branding" className="flex items-center gap-2">
                 <Palette className="h-4 w-4" />
                 White Label
@@ -173,6 +176,10 @@ export default function Settings() {
               <TabsTrigger value="email" className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
                 Email System
+              </TabsTrigger>
+              <TabsTrigger value="api-keys" className="flex items-center gap-2">
+                <Key className="h-4 w-4" />
+                API Keys
               </TabsTrigger>
               <TabsTrigger value="general" className="flex items-center gap-2">
                 <Shield className="h-4 w-4" />
@@ -538,6 +545,11 @@ export default function Settings() {
                   </Button>
                 </CardContent>
               </Card>
+            </TabsContent>
+
+            {/* API Keys Settings */}
+            <TabsContent value="api-keys" className="space-y-6">
+              <APIKeyManager />
             </TabsContent>
 
             {/* General Settings */}

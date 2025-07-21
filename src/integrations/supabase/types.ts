@@ -3757,6 +3757,39 @@ export type Database = {
         }
         Relationships: []
       }
+      user_api_keys: {
+        Row: {
+          api_key_encrypted: string
+          created_at: string
+          id: string
+          is_active: boolean | null
+          service_label: string | null
+          service_name: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          api_key_encrypted: string
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          service_label?: string | null
+          service_name: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          api_key_encrypted?: string
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          service_label?: string | null
+          service_name?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       user_funnels: {
         Row: {
           analytics_data: Json | null
