@@ -320,7 +320,7 @@ const SmartNotificationSystem = () => {
   if (!user) return null;
 
   return (
-    <div className="fixed top-4 right-4 z-40">
+    <div className="fixed top-4 right-4 z-10">
       {/* Smart Notification Bell */}
       <div className="relative">
         <Button
@@ -351,10 +351,10 @@ const SmartNotificationSystem = () => {
         <>
           {/* Backdrop to close when clicking outside */}
           <div 
-            className="fixed inset-0 bg-transparent z-30" 
+            className="fixed inset-0 bg-transparent z-10" 
             onClick={() => setIsOpen(false)}
           />
-          <Card className="absolute top-16 right-0 w-96 max-w-[90vw] shadow-2xl border-2 bg-background/98 backdrop-blur-md z-40">
+          <Card className="absolute top-16 right-0 w-96 max-w-[90vw] shadow-2xl border-2 bg-background/98 backdrop-blur-md z-20">
           <CardHeader className="pb-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
