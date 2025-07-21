@@ -134,10 +134,11 @@ const EnhancedMobileNavigation = () => {
   }, [searchQuery]);
 
   const AppSidebar = () => {
-    const { collapsed } = useSidebar();
+    const { state } = useSidebar();
+    const collapsed = state === "collapsed";
 
     return (
-      <Sidebar className={`${collapsed ? "w-16" : "w-80"} transition-all duration-300`} collapsible>
+      <Sidebar className={`${collapsed ? "w-16" : "w-80"} transition-all duration-300`} collapsible="icon">
         <SidebarContent className="bg-gradient-to-b from-primary/5 to-background">
           {/* Header */}
           <div className="p-4 border-b border-border/50">
@@ -280,7 +281,7 @@ const EnhancedMobileNavigation = () => {
   if (!isMobile || !user) return null;
 
   return (
-    <SidebarProvider defaultOpen={false} collapsedWidth={64}>
+    <SidebarProvider defaultOpen={false}>
       <div className="flex h-screen w-full">
         {/* Mobile Header */}
         <div className="fixed top-0 left-0 right-0 z-40 bg-background/95 backdrop-blur-md border-b border-border">

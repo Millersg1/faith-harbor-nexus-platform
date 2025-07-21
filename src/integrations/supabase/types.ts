@@ -1023,6 +1023,57 @@ export type Database = {
           },
         ]
       }
+      emergency_broadcasts: {
+        Row: {
+          channels: Json
+          created_at: string
+          delivery_stats: Json | null
+          id: string
+          message: string
+          priority: string
+          recipient_count: number | null
+          scheduled_for: string | null
+          sent_at: string | null
+          sent_by: string | null
+          status: string
+          target_groups: Json
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          channels?: Json
+          created_at?: string
+          delivery_stats?: Json | null
+          id?: string
+          message: string
+          priority?: string
+          recipient_count?: number | null
+          scheduled_for?: string | null
+          sent_at?: string | null
+          sent_by?: string | null
+          status?: string
+          target_groups?: Json
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          channels?: Json
+          created_at?: string
+          delivery_stats?: Json | null
+          id?: string
+          message?: string
+          priority?: string
+          recipient_count?: number | null
+          scheduled_for?: string | null
+          sent_at?: string | null
+          sent_by?: string | null
+          status?: string
+          target_groups?: Json
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       event_registrations: {
         Row: {
           accessibility_needs: string | null
@@ -2018,34 +2069,43 @@ export type Database = {
       }
       notifications: {
         Row: {
+          action_text: string | null
           action_url: string | null
           category: string | null
           created_at: string
           id: string
           message: string
+          priority: string | null
           read: boolean | null
+          scheduled_for: string | null
           title: string
           type: string | null
           user_id: string | null
         }
         Insert: {
+          action_text?: string | null
           action_url?: string | null
           category?: string | null
           created_at?: string
           id?: string
           message: string
+          priority?: string | null
           read?: boolean | null
+          scheduled_for?: string | null
           title: string
           type?: string | null
           user_id?: string | null
         }
         Update: {
+          action_text?: string | null
           action_url?: string | null
           category?: string | null
           created_at?: string
           id?: string
           message?: string
+          priority?: string | null
           read?: boolean | null
+          scheduled_for?: string | null
           title?: string
           type?: string | null
           user_id?: string | null
@@ -3746,6 +3806,30 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      user_notification_preferences: {
+        Row: {
+          created_at: string
+          id: string
+          preferences: Json
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          preferences?: Json
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          preferences?: Json
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       user_presence: {
         Row: {

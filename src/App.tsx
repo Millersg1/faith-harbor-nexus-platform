@@ -56,6 +56,9 @@ import Footer from "./components/Footer";
 import CookieConsent from "./components/CookieConsent";
 import IntelligentChatbot from "./components/IntelligentChatbot";
 import NotificationSystem from "./components/NotificationSystem";
+import SmartNotificationSystem from "./components/SmartNotificationSystem";
+import EmergencyBroadcastSystem from "./components/EmergencyBroadcastSystem";
+import EnhancedMobileNavigation from "./components/EnhancedMobileNavigation";
 import { PWAInstallPrompt } from "./components/PWAInstallPrompt";
 import { PWAManager } from "./components/PWAManager";
 import { OfflineIndicator } from "./components/OfflineIndicator";
@@ -128,6 +131,7 @@ const App = () => (
                 <Route path="/seo-management" element={<SEOManagement />} />
                 <Route path="/custom-domains" element={<CustomDomainManager />} />
                 <Route path="/pwa-features" element={<PWAFeaturesPage />} />
+                <Route path="/emergency-broadcast" element={<EmergencyBroadcastSystem />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
@@ -135,7 +139,8 @@ const App = () => (
             <Footer />
             <CookieConsent />
             <IntelligentChatbot position="bottom-right" />
-            <NotificationSystem position="top-right" />
+            <SmartNotificationSystem />
+            <EnhancedMobileNavigation />
             <PWAInstallPrompt />
             <PWAManager />
             <OfflineIndicator />
