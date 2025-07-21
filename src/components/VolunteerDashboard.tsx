@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -48,6 +49,7 @@ interface VolunteerStats {
 export const VolunteerDashboard = () => {
   const { user } = useAuth();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [applications, setApplications] = useState<VolunteerApplication[]>([]);
   const [stats, setStats] = useState<VolunteerStats>({
     totalApplications: 0,
@@ -229,7 +231,7 @@ export const VolunteerDashboard = () => {
                 <p className="text-muted-foreground mb-4">
                   You haven't applied for any volunteer positions yet
                 </p>
-                <Button onClick={() => window.location.href = '/volunteers'}>
+                <Button onClick={() => navigate('/volunteers')}>
                   Browse Opportunities
                 </Button>
               </CardContent>
