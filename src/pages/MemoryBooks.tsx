@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Plus, BookOpen, MessageSquare, Printer, Eye } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
 import { CreateMemoryBookDialog } from "@/components/memory-books/CreateMemoryBookDialog";
 import { MemoryBookCard } from "@/components/memory-books/MemoryBookCard";
 import { MemoryBookEditor } from "@/components/memory-books/MemoryBookEditor";
@@ -30,11 +31,30 @@ export default function MemoryBooks() {
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("my-books");
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchMemoryBooks();
+    checkAuthAndFetchData();
   }, []);
+
+  const checkAuthAndFetchData = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      setIsAuthenticated(!!user);
+      
+      if (user) {
+        await fetchMemoryBooks();
+      } else {
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error('Error checking authentication:', error);
+      setIsAuthenticated(false);
+      setIsLoading(false);
+    }
+  };
 
   const fetchMemoryBooks = async () => {
     try {
@@ -90,6 +110,39 @@ export default function MemoryBooks() {
               <div className="h-4 bg-muted rounded w-96 mx-auto"></div>
             </div>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show authentication prompt if not logged in
+  if (isAuthenticated === false) {
+    return (
+      <div className="min-h-screen bg-gradient-subtle">
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center mb-4">
+              <BookOpen className="h-8 w-8 text-primary mr-3" />
+              <h1 className="text-4xl font-bold text-foreground">Memory Books</h1>
+            </div>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Create beautiful, printable memory books and scrapbooks to honor and remember loved ones
+            </p>
+          </div>
+          
+          <Card className="max-w-md mx-auto">
+            <CardHeader>
+              <CardTitle>Sign In Required</CardTitle>
+              <CardDescription>
+                You need to be signed in to access Memory Books
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="text-center">
+              <Button onClick={() => navigate('/auth')} className="w-full">
+                Sign In / Sign Up
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </div>
     );
