@@ -66,10 +66,10 @@ export const PWAFeatures = () => {
   return (
     <div className="container mx-auto px-4 py-16">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+        <h1 className="text-4xl font-bold text-foreground mb-4">
           Progressive Web App Features
         </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
           Experience Faith Harbor as a native mobile app with offline capabilities, 
           push notifications, and seamless performance across all devices.
         </p>
@@ -94,7 +94,7 @@ export const PWAFeatures = () => {
         ))}
       </div>
 
-      <div className="bg-gradient-to-r from-primary to-primary-foreground rounded-lg p-8 text-white text-center">
+      <div className="bg-gradient-to-r from-primary to-primary/80 rounded-lg p-8 text-primary-foreground text-center">
         <h2 className="text-2xl font-bold mb-4">Ready to Install?</h2>
         <p className="text-lg mb-6">
           Get the full Faith Harbor experience on your device. 
