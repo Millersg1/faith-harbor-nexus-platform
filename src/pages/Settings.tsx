@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -394,33 +395,41 @@ export default function Settings() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Button variant="outline" className="justify-start h-auto p-4">
-                    <div className="text-left">
-                      <div className="font-semibold">Emergency Broadcast</div>
-                      <div className="text-sm text-muted-foreground">Send urgent messages</div>
-                    </div>
-                  </Button>
+                  <Link to="/messages">
+                    <Button variant="outline" className="justify-start h-auto p-4 w-full">
+                      <div className="text-left">
+                        <div className="font-semibold">Emergency Broadcast</div>
+                        <div className="text-sm text-muted-foreground">Send urgent messages</div>
+                      </div>
+                    </Button>
+                  </Link>
                   
-                  <Button variant="outline" className="justify-start h-auto p-4">
-                    <div className="text-left">
-                      <div className="font-semibold">Robo Calling</div>
-                      <div className="text-sm text-muted-foreground">Automated phone calls</div>
-                    </div>
-                  </Button>
+                  <Link to="/messages">
+                    <Button variant="outline" className="justify-start h-auto p-4 w-full">
+                      <div className="text-left">
+                        <div className="font-semibold">Robo Calling</div>
+                        <div className="text-sm text-muted-foreground">Automated phone calls</div>
+                      </div>
+                    </Button>
+                  </Link>
 
-                  <Button variant="outline" className="justify-start h-auto p-4">
-                    <div className="text-left">
-                      <div className="font-semibold">SMS Campaigns</div>
-                      <div className="text-sm text-muted-foreground">Text message marketing</div>
-                    </div>
-                  </Button>
+                  <Link to="/messages">
+                    <Button variant="outline" className="justify-start h-auto p-4 w-full">
+                      <div className="text-left">
+                        <div className="font-semibold">SMS Campaigns</div>
+                        <div className="text-sm text-muted-foreground">Text message marketing</div>
+                      </div>
+                    </Button>
+                  </Link>
 
-                  <Button variant="outline" className="justify-start h-auto p-4">
-                    <div className="text-left">
-                      <div className="font-semibold">Voice Cloning</div>
-                      <div className="text-sm text-muted-foreground">AI voice messages</div>
-                    </div>
-                  </Button>
+                  <Link to="/ai-companion">
+                    <Button variant="outline" className="justify-start h-auto p-4 w-full">
+                      <div className="text-left">
+                        <div className="font-semibold">Voice Cloning</div>
+                        <div className="text-sm text-muted-foreground">AI voice messages</div>
+                      </div>
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </TabsContent>
@@ -516,33 +525,41 @@ export default function Settings() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Button variant="outline" className="justify-start h-auto p-4">
-                    <div className="text-left">
-                      <div className="font-semibold">Email Marketing</div>
-                      <div className="text-sm text-muted-foreground">Create newsletters & campaigns</div>
-                    </div>
-                  </Button>
+                  <Link to="/email-marketing">
+                    <Button variant="outline" className="justify-start h-auto p-4 w-full">
+                      <div className="text-left">
+                        <div className="font-semibold">Email Marketing</div>
+                        <div className="text-sm text-muted-foreground">Create newsletters & campaigns</div>
+                      </div>
+                    </Button>
+                  </Link>
                   
-                  <Button variant="outline" className="justify-start h-auto p-4">
-                    <div className="text-left">
-                      <div className="font-semibold">Event Notifications</div>
-                      <div className="text-sm text-muted-foreground">Automated event emails</div>
-                    </div>
-                  </Button>
+                  <Link to="/events">
+                    <Button variant="outline" className="justify-start h-auto p-4 w-full">
+                      <div className="text-left">
+                        <div className="font-semibold">Event Notifications</div>
+                        <div className="text-sm text-muted-foreground">Automated event emails</div>
+                      </div>
+                    </Button>
+                  </Link>
 
-                  <Button variant="outline" className="justify-start h-auto p-4">
-                    <div className="text-left">
-                      <div className="font-semibold">Welcome Series</div>
-                      <div className="text-sm text-muted-foreground">New member onboarding</div>
-                    </div>
-                  </Button>
+                  <Link to="/members">
+                    <Button variant="outline" className="justify-start h-auto p-4 w-full">
+                      <div className="text-left">
+                        <div className="font-semibold">Welcome Series</div>
+                        <div className="text-sm text-muted-foreground">New member onboarding</div>
+                      </div>
+                    </Button>
+                  </Link>
 
-                  <Button variant="outline" className="justify-start h-auto p-4">
-                    <div className="text-left">
-                      <div className="font-semibold">Prayer Requests</div>
-                      <div className="text-sm text-muted-foreground">Prayer email notifications</div>
-                    </div>
-                  </Button>
+                  <Link to="/prayer-requests">
+                    <Button variant="outline" className="justify-start h-auto p-4 w-full">
+                      <div className="text-left">
+                        <div className="font-semibold">Prayer Requests</div>
+                        <div className="text-sm text-muted-foreground">Prayer email notifications</div>
+                      </div>
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             </TabsContent>

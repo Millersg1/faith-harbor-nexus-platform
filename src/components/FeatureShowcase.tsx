@@ -85,33 +85,49 @@ const FeatureShowcase = () => {
 
         {/* Core Features Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16 px-4 sm:px-0">
-          {coreFeatures.map((feature, index) => (
-            <div 
-              key={index} 
-              className="group bg-card rounded-xl p-4 sm:p-6 shadow-soft hover:shadow-medium transition-all duration-300 border border-border hover:border-primary/20"
-            >
-              <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${feature.gradient} mb-4`}>
-                <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-              </div>
-              
-              <h3 className="text-lg sm:text-xl font-semibold mb-3 group-hover:text-primary transition-colors text-gold">
-                {feature.title}
-              </h3>
-              
-              <p className="text-muted-foreground mb-4 leading-relaxed text-sm sm:text-base">
-                {feature.description}
-              </p>
-              
-              <ul className="space-y-2">
-                {feature.benefits.map((benefit, idx) => (
-                  <li key={idx} className="flex items-center text-xs sm:text-sm text-muted-foreground">
-                    <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-primary mr-2 flex-shrink-0" />
-                    {benefit}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {coreFeatures.map((feature, index) => {
+            // Define navigation paths for each feature
+            const getFeaturePath = (title: string) => {
+              switch(title) {
+                case "AI Spiritual Companion": return "/ai-companion";
+                case "Complete Financial Suite": return "/financial-management";
+                case "Member Management": return "/members";
+                case "Event & Volunteer Management": return "/events";
+                case "Communication Hub": return "/email-marketing";
+                case "Advanced Analytics": return "/analytics";
+                default: return "/dashboard";
+              }
+            };
+
+            return (
+              <Link 
+                key={index}
+                to={getFeaturePath(feature.title)}
+                className="group bg-card rounded-xl p-4 sm:p-6 shadow-soft hover:shadow-medium transition-all duration-300 border border-border hover:border-primary/20 block"
+              >
+                <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${feature.gradient} mb-4`}>
+                  <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                </div>
+                
+                <h3 className="text-lg sm:text-xl font-semibold mb-3 group-hover:text-primary transition-colors text-gold">
+                  {feature.title}
+                </h3>
+                
+                <p className="text-muted-foreground mb-4 leading-relaxed text-sm sm:text-base">
+                  {feature.description}
+                </p>
+                
+                <ul className="space-y-2">
+                  {feature.benefits.map((benefit, idx) => (
+                    <li key={idx} className="flex items-center text-xs sm:text-sm text-muted-foreground">
+                      <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4 text-primary mr-2 flex-shrink-0" />
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              </Link>
+            );
+          })}
         </div>
 
         {/* Additional Features */}
