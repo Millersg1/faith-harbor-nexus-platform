@@ -6,8 +6,8 @@ const PricingSection = () => {
   const plans = [
     {
       name: "Essential",
-      price: 49,
-      description: "Perfect for small churches and ministries",
+      price: 97,
+      description: "Perfect for small churches getting started - actively building features",
       features: [
         "Up to 100 members",
         "Basic member management",
@@ -23,8 +23,8 @@ const PricingSection = () => {
     },
     {
       name: "Professional",
-      price: 99,
-      description: "Ideal for growing churches and organizations",
+      price: 197,
+      description: "Growing churches - comprehensive platform in active development",
       features: [
         "Up to 500 members",
         "Advanced member management",
@@ -42,8 +42,8 @@ const PricingSection = () => {
     },
     {
       name: "Enterprise",
-      price: 199,
-      description: "For large churches and multi-site ministries",
+      price: 397,
+      description: "Large churches - comprehensive solution actively being built",
       features: [
         "Unlimited members",
         "Multi-site management",

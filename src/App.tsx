@@ -79,10 +79,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AuthProvider>
-          <ScrollToTopWrapper>
-            <ActivityTrackerWrapper>
-              <div className="min-h-screen flex flex-col">
-              <div className="flex-1">
+          <ActivityTrackerWrapper>
+            <div className="min-h-screen flex flex-col">
+            <div className="flex-1">
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/auth" element={<Auth />} />

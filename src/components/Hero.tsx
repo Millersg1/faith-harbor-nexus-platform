@@ -35,7 +35,7 @@ const Hero = () => {
             boxShadow: '0 0 20px hsl(var(--gold) / 0.3), inset 0 1px 0 rgba(255,255,255,0.2)'
           }}>
             <Zap className="h-4 w-4 mr-2 text-yellow-300 drop-shadow-sm" />
-            <span className="text-sm font-semibold">Introducing AI-Powered Ministry Platform</span>
+            <span className="text-sm font-semibold">Ministry Platform in Active Development</span>
           </div>
 
           {/* Headline */}
