@@ -15,9 +15,14 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
               <img src={faithHarborLogo} alt="Faith Harbor Ministry Platform" className="h-10 w-10 rounded-full bg-white p-1" />
-              <h3 className="text-2xl font-bold" style={{color: "hsl(var(--gold))"}}>
-                Faith Harbor™ Ministry Platform
-              </h3>
+              <div className="flex flex-col">
+                <h3 className="text-xl sm:text-2xl font-bold text-gold leading-tight">
+                  Faith Harbor™
+                </h3>
+                <p className="text-sm font-semibold text-gold opacity-90">
+                  Ministry Platform
+                </p>
+              </div>
             </div>
             <p className="text-sm text-gray-700">
               The complete ministry management platform built specifically for churches and Christian businesses.
