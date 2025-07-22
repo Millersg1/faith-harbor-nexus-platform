@@ -19,7 +19,7 @@ const PricingSection = () => {
         "Email support"
       ],
       popular: false,
-      cta: "Join Early Access"
+      cta: "Join Founding Members"
     },
     {
       name: "Professional",
@@ -38,7 +38,7 @@ const PricingSection = () => {
         "Priority support"
       ],
       popular: true,
-      cta: "Join Early Access"
+      cta: "Join Founding Members"
     },
     {
       name: "Enterprise",
@@ -71,7 +71,7 @@ const PricingSection = () => {
             <span className="block text-primary">Designed for Every Ministry Size</span>
           </h2>
           <p className="body-lg text-muted-foreground max-w-3xl mx-auto">
-            Our anticipated pricing when the platform launches. Join early access for special founding member rates.
+            Our anticipated pricing when the platform launches. Join our founding members program for special rates.
           </p>
         </div>
 
@@ -134,7 +134,7 @@ const PricingSection = () => {
               <h3 className="text-xl font-bold" style={{color: "hsl(var(--gold))"}}>All Plans Include</h3>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-muted-foreground">
-              <div>✓ Early access program</div>
+              <div>✓ Founding members program</div>
               <div>✓ Founding member rates</div>
               <div>✓ Security-first design</div>
               <div>✓ Regular development updates</div>

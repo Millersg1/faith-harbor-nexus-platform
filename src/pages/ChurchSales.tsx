@@ -115,7 +115,7 @@ const ChurchSales = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link to="/auth">
                 <Button size="lg" variant="premium" className="px-8 py-4 text-lg">
-                  Join Early Access
+                  Join Founding Members
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
@@ -239,14 +239,14 @@ const ChurchSales = () => {
                 </CardTitle>
                 <CardDescription className="text-base">
                   Faith Harbor is being built with input from church leaders like you. 
-                  Join our early access program to help shape every feature.
+                  Join our founding members program to help shape every feature.
                 </CardDescription>
               </CardHeader>
               <CardContent className="text-center">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                   <div>
-                    <div className="text-3xl font-bold text-primary mb-2">Early</div>
-                    <div className="text-sm text-muted-foreground">Access Program</div>
+                    <div className="text-3xl font-bold text-primary mb-2">Founding</div>
+                    <div className="text-sm text-muted-foreground">Members Program</div>
                   </div>
                   <div>
                     <div className="text-3xl font-bold text-primary mb-2">2025</div>
@@ -265,7 +265,7 @@ const ChurchSales = () => {
                   <Link to="/auth">
                     <Button size="lg" variant="hero">
                       <Zap className="mr-2 h-5 w-5" />
-                      Join Early Access Program
+                      Join Founding Members Program
                     </Button>
                   </Link>
                 </div>
@@ -322,7 +322,7 @@ const ChurchSales = () => {
                 <CardContent>
                   <Link to="/auth">
                     <Button variant={plan.popular ? "hero" : "outline"} className="w-full">
-                      Join Early Access
+                      Join Founding Members
                     </Button>
                   </Link>
                 </CardContent>
@@ -332,7 +332,7 @@ const ChurchSales = () => {
 
           <div className="text-center mt-12">
             <p className="text-muted-foreground">
-              Early access members receive special founding member rates when we launch
+              Founding members receive special founding member rates when we launch
             </p>
           </div>
         </div>

@@ -93,7 +93,7 @@ const Dashboard = () => {
                 Welcome to Faith Harbor
               </h1>
               <p className="text-muted-foreground">
-                You're part of our early access program
+                You're part of our founding members program
               </p>
             </div>
             <Button variant="outline" onClick={handleSignOut}>
@@ -102,13 +102,13 @@ const Dashboard = () => {
             </Button>
           </div>
 
-          {/* Early Access Status */}
+          {/* Founding Members Status */}
           <Card className="mb-8 border-primary/20 bg-primary/5">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <Star className="h-6 w-6 text-primary mr-3" />
-                  <CardTitle>Early Access Member</CardTitle>
+                  <CardTitle>Founding Member</CardTitle>
                 </div>
                 <Badge variant="secondary" className="bg-primary/10 text-primary">
                   Founding Member
@@ -121,8 +121,8 @@ const Dashboard = () => {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">Early</div>
-                  <div className="text-sm text-muted-foreground">Access Status</div>
+                  <div className="text-2xl font-bold text-primary">Founding</div>
+                  <div className="text-sm text-muted-foreground">Member Status</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-primary">600+</div>
@@ -216,7 +216,7 @@ const Dashboard = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground text-sm mb-4">
-                      Connect with other early access members
+                      Connect with other founding members
                     </p>
                     <Button variant="outline" className="w-full">
                       <Users className="h-4 w-4 mr-2" />
@@ -263,7 +263,7 @@ const Dashboard = () => {
                 <CardHeader>
                   <CardTitle>We Value Your Input</CardTitle>
                   <CardDescription>
-                    Your feedback as an early access member is crucial to our development process
+                    Your feedback as a founding member is crucial to our development process
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">

@@ -16,7 +16,7 @@ const CallToAction = () => {
           }}>
             Help Us Build the Future of Ministry
             <span className="block" style={{color: "hsl(var(--gold))"}}>
-              Join Our Early Access Program
+              Join Our Founding Members Program
             </span>
           </h2>
 
@@ -47,7 +47,7 @@ const CallToAction = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
             <Link to="/auth">
               <Button size="lg" variant="premium" className="px-10 py-4 text-lg">
-                Join Early Access Program
+                Join Founding Members
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -62,7 +62,7 @@ const CallToAction = () => {
           <p className="text-white/80 text-sm" style={{
             textShadow: '1px 1px 3px rgba(0,0,0,0.6)'
           }}>
-            No cost to join • Early access benefits • Help shape the platform
+            No cost to join • Founding member benefits • Help shape the platform
           </p>
         </div>
       </div>

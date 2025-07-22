@@ -190,7 +190,7 @@ const Navigation = () => {
               </Link>
               <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
                 <Button variant="cta" className="w-full">
-                  Join Early Access
+                  Join Founding Members
                 </Button>
               </Link>
             </div>

@@ -64,7 +64,7 @@ const MobileAppPreview = () => {
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">
             <Download className="h-6 w-6" />
-            <span>Get Early Access</span>
+            <span>Join Beta Program</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -295,7 +295,7 @@ const MobileAppPreview = () => {
         </CardHeader>
         <CardContent className="space-y-4">
           <p className="text-muted-foreground">
-            Be among the first to experience our mobile app. Beta testers get early access and can help shape the final product.
+            Be among the first to experience our mobile app. Beta testers get exclusive access and can help shape the final product.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button size="lg" className="flex-1">

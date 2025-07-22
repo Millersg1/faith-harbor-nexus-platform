@@ -13,8 +13,8 @@ const TestimonialsSection = () => {
       icon: "⚡"
     },
     {
-      title: "Early Access Program",
-      description: "Join our development community to help shape the platform and get exclusive early access as features become available.",
+      title: "Founding Members Program",
+      description: "Join our development community to help shape the platform and get exclusive access as features become available.",
       icon: "🚀"
     }
   ];
@@ -58,11 +58,11 @@ const TestimonialsSection = () => {
 
         {/* Development Status */}
         <div className="mt-16 text-center">
-          <p className="text-muted-foreground mb-8">Currently in development - Join our early access program</p>
+          <p className="text-muted-foreground mb-8">Currently in development - Join our founding members program</p>
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
             <div className="text-sm font-medium">✓ Security-First Development</div>
             <div className="text-sm font-medium">✓ Ministry-Focused Features</div>
-            <div className="text-sm font-medium">✓ Early Access Program</div>
+            <div className="text-sm font-medium">✓ Founding Members Program</div>
             <div className="text-sm font-medium">✓ Community Feedback Driven</div>
           </div>
         </div>

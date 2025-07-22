@@ -275,7 +275,7 @@ const AuthPage = () => {
                     
                     <Button type="submit" className="w-full" disabled={loading}>
                       {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      Join Early Access Program
+                      Join Founding Members Program
                     </Button>
                   </form>
                 </TabsContent>

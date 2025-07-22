@@ -67,7 +67,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-8 sm:mb-12 animate-scale-in px-4 sm:px-0">
             <Link to="/auth">
               <Button size="lg" variant="hero" className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg">
-                Join Early Access Program
+                Join Founding Members
                 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </Button>
             </Link>
@@ -85,7 +85,7 @@ const Hero = () => {
           }}>
             <p className="text-sm mb-4 font-medium">Being built specifically for churches and Christian businesses</p>
             <div className="flex flex-wrap justify-center gap-8 opacity-90">
-              <span className="text-sm font-medium">✓ Early Access Program</span>
+              <span className="text-sm font-medium">✓ Founding Members Program</span>
               <span className="text-sm font-medium">✓ Community Input</span>
               <span className="text-sm font-medium">✓ Development Updates</span>
               <span className="text-sm font-medium">✓ Security-First Design</span>
