@@ -45,10 +45,10 @@ const Navigation = () => {
           <Link to="/" className="flex items-center space-x-3">
             <img src={faithHarborLogo} alt="Faith Harbor Ministry Platform" className="h-8 w-8" />
             <div className="flex flex-col">
-              <span className="text-lg sm:text-xl font-bold text-gold leading-tight">
+              <span className="text-xl sm:text-2xl font-bold text-gold leading-tight">
                 Faith Harbor™
               </span>
-              <span className="text-xs font-semibold text-gold opacity-90">
+              <span className="text-sm font-semibold text-gold opacity-90">
                 Ministry Platform
               </span>
             </div>
