@@ -14,10 +14,10 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  // Temporarily force non-authenticated view for testing
-  // if (user) {
-  //   return <AuthenticatedNavigation />;
-  // }
+  // Show authenticated navigation if user is logged in
+  if (user) {
+    return <AuthenticatedNavigation />;
+  }
 
   const handleDropdownToggle = (dropdown: string) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
