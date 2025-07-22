@@ -14,9 +14,9 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <img src={faithHarborLogo} alt="Faith Harbor" className="h-10 w-10 rounded-full bg-white p-1" />
+              <img src={faithHarborLogo} alt="Faith Harbor Ministry Platform" className="h-10 w-10 rounded-full bg-white p-1" />
               <h3 className="text-2xl font-bold" style={{color: "hsl(var(--gold))"}}>
-                Faith Harbor™
+                Faith Harbor™ Ministry Platform
               </h3>
             </div>
             <p className="text-sm text-gray-700">
