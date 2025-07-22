@@ -1,30 +1,18 @@
 import { Link } from "react-router-dom";
-import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-import FeatureShowcase from "@/components/FeatureShowcase";
-import { VideoSection } from "@/components/VideoSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import PricingSection from "@/components/PricingSection";
-import CallToAction from "@/components/CallToAction";
-import { Button } from "@/components/ui/button";
-import { BookOpen } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
-      
-      <Hero />
-      <FeatureShowcase />
-      <VideoSection 
-        title="See Faith Harbor™ in Action"
-        subtitle="Watch & Learn"
-        description="Discover how Faith Harbor™ can transform your ministry with our comprehensive video guides"
-        showGrid={false}
-      />
-      <TestimonialsSection />
-      <PricingSection />
-      <CallToAction />
+    <div className="min-h-screen bg-background p-8">
+      <h1 className="text-4xl font-bold text-foreground mb-4">Faith Harbor™</h1>
+      <p className="text-lg text-muted-foreground mb-8">
+        Testing if the page loads correctly...
+      </p>
+      <Link 
+        to="/auth" 
+        className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90"
+      >
+        Go to Auth
+      </Link>
     </div>
   );
 };
