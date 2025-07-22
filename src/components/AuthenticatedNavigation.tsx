@@ -87,9 +87,9 @@ const AuthenticatedNavigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/dashboard" className="flex items-center space-x-3">
-            <img src={faithHarborLogo} alt="Faith Harbor" className="h-8 w-8" />
+            <img src={faithHarborLogo} alt="Faith Harbor Ministry Platform" className="h-8 w-8" />
             <span className="text-xl font-bold bg-lighthouse-gradient bg-clip-text text-transparent">
-              Faith Harbor™
+              Faith Harbor™ Ministry Platform
             </span>
           </Link>
 

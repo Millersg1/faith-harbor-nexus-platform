@@ -101,7 +101,7 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-700">
-            © {currentYear} Faith Harbor™. All rights reserved.
+            © {currentYear} Faith Harbor™ Ministry Platform. All rights reserved.
           </p>
           <p className="text-sm text-gray-700">
             Ministry management platform in development

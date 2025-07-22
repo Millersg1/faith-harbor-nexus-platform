@@ -51,7 +51,7 @@ const Hero = () => {
             }}>
               Community
             </span>
-            <span className="block sm:inline">with Faith Harbor</span>
+            <span className="block sm:inline">with Faith Harbor™</span>
           </h1>
 
           {/* Subheadline */}

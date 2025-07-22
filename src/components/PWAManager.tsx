@@ -63,7 +63,7 @@ export const PWAManager = () => {
     });
 
     window.addEventListener('appinstalled', () => {
-      toast.success('Faith Harbor installed successfully!');
+      toast.success("Faith Harbor™ Ministry Platform installed successfully!");
       deferredPrompt = null;
     });
 
