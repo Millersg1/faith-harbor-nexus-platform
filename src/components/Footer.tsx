@@ -88,11 +88,11 @@ const Footer = () => {
             <div className="space-y-2 text-sm text-gray-700">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4" />
-                <span>support@faithharbor.com</span>
+                <span>support@faithharborministryplatform.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                <span>Coming Soon</span>
+                <span>+1 855 578 3379</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4" />
