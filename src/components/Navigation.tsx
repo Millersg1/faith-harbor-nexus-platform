@@ -44,9 +44,14 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img src={faithHarborLogo} alt="Faith Harbor Ministry Platform" className="h-8 w-8" />
-            <span className="text-xl font-bold bg-lighthouse-gradient bg-clip-text text-transparent">
-              Faith Harbor™ Ministry Platform
-            </span>
+            <div className="flex flex-col">
+              <span className="text-lg sm:text-xl font-bold text-gold leading-tight">
+                Faith Harbor™
+              </span>
+              <span className="text-xs font-semibold text-gold opacity-90">
+                Ministry Platform
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
