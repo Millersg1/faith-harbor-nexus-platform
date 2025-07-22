@@ -15,6 +15,7 @@ import { useToast } from "@/hooks/use-toast";
 import { MessageCircle, Send, User, Clock, Reply, Phone } from "lucide-react";
 import { format } from "date-fns";
 import TwilioFlexPanel from "@/components/TwilioFlexPanel";
+import { PhoneSystemTest } from "@/components/PhoneSystemTest";
 import { ScriptureQuote } from "@/components/ScriptureQuote";
 
 interface Message {
@@ -202,14 +203,18 @@ const Messages = () => {
       </div>
 
       <Tabs defaultValue="messages" className="w-full">
-        <TabsList className="grid w-full grid-cols-2">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="messages" className="flex items-center gap-2">
             <MessageCircle className="h-4 w-4" />
             Internal Messages
           </TabsTrigger>
           <TabsTrigger value="flex" className="flex items-center gap-2">
             <Phone className="h-4 w-4" />
-            Flex Support
+            Support & SMS
+          </TabsTrigger>
+          <TabsTrigger value="phone-test" className="flex items-center gap-2">
+            <Phone className="h-4 w-4" />
+            Phone Test
           </TabsTrigger>
         </TabsList>
         
@@ -378,6 +383,12 @@ const Messages = () => {
         
         <TabsContent value="flex" className="mt-6">
           <TwilioFlexPanel />
+        </TabsContent>
+        
+        <TabsContent value="phone-test" className="mt-6">
+          <div className="flex justify-center">
+            <PhoneSystemTest />
+          </div>
         </TabsContent>
       </Tabs>
       </div>
