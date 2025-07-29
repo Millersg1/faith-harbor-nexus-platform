@@ -101,7 +101,7 @@ export function CreateMemoryBookDialog({ open, onOpenChange, onBookCreated }: Cr
         .insert({
           title: formData.title,
           description: formData.description || null,
-          memorial_id: formData.memorial_id || null,
+          memorial_id: formData.memorial_id === "none" ? null : formData.memorial_id || null,
           template_id: formData.template_id,
           creator_id: userData.user?.id || null,
           allow_comments: formData.allow_comments,
@@ -173,7 +173,7 @@ export function CreateMemoryBookDialog({ open, onOpenChange, onBookCreated }: Cr
                   <SelectValue placeholder="Select memorial" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">No memorial selected</SelectItem>
+                  <SelectItem value="none">No memorial selected</SelectItem>
                   {memorials.map((memorial) => (
                     <SelectItem key={memorial.id} value={memorial.id}>
                       {memorial.deceased_name}
