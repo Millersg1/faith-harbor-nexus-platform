@@ -179,7 +179,10 @@ export function CreateBereavementCareDialog({ open, onOpenChange, onCareCreated 
                   selected={formData.scheduled_date || undefined}
                   onSelect={(date) => setFormData({ ...formData, scheduled_date: date || null })}
                   initialFocus
-                  className="pointer-events-auto"
+                  captionLayout="dropdown-buttons"
+                  fromYear={new Date().getFullYear()}
+                  toYear={new Date().getFullYear() + 2}
+                  className="pointer-events-auto p-3"
                 />
               </PopoverContent>
             </Popover>

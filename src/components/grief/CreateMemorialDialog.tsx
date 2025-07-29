@@ -135,7 +135,10 @@ export function CreateMemorialDialog({ open, onOpenChange, onMemorialCreated }: 
                     onSelect={(date) => setFormData({ ...formData, date_of_birth: date || null })}
                     disabled={(date) => date > new Date()}
                     initialFocus
-                    className="pointer-events-auto"
+                    captionLayout="dropdown-buttons"
+                    fromYear={1920}
+                    toYear={new Date().getFullYear()}
+                    className="pointer-events-auto p-3"
                   />
                 </PopoverContent>
               </Popover>
@@ -163,7 +166,10 @@ export function CreateMemorialDialog({ open, onOpenChange, onMemorialCreated }: 
                     onSelect={(date) => setFormData({ ...formData, date_of_passing: date || null })}
                     disabled={(date) => date > new Date()}
                     initialFocus
-                    className="pointer-events-auto"
+                    captionLayout="dropdown-buttons"
+                    fromYear={1920}
+                    toYear={new Date().getFullYear()}
+                    className="pointer-events-auto p-3"
                   />
                 </PopoverContent>
               </Popover>
@@ -213,7 +219,10 @@ export function CreateMemorialDialog({ open, onOpenChange, onMemorialCreated }: 
                     selected={formData.service_date || undefined}
                     onSelect={(date) => setFormData({ ...formData, service_date: date || null })}
                     initialFocus
-                    className="pointer-events-auto"
+                    captionLayout="dropdown-buttons"
+                    fromYear={new Date().getFullYear()}
+                    toYear={new Date().getFullYear() + 2}
+                    className="pointer-events-auto p-3"
                   />
                 </PopoverContent>
               </Popover>
