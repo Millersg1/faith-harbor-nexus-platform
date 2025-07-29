@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
 import { Heart, Mail, Phone, MapPin } from "lucide-react";
-import faithHarborLogo from "@/assets/faith-harbor-logo.png";
+import faithHarborLogo from "@/assets/faith-harbor-platform-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

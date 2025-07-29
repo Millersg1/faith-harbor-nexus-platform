@@ -27,7 +27,7 @@ import {
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import LanguageSwitcher from "./LanguageSwitcher";
-import faithHarborLogo from "@/assets/faith-harbor-logo.png";
+import faithHarborLogo from "@/assets/faith-harbor-platform-logo.png";
 
 const AuthenticatedNavigation = () => {
   const { user, signOut, isAdmin, userRoles } = useAuth();

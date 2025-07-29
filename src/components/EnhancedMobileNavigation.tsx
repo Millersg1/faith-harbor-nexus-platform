@@ -37,7 +37,7 @@ import {
   User,
   LogOut,
 } from "lucide-react";
-import faithHarborLogo from "@/assets/faith-harbor-logo.png";
+import faithHarborLogo from "@/assets/faith-harbor-platform-logo.png";
 
 interface NavItem {
   title: string;

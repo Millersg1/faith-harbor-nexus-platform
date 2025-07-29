@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { removeBackground, loadImageFromSrc } from '@/utils/backgroundRemoval';
-import faithHarborLogo from '@/assets/faith-harbor-logo.png';
+import faithHarborLogo from '@/assets/faith-harbor-platform-logo.png';
 
 interface LogoProcessorProps {
   onProcessed: (processedImageUrl: string) => void;

@@ -6,7 +6,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import AuthenticatedNavigation from "./AuthenticatedNavigation";
 import LanguageSwitcher from "./LanguageSwitcher";
-import faithHarborLogo from "@/assets/faith-harbor-logo.png";
+import faithHarborLogo from "@/assets/faith-harbor-platform-logo.png";
 
 const Navigation = () => {
   const { user } = useAuth();
