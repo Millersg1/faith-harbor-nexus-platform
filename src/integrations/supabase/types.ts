@@ -4143,6 +4143,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      assign_admin_role: {
+        Args: { user_email: string }
+        Returns: undefined
+      }
       calculate_course_progress: {
         Args: { enrollment_uuid: string }
         Returns: number
