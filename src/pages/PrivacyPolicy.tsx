@@ -62,7 +62,7 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-4 text-blue-600">Contact Us</h2>
             <p>
-              If you have any questions about this Privacy Policy, please contact us at privacy@faithharbor.com.
+              If you have any questions about this Privacy Policy, please contact us at Pastorshawn@faithharborministryplatform.com.
             </p>
           </section>
 

@@ -294,7 +294,7 @@ const Demo = () => {
                     <Mail className="h-6 w-6 text-green-600" />
                     <div>
                       <p className="font-medium text-gray-900">Send us an email</p>
-                      <p className="text-sm text-gray-600">demo@faithharbor.com</p>
+                      <p className="text-sm text-gray-600">Pastorshawn@faithharborministryplatform.com</p>
                     </div>
                   </div>
                   <div className="pt-4 border-t border-gray-200">

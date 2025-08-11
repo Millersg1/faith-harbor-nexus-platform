@@ -78,7 +78,7 @@ const CookiePolicy = () => {
           <section>
             <h2 className="text-2xl font-semibold mb-4 text-blue-600">Contact Us</h2>
             <p>
-              If you have any questions about our use of cookies, please contact us at cookies@faithharbor.com.
+              If you have any questions about our use of cookies, please contact us at Pastorshawn@faithharborministryplatform.com.
             </p>
           </section>
 
