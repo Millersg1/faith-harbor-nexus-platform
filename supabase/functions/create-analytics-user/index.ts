@@ -13,36 +13,69 @@ serve(async (req) => {
   }
 
   try {
-    console.log("Creating analytics test user...");
+    // Require authentication and admin role for this function
+    const authHeader = req.headers.get('Authorization');
+    if (!authHeader) {
+      throw new Error('No authorization header provided');
+    }
 
-    // Use service role key to bypass RLS for user creation
+    const token = authHeader.replace('Bearer ', '');
+    
+    // Create Supabase client with service role key to bypass RLS for admin operations
     const supabaseAdmin = createClient(
-      Deno.env.get("SUPABASE_URL") ?? "",
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '',
       {
         auth: {
-          autoRefreshToken: false,
-          persistSession: false
-        }
+          persistSession: false,
+        },
       }
     );
 
-    const { email, password } = await req.json();
+    // Create Supabase client with anon key to verify requesting user
+    const supabaseAnon = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_ANON_KEY') ?? ''
+    );
+
+    // Verify the requesting user is authenticated and has admin privileges
+    const { data: userData, error: userError } = await supabaseAnon.auth.getUser(token);
+    if (userError || !userData.user) {
+      throw new Error('Invalid authentication token');
+    }
+
+    console.log(`Admin ${userData.user.email} creating analytics test user...`);
+
+    // Check if user has admin privileges
+    const { data: userRoles, error: roleError } = await supabaseAdmin
+      .from('member_roles')
+      .select('role_name')
+      .eq('user_id', userData.user.id)
+      .eq('active', true);
+
+    if (roleError || !userRoles?.some(role => role.role_name === 'admin')) {
+      throw new Error('Insufficient privileges - admin access required');
+    }
+
+    const { email } = await req.json();
+    const testEmail = email || 'analytics.tester@faithharborministryplatform.com';
+    const password = 'AnalyticsTest2024!'; // Secure temporary password
     
     if (!email || !password) {
       throw new Error("Email and password are required");
     }
 
-    console.log(`Attempting to create user: ${email}`);
+    console.log(`Attempting to create user: ${testEmail}`);
 
     // Create the user with admin privileges
     const { data: user, error: userError } = await supabaseAdmin.auth.admin.createUser({
-      email: email,
+      email: testEmail,
       password: password,
       email_confirm: true, // Skip email confirmation for test user
       user_metadata: {
-        role: 'analytics_viewer',
-        created_by: 'system'
+        first_name: 'Analytics',
+        last_name: 'Tester',
+        display_name: 'Analytics Tester'
       }
     });
 
@@ -63,7 +96,7 @@ serve(async (req) => {
       .insert({
         user_id: user.user.id,
         role_name: "analytics_viewer",
-        assigned_by: user.user.id, // Self-assigned by system
+        assigned_by: userData.user.id, // Assigned by requesting admin
         role_description: "Read-only access to analytics and SEO data",
         active: true
       });
@@ -79,8 +112,16 @@ serve(async (req) => {
       JSON.stringify({ 
         success: true, 
         message: "Analytics test user created successfully",
-        user_id: user.user.id,
-        email: user.user.email
+        user: {
+          id: user.user.id,
+          email: testEmail,
+          role: 'analytics_viewer'
+        },
+        credentials: {
+          email: testEmail,
+          password: password,
+          note: 'Please change password after first login'
+        }
       }),
       {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
