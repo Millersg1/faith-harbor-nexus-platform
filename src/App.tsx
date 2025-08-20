@@ -70,6 +70,7 @@ import { PWAManager } from "./components/PWAManager";
 import { OfflineIndicator } from "./components/OfflineIndicator";
 import ActivityTrackerWrapper from "./components/ActivityTrackerWrapper";
 import AdminActivityMonitorPage from "./pages/AdminActivityMonitor";
+import SecurityDashboard from "./pages/SecurityDashboard";
 import DashboardNavigation from "./components/DashboardNavigation";
 import { SecurityHeaders } from "./components/SecurityHeaders";
 
@@ -117,6 +118,7 @@ const AppContent = () => {
               <Route path="/admin-activity-monitor" element={<AdminActivityMonitorPage />} />
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin/activity" element={<AdminActivityMonitorPage />} />
+              <Route path="/admin/security" element={<SecurityDashboard />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:id" element={<Blog />} />
               <Route path="/ai-companion" element={<AICompanion />} />
