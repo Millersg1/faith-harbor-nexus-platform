@@ -49,6 +49,7 @@ import MemberPortal from "./pages/MemberPortal";
 import MemberDirectory from "./pages/MemberDirectory";
 import GriefSupport from "./pages/GriefSupport";
 import MemoryBooks from "./pages/MemoryBooks";
+import WeddingPlanning from "./pages/WeddingPlanning";
 import Settings from "./pages/Settings";
 import Marketplace from "./pages/Marketplace";
 import SEOManagement from "./pages/SEOManagement";

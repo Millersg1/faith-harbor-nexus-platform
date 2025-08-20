@@ -2414,6 +2414,62 @@ export type Database = {
         }
         Relationships: []
       }
+      premarriage_sessions: {
+        Row: {
+          completion_status: string | null
+          counselor_id: string | null
+          couple_id: string | null
+          created_at: string | null
+          duration_minutes: number | null
+          homework_assigned: string | null
+          id: string
+          next_session_date: string | null
+          notes: string | null
+          session_date: string
+          session_type: string
+          topics_covered: string[] | null
+          updated_at: string | null
+        }
+        Insert: {
+          completion_status?: string | null
+          counselor_id?: string | null
+          couple_id?: string | null
+          created_at?: string | null
+          duration_minutes?: number | null
+          homework_assigned?: string | null
+          id?: string
+          next_session_date?: string | null
+          notes?: string | null
+          session_date: string
+          session_type: string
+          topics_covered?: string[] | null
+          updated_at?: string | null
+        }
+        Update: {
+          completion_status?: string | null
+          counselor_id?: string | null
+          couple_id?: string | null
+          created_at?: string | null
+          duration_minutes?: number | null
+          homework_assigned?: string | null
+          id?: string
+          next_session_date?: string | null
+          notes?: string | null
+          session_date?: string
+          session_type?: string
+          topics_covered?: string[] | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "premarriage_sessions_couple_id_fkey"
+            columns: ["couple_id"]
+            isOneToOne: false
+            referencedRelation: "wedding_couples"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       prices: {
         Row: {
           active: boolean | null
@@ -4359,6 +4415,415 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      wedding_ceremonies: {
+        Row: {
+          bride_vows: string | null
+          ceremony_date: string
+          ceremony_type: string | null
+          couple_id: string | null
+          created_at: string | null
+          custom_vows: boolean | null
+          estimated_duration_minutes: number | null
+          florist_id: string | null
+          groom_vows: string | null
+          id: string
+          livestream_enabled: boolean | null
+          livestream_url: string | null
+          music_selections: Json | null
+          officiant_id: string | null
+          order_of_service: Json | null
+          photographer_id: string | null
+          rehearsal_date: string | null
+          special_elements: Json | null
+          special_instructions: string | null
+          updated_at: string | null
+          venue_location: string
+          videographer_id: string | null
+        }
+        Insert: {
+          bride_vows?: string | null
+          ceremony_date: string
+          ceremony_type?: string | null
+          couple_id?: string | null
+          created_at?: string | null
+          custom_vows?: boolean | null
+          estimated_duration_minutes?: number | null
+          florist_id?: string | null
+          groom_vows?: string | null
+          id?: string
+          livestream_enabled?: boolean | null
+          livestream_url?: string | null
+          music_selections?: Json | null
+          officiant_id?: string | null
+          order_of_service?: Json | null
+          photographer_id?: string | null
+          rehearsal_date?: string | null
+          special_elements?: Json | null
+          special_instructions?: string | null
+          updated_at?: string | null
+          venue_location: string
+          videographer_id?: string | null
+        }
+        Update: {
+          bride_vows?: string | null
+          ceremony_date?: string
+          ceremony_type?: string | null
+          couple_id?: string | null
+          created_at?: string | null
+          custom_vows?: boolean | null
+          estimated_duration_minutes?: number | null
+          florist_id?: string | null
+          groom_vows?: string | null
+          id?: string
+          livestream_enabled?: boolean | null
+          livestream_url?: string | null
+          music_selections?: Json | null
+          officiant_id?: string | null
+          order_of_service?: Json | null
+          photographer_id?: string | null
+          rehearsal_date?: string | null
+          special_elements?: Json | null
+          special_instructions?: string | null
+          updated_at?: string | null
+          venue_location?: string
+          videographer_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "wedding_ceremonies_couple_id_fkey"
+            columns: ["couple_id"]
+            isOneToOne: false
+            referencedRelation: "wedding_couples"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      wedding_couples: {
+        Row: {
+          bride_id: string | null
+          bride_name: string
+          budget_amount: number | null
+          ceremony_type: string | null
+          contact_email: string
+          contact_phone: string | null
+          created_at: string | null
+          engagement_date: string | null
+          estimated_guests: number | null
+          groom_id: string | null
+          groom_name: string
+          id: string
+          planning_status: string | null
+          reception_location: string | null
+          relationship_status: string
+          special_requests: string | null
+          updated_at: string | null
+          venue_location: string | null
+          wedding_date: string | null
+        }
+        Insert: {
+          bride_id?: string | null
+          bride_name: string
+          budget_amount?: number | null
+          ceremony_type?: string | null
+          contact_email: string
+          contact_phone?: string | null
+          created_at?: string | null
+          engagement_date?: string | null
+          estimated_guests?: number | null
+          groom_id?: string | null
+          groom_name: string
+          id?: string
+          planning_status?: string | null
+          reception_location?: string | null
+          relationship_status?: string
+          special_requests?: string | null
+          updated_at?: string | null
+          venue_location?: string | null
+          wedding_date?: string | null
+        }
+        Update: {
+          bride_id?: string | null
+          bride_name?: string
+          budget_amount?: number | null
+          ceremony_type?: string | null
+          contact_email?: string
+          contact_phone?: string | null
+          created_at?: string | null
+          engagement_date?: string | null
+          estimated_guests?: number | null
+          groom_id?: string | null
+          groom_name?: string
+          id?: string
+          planning_status?: string | null
+          reception_location?: string | null
+          relationship_status?: string
+          special_requests?: string | null
+          updated_at?: string | null
+          venue_location?: string | null
+          wedding_date?: string | null
+        }
+        Relationships: []
+      }
+      wedding_guests: {
+        Row: {
+          accommodation_needed: boolean | null
+          couple_id: string | null
+          created_at: string | null
+          dietary_restrictions: string | null
+          gift_received: string | null
+          guest_email: string | null
+          guest_name: string
+          guest_phone: string | null
+          guest_type: string | null
+          id: string
+          invitation_sent: boolean | null
+          invitation_sent_at: string | null
+          notes: string | null
+          plus_one_name: string | null
+          rsvp_date: string | null
+          rsvp_status: string | null
+          thank_you_sent: boolean | null
+        }
+        Insert: {
+          accommodation_needed?: boolean | null
+          couple_id?: string | null
+          created_at?: string | null
+          dietary_restrictions?: string | null
+          gift_received?: string | null
+          guest_email?: string | null
+          guest_name: string
+          guest_phone?: string | null
+          guest_type?: string | null
+          id?: string
+          invitation_sent?: boolean | null
+          invitation_sent_at?: string | null
+          notes?: string | null
+          plus_one_name?: string | null
+          rsvp_date?: string | null
+          rsvp_status?: string | null
+          thank_you_sent?: boolean | null
+        }
+        Update: {
+          accommodation_needed?: boolean | null
+          couple_id?: string | null
+          created_at?: string | null
+          dietary_restrictions?: string | null
+          gift_received?: string | null
+          guest_email?: string | null
+          guest_name?: string
+          guest_phone?: string | null
+          guest_type?: string | null
+          id?: string
+          invitation_sent?: boolean | null
+          invitation_sent_at?: string | null
+          notes?: string | null
+          plus_one_name?: string | null
+          rsvp_date?: string | null
+          rsvp_status?: string | null
+          thank_you_sent?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "wedding_guests_couple_id_fkey"
+            columns: ["couple_id"]
+            isOneToOne: false
+            referencedRelation: "wedding_couples"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      wedding_tasks: {
+        Row: {
+          actual_cost: number | null
+          assigned_to: string | null
+          category: string
+          completed: boolean | null
+          completed_at: string | null
+          couple_id: string | null
+          created_at: string | null
+          description: string | null
+          due_date: string | null
+          estimated_cost: number | null
+          id: string
+          notes: string | null
+          priority: string | null
+          task_name: string
+          updated_at: string | null
+          vendor_id: string | null
+        }
+        Insert: {
+          actual_cost?: number | null
+          assigned_to?: string | null
+          category: string
+          completed?: boolean | null
+          completed_at?: string | null
+          couple_id?: string | null
+          created_at?: string | null
+          description?: string | null
+          due_date?: string | null
+          estimated_cost?: number | null
+          id?: string
+          notes?: string | null
+          priority?: string | null
+          task_name: string
+          updated_at?: string | null
+          vendor_id?: string | null
+        }
+        Update: {
+          actual_cost?: number | null
+          assigned_to?: string | null
+          category?: string
+          completed?: boolean | null
+          completed_at?: string | null
+          couple_id?: string | null
+          created_at?: string | null
+          description?: string | null
+          due_date?: string | null
+          estimated_cost?: number | null
+          id?: string
+          notes?: string | null
+          priority?: string | null
+          task_name?: string
+          updated_at?: string | null
+          vendor_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "wedding_tasks_couple_id_fkey"
+            columns: ["couple_id"]
+            isOneToOne: false
+            referencedRelation: "wedding_couples"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      wedding_vendors: {
+        Row: {
+          availability_calendar: Json | null
+          contact_email: string
+          contact_phone: string | null
+          created_at: string | null
+          id: string
+          is_preferred: boolean | null
+          portfolio_images: Json | null
+          pricing_info: string | null
+          rating: number | null
+          review_count: number | null
+          service_id: string | null
+          specialties: string[] | null
+          updated_at: string | null
+          vendor_name: string
+          vendor_type: string
+          website_url: string | null
+        }
+        Insert: {
+          availability_calendar?: Json | null
+          contact_email: string
+          contact_phone?: string | null
+          created_at?: string | null
+          id?: string
+          is_preferred?: boolean | null
+          portfolio_images?: Json | null
+          pricing_info?: string | null
+          rating?: number | null
+          review_count?: number | null
+          service_id?: string | null
+          specialties?: string[] | null
+          updated_at?: string | null
+          vendor_name: string
+          vendor_type: string
+          website_url?: string | null
+        }
+        Update: {
+          availability_calendar?: Json | null
+          contact_email?: string
+          contact_phone?: string | null
+          created_at?: string | null
+          id?: string
+          is_preferred?: boolean | null
+          portfolio_images?: Json | null
+          pricing_info?: string | null
+          rating?: number | null
+          review_count?: number | null
+          service_id?: string | null
+          specialties?: string[] | null
+          updated_at?: string | null
+          vendor_name?: string
+          vendor_type?: string
+          website_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "wedding_vendors_service_id_fkey"
+            columns: ["service_id"]
+            isOneToOne: false
+            referencedRelation: "services"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      wedding_websites: {
+        Row: {
+          access_password: string | null
+          couple_id: string | null
+          created_at: string | null
+          custom_domain: string | null
+          gift_registry_links: Json | null
+          id: string
+          is_published: boolean | null
+          password_protected: boolean | null
+          photo_gallery: Json | null
+          rsvp_enabled: boolean | null
+          template_id: string
+          updated_at: string | null
+          visitor_count: number | null
+          website_data: Json
+          website_url: string | null
+        }
+        Insert: {
+          access_password?: string | null
+          couple_id?: string | null
+          created_at?: string | null
+          custom_domain?: string | null
+          gift_registry_links?: Json | null
+          id?: string
+          is_published?: boolean | null
+          password_protected?: boolean | null
+          photo_gallery?: Json | null
+          rsvp_enabled?: boolean | null
+          template_id: string
+          updated_at?: string | null
+          visitor_count?: number | null
+          website_data?: Json
+          website_url?: string | null
+        }
+        Update: {
+          access_password?: string | null
+          couple_id?: string | null
+          created_at?: string | null
+          custom_domain?: string | null
+          gift_registry_links?: Json | null
+          id?: string
+          is_published?: boolean | null
+          password_protected?: boolean | null
+          photo_gallery?: Json | null
+          rsvp_enabled?: boolean | null
+          template_id?: string
+          updated_at?: string | null
+          visitor_count?: number | null
+          website_data?: Json
+          website_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "wedding_websites_couple_id_fkey"
+            columns: ["couple_id"]
+            isOneToOne: false
+            referencedRelation: "wedding_couples"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
