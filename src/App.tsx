@@ -50,6 +50,7 @@ import MemberDirectory from "./pages/MemberDirectory";
 import GriefSupport from "./pages/GriefSupport";
 import MemoryBooks from "./pages/MemoryBooks";
 import WeddingPlanning from "./pages/WeddingPlanning";
+import BaptismTracker from "./pages/BaptismTracker";
 import Settings from "./pages/Settings";
 import Marketplace from "./pages/Marketplace";
 import SEOManagement from "./pages/SEOManagement";
@@ -131,6 +132,7 @@ const AppContent = () => {
               <Route path="/grief-support" element={<GriefSupport />} />
               <Route path="/memory-books" element={<MemoryBooks />} />
               <Route path="/wedding-planning" element={<WeddingPlanning />} />
+              <Route path="/baptism-tracker" element={<BaptismTracker />} />
               <Route path="/marketplace" element={<Marketplace />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/seo-management" element={<SEOManagement />} />

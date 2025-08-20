@@ -73,6 +73,7 @@ const AuthenticatedNavigation = () => {
     { title: "Memory Books", href: "/memory-books", icon: BookOpen, desc: "Printable memory books" },
     { title: "Grief Support", href: "/grief-support", icon: Heart, desc: "Bereavement care" },
     { title: "Wedding Planning", href: "/wedding-planning", icon: Heart, desc: "Wedding coordination" },
+    { title: "Baptism Tracker", href: "/baptism-tracker", icon: Heart, desc: "Sacrament management" },
     { title: "Marketplace", href: "/marketplace", icon: Store, desc: "Member services" },
     { title: "SEO Management", href: "/seo-management", icon: Search, desc: "Search optimization" },
     { title: "Sermons", href: "/sermons", icon: FileText, desc: "Sermon management" },

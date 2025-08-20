@@ -290,6 +290,254 @@ export type Database = {
         }
         Relationships: []
       }
+      baptism_certificates: {
+        Row: {
+          baptism_id: string | null
+          certificate_number: string
+          certificate_url: string | null
+          created_at: string
+          id: string
+          issued_by: string | null
+          issued_date: string
+          mailed: boolean | null
+          mailing_address: string | null
+          printed: boolean | null
+          recipient_name: string
+          template_used: string | null
+        }
+        Insert: {
+          baptism_id?: string | null
+          certificate_number: string
+          certificate_url?: string | null
+          created_at?: string
+          id?: string
+          issued_by?: string | null
+          issued_date?: string
+          mailed?: boolean | null
+          mailing_address?: string | null
+          printed?: boolean | null
+          recipient_name: string
+          template_used?: string | null
+        }
+        Update: {
+          baptism_id?: string | null
+          certificate_number?: string
+          certificate_url?: string | null
+          created_at?: string
+          id?: string
+          issued_by?: string | null
+          issued_date?: string
+          mailed?: boolean | null
+          mailing_address?: string | null
+          printed?: boolean | null
+          recipient_name?: string
+          template_used?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "baptism_certificates_baptism_id_fkey"
+            columns: ["baptism_id"]
+            isOneToOne: false
+            referencedRelation: "baptisms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      baptism_preparation_attendance: {
+        Row: {
+          attendance_date: string | null
+          attended: boolean | null
+          baptism_id: string | null
+          id: string
+          notes: string | null
+          session_id: string | null
+        }
+        Insert: {
+          attendance_date?: string | null
+          attended?: boolean | null
+          baptism_id?: string | null
+          id?: string
+          notes?: string | null
+          session_id?: string | null
+        }
+        Update: {
+          attendance_date?: string | null
+          attended?: boolean | null
+          baptism_id?: string | null
+          id?: string
+          notes?: string | null
+          session_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "baptism_preparation_attendance_baptism_id_fkey"
+            columns: ["baptism_id"]
+            isOneToOne: false
+            referencedRelation: "baptisms"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "baptism_preparation_attendance_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "baptism_preparation_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      baptism_preparation_sessions: {
+        Row: {
+          cost: number | null
+          created_at: string
+          description: string | null
+          duration_minutes: number | null
+          id: string
+          instructor_id: string | null
+          location: string | null
+          materials_provided: Json | null
+          max_participants: number | null
+          requirements: string | null
+          session_date: string
+          status: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          cost?: number | null
+          created_at?: string
+          description?: string | null
+          duration_minutes?: number | null
+          id?: string
+          instructor_id?: string | null
+          location?: string | null
+          materials_provided?: Json | null
+          max_participants?: number | null
+          requirements?: string | null
+          session_date: string
+          status?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          cost?: number | null
+          created_at?: string
+          description?: string | null
+          duration_minutes?: number | null
+          id?: string
+          instructor_id?: string | null
+          location?: string | null
+          materials_provided?: Json | null
+          max_participants?: number | null
+          requirements?: string | null
+          session_date?: string
+          status?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      baptisms: {
+        Row: {
+          baptism_date: string
+          baptism_method: Database["public"]["Enums"]["baptism_method"] | null
+          candidate_email: string | null
+          candidate_id: string | null
+          candidate_name: string
+          candidate_phone: string | null
+          certificate_issued: boolean | null
+          certificate_number: string | null
+          counseling_sessions_completed: number | null
+          created_at: string
+          created_by: string | null
+          date_of_birth: string | null
+          emergency_contact_name: string | null
+          emergency_contact_phone: string | null
+          id: string
+          location: string
+          medical_considerations: string | null
+          notes: string | null
+          officiant_id: string | null
+          parent_guardian_email: string | null
+          parent_guardian_name: string | null
+          parent_guardian_phone: string | null
+          photos: Json | null
+          preparation_completed: boolean | null
+          preparation_completion_date: string | null
+          sacrament_type: Database["public"]["Enums"]["sacrament_type"]
+          special_requests: string | null
+          status: string | null
+          updated_at: string
+          video_url: string | null
+          witnesses: Json | null
+        }
+        Insert: {
+          baptism_date: string
+          baptism_method?: Database["public"]["Enums"]["baptism_method"] | null
+          candidate_email?: string | null
+          candidate_id?: string | null
+          candidate_name: string
+          candidate_phone?: string | null
+          certificate_issued?: boolean | null
+          certificate_number?: string | null
+          counseling_sessions_completed?: number | null
+          created_at?: string
+          created_by?: string | null
+          date_of_birth?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
+          id?: string
+          location: string
+          medical_considerations?: string | null
+          notes?: string | null
+          officiant_id?: string | null
+          parent_guardian_email?: string | null
+          parent_guardian_name?: string | null
+          parent_guardian_phone?: string | null
+          photos?: Json | null
+          preparation_completed?: boolean | null
+          preparation_completion_date?: string | null
+          sacrament_type?: Database["public"]["Enums"]["sacrament_type"]
+          special_requests?: string | null
+          status?: string | null
+          updated_at?: string
+          video_url?: string | null
+          witnesses?: Json | null
+        }
+        Update: {
+          baptism_date?: string
+          baptism_method?: Database["public"]["Enums"]["baptism_method"] | null
+          candidate_email?: string | null
+          candidate_id?: string | null
+          candidate_name?: string
+          candidate_phone?: string | null
+          certificate_issued?: boolean | null
+          certificate_number?: string | null
+          counseling_sessions_completed?: number | null
+          created_at?: string
+          created_by?: string | null
+          date_of_birth?: string | null
+          emergency_contact_name?: string | null
+          emergency_contact_phone?: string | null
+          id?: string
+          location?: string
+          medical_considerations?: string | null
+          notes?: string | null
+          officiant_id?: string | null
+          parent_guardian_email?: string | null
+          parent_guardian_name?: string | null
+          parent_guardian_phone?: string | null
+          photos?: Json | null
+          preparation_completed?: boolean | null
+          preparation_completion_date?: string | null
+          sacrament_type?: Database["public"]["Enums"]["sacrament_type"]
+          special_requests?: string | null
+          status?: string | null
+          updated_at?: string
+          video_url?: string | null
+          witnesses?: Json | null
+        }
+        Relationships: []
+      }
       bereavement_care: {
         Row: {
           care_coordinator_id: string | null
@@ -4848,6 +5096,13 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "pastor" | "staff" | "member" | "volunteer" | "guest"
+      baptism_method: "immersion" | "sprinkling" | "pouring"
+      sacrament_type:
+        | "baptism"
+        | "confirmation"
+        | "communion"
+        | "dedication"
+        | "blessing"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -4976,6 +5231,14 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "pastor", "staff", "member", "volunteer", "guest"],
+      baptism_method: ["immersion", "sprinkling", "pouring"],
+      sacrament_type: [
+        "baptism",
+        "confirmation",
+        "communion",
+        "dedication",
+        "blessing",
+      ],
     },
   },
 } as const
