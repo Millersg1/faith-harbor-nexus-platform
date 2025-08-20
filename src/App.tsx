@@ -71,6 +71,7 @@ import { OfflineIndicator } from "./components/OfflineIndicator";
 import ActivityTrackerWrapper from "./components/ActivityTrackerWrapper";
 import AdminActivityMonitorPage from "./pages/AdminActivityMonitor";
 import DashboardNavigation from "./components/DashboardNavigation";
+import { SecurityHeaders } from "./components/SecurityHeaders";
 
 const queryClient = new QueryClient();
 
@@ -80,6 +81,7 @@ const AppContent = () => {
   return (
     <AuthProvider>
       <ActivityTrackerWrapper>
+        <SecurityHeaders />
         <div className="min-h-screen flex flex-col">
           <div className="flex-1">
             <Routes>
