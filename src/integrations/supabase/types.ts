@@ -14,6 +14,69 @@ export type Database = {
   }
   public: {
     Tables: {
+      advanced_permissions: {
+        Row: {
+          created_at: string | null
+          expires_at: string | null
+          granted_by: string | null
+          id: string
+          permission_level: string
+          resource_id: string | null
+          resource_type: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          expires_at?: string | null
+          granted_by?: string | null
+          id?: string
+          permission_level: string
+          resource_id?: string | null
+          resource_type: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          expires_at?: string | null
+          granted_by?: string | null
+          id?: string
+          permission_level?: string
+          resource_id?: string | null
+          resource_type?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      analytics_dashboards: {
+        Row: {
+          configuration: Json
+          created_at: string | null
+          id: string
+          is_shared: boolean | null
+          name: string
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          configuration?: Json
+          created_at?: string | null
+          id?: string
+          is_shared?: boolean | null
+          name: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          configuration?: Json
+          created_at?: string | null
+          id?: string
+          is_shared?: boolean | null
+          name?: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       analytics_events: {
         Row: {
           created_at: string
@@ -151,6 +214,81 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      audit_logs: {
+        Row: {
+          action_type: string
+          created_at: string | null
+          id: string
+          ip_address: string | null
+          new_values: Json | null
+          old_values: Json | null
+          record_id: string | null
+          session_id: string | null
+          table_name: string | null
+          user_agent: string | null
+          user_id: string | null
+        }
+        Insert: {
+          action_type: string
+          created_at?: string | null
+          id?: string
+          ip_address?: string | null
+          new_values?: Json | null
+          old_values?: Json | null
+          record_id?: string | null
+          session_id?: string | null
+          table_name?: string | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          action_type?: string
+          created_at?: string | null
+          id?: string
+          ip_address?: string | null
+          new_values?: Json | null
+          old_values?: Json | null
+          record_id?: string | null
+          session_id?: string | null
+          table_name?: string | null
+          user_agent?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      backup_status: {
+        Row: {
+          backup_type: string
+          backup_url: string | null
+          completed_at: string | null
+          error_message: string | null
+          file_size: number | null
+          id: string
+          started_at: string | null
+          status: string
+        }
+        Insert: {
+          backup_type: string
+          backup_url?: string | null
+          completed_at?: string | null
+          error_message?: string | null
+          file_size?: number | null
+          id?: string
+          started_at?: string | null
+          status: string
+        }
+        Update: {
+          backup_type?: string
+          backup_url?: string | null
+          completed_at?: string | null
+          error_message?: string | null
+          file_size?: number | null
+          id?: string
+          started_at?: string | null
+          status?: string
+        }
+        Relationships: []
       }
       bereavement_care: {
         Row: {
@@ -2545,6 +2683,36 @@ export type Database = {
         }
         Relationships: []
       }
+      push_notification_tokens: {
+        Row: {
+          created_at: string | null
+          id: string
+          is_active: boolean | null
+          platform: string
+          token: string
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          platform: string
+          token: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          platform?: string
+          token?: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       room_bookings: {
         Row: {
           approved_by: string | null
@@ -3578,6 +3746,30 @@ export type Database = {
           },
         ]
       }
+      system_health_metrics: {
+        Row: {
+          id: string
+          metadata: Json | null
+          metric_type: string
+          metric_value: number
+          recorded_at: string | null
+        }
+        Insert: {
+          id?: string
+          metadata?: Json | null
+          metric_type: string
+          metric_value: number
+          recorded_at?: string | null
+        }
+        Update: {
+          id?: string
+          metadata?: Json | null
+          metric_type?: string
+          metric_value?: number
+          recorded_at?: string | null
+        }
+        Relationships: []
+      }
       system_upgrades: {
         Row: {
           completed_at: string | null
@@ -3921,6 +4113,36 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      user_two_factor: {
+        Row: {
+          backup_codes: string[] | null
+          created_at: string | null
+          id: string
+          is_enabled: boolean | null
+          last_used_at: string | null
+          secret: string
+          user_id: string | null
+        }
+        Insert: {
+          backup_codes?: string[] | null
+          created_at?: string | null
+          id?: string
+          is_enabled?: boolean | null
+          last_used_at?: string | null
+          secret: string
+          user_id?: string | null
+        }
+        Update: {
+          backup_codes?: string[] | null
+          created_at?: string | null
+          id?: string
+          is_enabled?: boolean | null
+          last_used_at?: string | null
+          secret?: string
+          user_id?: string | null
         }
         Relationships: []
       }

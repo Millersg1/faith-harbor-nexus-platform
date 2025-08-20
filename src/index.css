@@ -71,7 +71,103 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+}
+
+/* Accessibility Enhancements */
+.high-contrast {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 95%;
+  --popover: 0 0% 10%;
+  --popover-foreground: 0 0% 95%;
+  --primary: 60 100% 50%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 20%;
+  --secondary-foreground: 0 0% 95%;
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 95%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 30%;
+  --input: 0 0% 30%;
+  --ring: 60 100% 50%;
+}
+
+.enhanced-focus *:focus,
+.enhanced-focus *:focus-visible {
+  outline: 3px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.screen-reader-optimized {
+  --text-spacing-multiplier: 1.5;
+}
+
+/* Text spacing adjustments */
+* {
+  line-height: calc(1.5 * var(--text-spacing-multiplier, 1));
+  letter-spacing: calc(0.05em * var(--text-spacing-multiplier, 1));
+}
+
+p, li {
+  margin-bottom: calc(0.75em * var(--text-spacing-multiplier, 1));
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: calc(0.5em * var(--text-spacing-multiplier, 1));
+  margin-top: calc(1em * var(--text-spacing-multiplier, 1));
+}
+
+/* Color blind mode filters */
+[data-color-blind-mode="protanopia"] {
+  filter: url('#protanopia');
+}
+
+[data-color-blind-mode="deuteranopia"] {
+  filter: url('#deuteranopia');
+}
+
+[data-color-blind-mode="tritanopia"] {
+  filter: url('#tritanopia');
+}
+
+[data-color-blind-mode="achromatopsia"] {
+  filter: grayscale(100%);
+}
+
+/* Skip link for keyboard navigation */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+}
 
   .dark {
     --background: 222.2 84% 4.9%;
