@@ -14,7 +14,7 @@ export function ProviderDashboard({ onServiceCreated }: ProviderDashboardProps) 
           <h2 className="text-2xl font-semibold text-foreground">My Services</h2>
           <p className="text-muted-foreground">Manage your service offerings and bookings</p>
         </div>
-        <Button>
+        <Button onClick={onServiceCreated}>
           <Plus className="h-4 w-4 mr-2" />
           Add New Service
         </Button>
@@ -27,7 +27,7 @@ export function ProviderDashboard({ onServiceCreated }: ProviderDashboardProps) 
           <p className="text-muted-foreground mb-4">
             Create your first service to start offering your skills to the community
           </p>
-          <Button variant="outline">
+          <Button variant="outline" onClick={onServiceCreated}>
             Create Service
           </Button>
         </CardContent>

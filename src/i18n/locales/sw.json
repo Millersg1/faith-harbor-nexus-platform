@@ -89,5 +89,52 @@
     "yes": "Ndiyo",
     "no": "Hapana",
     "ok": "Sawa"
+  },
+  "baptism": {
+    "title": "Ubatizo na Sakramenti",
+    "subtitle": "Simamia ubatizo, uthibitisho, na kumbukumbu za kisakramenti",
+    "scheduleBaptism": "Ratibu Ubatizo",
+    "upcomingBaptisms": "Mabatizo Yanayokuja",
+    "totalCompleted": "Jumla Zilizokamilika",
+    "pendingPreparation": "Maandalizi Yanayosubiri",
+    "pendingCertificates": "Vyeti Vinavyosubiri",
+    "noBaptismsScheduled": "Hakuna Mabatizo Yaliyoratibiwa",
+    "scheduleFirst": "Anza kwa kuratibu ubatizo wako wa kwanza au sakramenti",
+    "scheduleFirstButton": "Ratibu Ubatizo wa Kwanza",
+    "overview": "Muhtasari",
+    "schedule": "Ratiba",
+    "preparation": "Maandalizi",
+    "certificates": "Vyeti"
+  },
+  "wedding": {
+    "title": "Mipango ya Harusi",
+    "subtitle": "Simamia sherehe za harusi na karamu",
+    "newWedding": "Harusi Mpya",
+    "noWeddingsYet": "Hakuna Harusi Bado",
+    "createFirst": "Anza kupanga harusi yako ya kwanza",
+    "createFirstButton": "Unda Harusi ya Kwanza",
+    "daysUntilWedding": "Siku hadi Harusi",
+    "planningProgress": "Maendeleo ya Mipango",
+    "expectedGuests": "Wageni Wanaotarajiwa",
+    "totalBudget": "Bajeti ya Jumla",
+    "timeline": "Mfuatano wa Wakati",
+    "guests": "Wageni",
+    "budget": "Bajeti"
+  },
+  "marketplace": {
+    "title": "Soko la Huduma",
+    "subtitle": "Unganisha na watoa huduma wa jamii",
+    "browseServices": "Vinjari Huduma",
+    "myBookings": "Mahifadhi Yangu",
+    "providerDashboard": "Dashibodi ya Mtoa Huduma",
+    "searchServices": "Tafuta huduma...",
+    "allCategories": "Makundi Yote",
+    "allPrices": "Bei Zote",
+    "noServicesFound": "Hakuna huduma zilizopatikana",
+    "bookingHistory": "Historia ya Mahifadhi",
+    "myServices": "Huduma Zangu",
+    "addNewService": "Ongeza Huduma Mpya",
+    "noServicesYet": "Hakuna Huduma Bado",
+    "createService": "Unda Huduma"
   }
 }

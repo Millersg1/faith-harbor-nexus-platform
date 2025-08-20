@@ -89,5 +89,52 @@
     "yes": "Yes",
     "no": "No",
     "ok": "OK"
+  },
+  "baptism": {
+    "title": "Baptism & Sacraments",
+    "subtitle": "Manage baptisms, confirmations, and sacramental records",
+    "scheduleBaptism": "Schedule Baptism",
+    "upcomingBaptisms": "Upcoming Baptisms",
+    "totalCompleted": "Total Completed",
+    "pendingPreparation": "Pending Preparation",
+    "pendingCertificates": "Pending Certificates",
+    "noBaptismsScheduled": "No Baptisms Scheduled",
+    "scheduleFirst": "Start by scheduling your first baptism or sacrament",
+    "scheduleFirstButton": "Schedule First Baptism",
+    "overview": "Overview",
+    "schedule": "Schedule",
+    "preparation": "Preparation",
+    "certificates": "Certificates"
+  },
+  "wedding": {
+    "title": "Wedding Planning",
+    "subtitle": "Manage wedding ceremonies and celebrations",
+    "newWedding": "New Wedding",
+    "noWeddingsYet": "No Weddings Yet",
+    "createFirst": "Start planning your first wedding ceremony",
+    "createFirstButton": "Create First Wedding",
+    "daysUntilWedding": "Days Until Wedding",
+    "planningProgress": "Planning Progress",
+    "expectedGuests": "Expected Guests",
+    "totalBudget": "Total Budget",
+    "timeline": "Timeline",
+    "guests": "Guests",
+    "budget": "Budget"
+  },
+  "marketplace": {
+    "title": "Service Marketplace",
+    "subtitle": "Connect with community service providers",
+    "browseServices": "Browse Services",
+    "myBookings": "My Bookings",
+    "providerDashboard": "Provider Dashboard",
+    "searchServices": "Search services...",
+    "allCategories": "All Categories",
+    "allPrices": "All Prices",
+    "noServicesFound": "No services found",
+    "bookingHistory": "Booking History",
+    "myServices": "My Services",
+    "addNewService": "Add New Service",
+    "noServicesYet": "No Services Yet",
+    "createService": "Create Service"
   }
 }
