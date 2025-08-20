@@ -82,15 +82,21 @@ export const useProductionMonitoring = () => {
 
       // Send to Supabase for persistence (in production)
       if (process.env.NODE_ENV === 'production') {
-        await supabase
-          .from('error_logs')
-          .insert({
-            message: error.message,
-            stack: error.stack,
-            level: error.level,
-            user_id: (await supabase.auth.getUser()).data.user?.id,
-            created_at: error.timestamp.toISOString(),
-          });
+        try {
+          // Use any type to avoid TypeScript issues with pending migrations
+          await (supabase as any)
+            .from('error_logs')
+            .insert({
+              message: error.message,
+              stack: error.stack,
+              level: error.level,
+              user_id: (await supabase.auth.getUser()).data.user?.id,
+              created_at: error.timestamp.toISOString(),
+            });
+        } catch (dbError) {
+          // Silently fail if table doesn't exist yet
+          console.warn('Error logging table not available yet:', dbError);
+        }
       }
     } catch (err) {
       console.error('Failed to log error:', err);
