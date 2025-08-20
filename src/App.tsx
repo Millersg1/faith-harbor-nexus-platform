@@ -130,6 +130,7 @@ const AppContent = () => {
               <Route path="/member-directory" element={<MemberDirectory />} />
               <Route path="/grief-support" element={<GriefSupport />} />
               <Route path="/memory-books" element={<MemoryBooks />} />
+              <Route path="/wedding-planning" element={<WeddingPlanning />} />
               <Route path="/marketplace" element={<Marketplace />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/seo-management" element={<SEOManagement />} />
