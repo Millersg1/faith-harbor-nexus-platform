@@ -71,6 +71,8 @@ import { OfflineIndicator } from "./components/OfflineIndicator";
 import ActivityTrackerWrapper from "./components/ActivityTrackerWrapper";
 import AdminActivityMonitorPage from "./pages/AdminActivityMonitor";
 import SecurityDashboard from "./pages/SecurityDashboard";
+import AIMarketplace from "./pages/AIMarketplace";
+import CompetitiveAdvantage from "./pages/CompetitiveAdvantage";
 import DashboardNavigation from "./components/DashboardNavigation";
 import { SecurityHeaders } from "./components/SecurityHeaders";
 
@@ -145,6 +147,8 @@ const AppContent = () => {
               <Route path="/emergency-broadcast" element={<EmergencyBroadcastSystem />} />
               <Route path="/robo-calling" element={<RoboCallingSystem />} />
               <Route path="/voice-cloning" element={<VoiceCloningStudio />} />
+              <Route path="/ai-marketplace" element={<AIMarketplace />} />
+              <Route path="/competitive-advantage" element={<CompetitiveAdvantage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

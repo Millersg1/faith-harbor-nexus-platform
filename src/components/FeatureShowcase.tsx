@@ -11,7 +11,11 @@ import {
   Video,
   Heart,
   ArrowRight,
-  CheckCircle
+  CheckCircle,
+  Mic,
+  FileText,
+  Target,
+  Award
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -58,6 +62,20 @@ const FeatureShowcase = () => {
       description: "AI-powered insights, growth tracking, and predictive analytics for ministry optimization",
       benefits: ["Growth insights", "Predictive analytics", "Custom reports"],
       gradient: "from-indigo-500 to-purple-500"
+    },
+    {
+      icon: Mic,
+      title: "AI Voice Cloning Studio", 
+      description: "Create personalized pastoral voices using advanced AI for customized church communications and messages",
+      benefits: ["ElevenLabs integration", "Voice training", "Speech generation", "Multi-language support"],
+      gradient: "from-indigo-500 to-purple-500"
+    },
+    {
+      icon: FileText,
+      title: "AI Sermon Transcription",
+      description: "Automatic sermon transcription and insights generation using OpenAI Whisper technology",
+      benefits: ["Auto-transcription", "Key points extraction", "Scripture references", "Content analysis"],
+      gradient: "from-blue-500 to-indigo-500"
     }
   ];
 
@@ -66,6 +84,8 @@ const FeatureShowcase = () => {
     { icon: Smartphone, title: "Mobile App Builder", desc: "Custom church apps" },
     { icon: Shield, title: "Enterprise Security", desc: "SOC 2 compliance" },
     { icon: Heart, title: "Children's Ministry", desc: "Complete kids programs" },
+    { icon: Target, title: "Competitive Analysis", desc: "Market-leading features" },
+    { icon: Award, title: "AI Marketplace", desc: "Revolutionary AI tools" },
   ];
 
   return (
@@ -95,6 +115,8 @@ const FeatureShowcase = () => {
                 case "Event & Volunteer Management": return "/events";
                 case "Communication Hub": return "/email-marketing";
                 case "Advanced Analytics": return "/analytics";
+                case "AI Voice Cloning Studio": return "/ai-marketplace";
+                case "AI Sermon Transcription": return "/ai-marketplace";
                 default: return "/dashboard";
               }
             };
@@ -133,18 +155,66 @@ const FeatureShowcase = () => {
         {/* Additional Features */}
         <div className="bg-muted/30 rounded-2xl p-6 sm:p-8 mb-8 sm:mb-12 mx-4 sm:mx-0">
           <h3 className="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 text-gold">
-            Plus Many Additional Features
+            Plus Revolutionary AI Features
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {additionalFeatures.map((feature, index) => (
-              <div key={index} className="text-center">
-                <div className="inline-flex p-2 sm:p-3 rounded-lg bg-white shadow-soft mb-2 sm:mb-3">
-                  <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
-                </div>
-                <h4 className="font-semibold mb-1 text-sm sm:text-base text-gold">{feature.title}</h4>
-                <p className="text-xs sm:text-sm text-muted-foreground">{feature.desc}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+            {additionalFeatures.map((feature, index) => {
+              const getFeatureLink = (title: string) => {
+                switch(title) {
+                  case "Competitive Analysis": return "/competitive-advantage";
+                  case "AI Marketplace": return "/ai-marketplace";
+                  default: return "/dashboard";
+                }
+              };
+
+              return (
+                <Link key={index} to={getFeatureLink(feature.title)} className="text-center group">
+                  <div className="inline-flex p-2 sm:p-3 rounded-lg bg-white shadow-soft mb-2 sm:mb-3 group-hover:shadow-medium transition-all">
+                    <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary group-hover:scale-110 transition-transform" />
+                  </div>
+                  <h4 className="font-semibold mb-1 text-sm sm:text-base text-gold group-hover:text-primary transition-colors">{feature.title}</h4>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{feature.desc}</p>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Market Leadership Section */}
+        <div className="bg-gradient-primary rounded-3xl p-8 sm:p-12 text-white mb-8 sm:mb-12 mx-4 sm:mx-0">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Why Faith Harbor Leads the Market</h2>
+            <p className="text-lg opacity-90 max-w-3xl mx-auto">
+              Our revolutionary AI-powered features put us years ahead of any competition
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold mb-2">300%</div>
+              <div className="text-sm opacity-80">Faster operations with AI</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold mb-2">95%</div>
+              <div className="text-sm opacity-80">Member satisfaction rate</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl sm:text-4xl font-bold mb-2">24/7</div>
+              <div className="text-sm opacity-80">AI spiritual companion</div>
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/ai-marketplace">
+              <Button size="lg" variant="secondary" className="w-full sm:w-auto min-w-[200px]">
+                Explore AI Features
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+              </Button>
+            </Link>
+            <Link to="/competitive-advantage">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto min-w-[200px] text-white border-white hover:bg-white hover:text-primary">
+                See Competitive Analysis
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+              </Button>
+            </Link>
           </div>
         </div>
 
