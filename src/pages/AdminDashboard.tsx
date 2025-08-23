@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -163,21 +164,29 @@ const AdminDashboard = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <Button variant="outline" className="h-20 flex-col space-y-2">
-                    <Users className="h-6 w-6" />
-                    <span>Manage Users</span>
+                  <Button variant="outline" className="h-20 flex-col space-y-2" asChild>
+                    <Link to="/members">
+                      <Users className="h-6 w-6" />
+                      <span>Manage Users</span>
+                    </Link>
                   </Button>
-                  <Button variant="outline" className="h-20 flex-col space-y-2">
-                    <Settings className="h-6 w-6" />
-                    <span>System Settings</span>
+                  <Button variant="outline" className="h-20 flex-col space-y-2" asChild>
+                    <Link to="/settings">
+                      <Settings className="h-6 w-6" />
+                      <span>System Settings</span>
+                    </Link>
                   </Button>
-                  <Button variant="outline" className="h-20 flex-col space-y-2">
-                    <Shield className="h-6 w-6" />
-                    <span>Security Center</span>
+                  <Button variant="outline" className="h-20 flex-col space-y-2" asChild>
+                    <Link to="/admin/security">
+                      <Shield className="h-6 w-6" />
+                      <span>Security Center</span>
+                    </Link>
                   </Button>
-                  <Button variant="outline" className="h-20 flex-col space-y-2">
-                    <BarChart3 className="h-6 w-6" />
-                    <span>View Reports</span>
+                  <Button variant="outline" className="h-20 flex-col space-y-2" asChild>
+                    <Link to="/advanced-analytics">
+                      <BarChart3 className="h-6 w-6" />
+                      <span>View Reports</span>
+                    </Link>
                   </Button>
                 </div>
               </CardContent>
