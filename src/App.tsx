@@ -75,6 +75,10 @@ import AIMarketplace from "./pages/AIMarketplace";
 import CompetitiveAdvantage from "./pages/CompetitiveAdvantage";
 import DashboardNavigation from "./components/DashboardNavigation";
 import { SecurityHeaders } from "./components/SecurityHeaders";
+import About from "./pages/About";
+import Pricing from "./pages/Pricing";
+import ChurchSolutions from "./pages/ChurchSolutions";
+import BusinessSolutions from "./pages/BusinessSolutions";
 
 const queryClient = new QueryClient();
 
@@ -149,6 +153,10 @@ const AppContent = () => {
               <Route path="/voice-cloning" element={<VoiceCloningStudio />} />
               <Route path="/ai-marketplace" element={<AIMarketplace />} />
               <Route path="/competitive-advantage" element={<CompetitiveAdvantage />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/solutions/church" element={<ChurchSolutions />} />
+              <Route path="/solutions/business" element={<BusinessSolutions />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
