@@ -5082,10 +5082,7 @@ export type Database = {
         Args: { enrollment_uuid: string }
         Returns: number
       }
-      create_sample_websites_for_user: {
-        Args: Record<PropertyKey, never>
-        Returns: undefined
-      }
+      create_sample_websites_for_user: { Args: never; Returns: undefined }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
