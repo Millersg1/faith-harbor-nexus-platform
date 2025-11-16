@@ -25,10 +25,13 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Error Boundary caught an error:', error, errorInfo);
+    // Only log in development
+    if (import.meta.env.DEV) {
+      console.error('Error Boundary caught an error:', error, errorInfo);
+    }
     
     // Send error to monitoring service in production
-    if (process.env.NODE_ENV === 'production') {
+    if (import.meta.env.PROD) {
       this.logErrorToService(error, errorInfo);
     }
 
@@ -46,8 +49,11 @@ export class ErrorBoundary extends Component<Props, State> {
       url: window.location.href,
     };
 
-    // Log to console for now, replace with actual service
-    console.error('Production error logged:', errorData);
+    // TODO: Send to actual error monitoring service (Sentry, LogRocket, etc.)
+    // For now, only log in development
+    if (import.meta.env.DEV) {
+      console.error('Error data:', errorData);
+    }
   };
 
   private handleReset = () => {
