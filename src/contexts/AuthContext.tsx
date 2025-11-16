@@ -6,7 +6,21 @@ interface AuthContextType {
   user: User | null;
   session: Session | null;
   loading: boolean;
+  /**
+   * SECURITY NOTE: This is for UI rendering ONLY.
+   * - Client-side state can be manipulated via browser dev tools
+   * - NEVER use for authorization decisions
+   * - All authorization MUST be enforced server-side via:
+   *   1. Edge functions verifying auth with getUser()
+   *   2. RLS policies using has_role() function
+   * - Treat as UI hint only, not security boundary
+   */
   isAdmin: boolean;
+  /**
+   * SECURITY NOTE: This is for UI rendering ONLY.
+   * - Same security considerations as isAdmin apply
+   * - Server-side verification is authoritative
+   */
   userRoles: string[];
   signUp: (email: string, password: string, userData?: any) => Promise<{ error: any }>;
   signIn: (email: string, password: string) => Promise<{ error: any }>;
@@ -31,9 +45,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
+  // SECURITY: isAdmin and userRoles are for UI rendering ONLY - never trust for authorization
   const [isAdmin, setIsAdmin] = useState(false);
   const [userRoles, setUserRoles] = useState<string[]>([]);
 
+  // SECURITY: This sets client-side state for UI rendering only
+  // Authorization is enforced server-side via RLS policies and edge function checks
   const checkUserRoles = async (userId: string) => {
     try {
       const { data } = await supabase
