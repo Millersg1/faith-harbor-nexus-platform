@@ -1,71 +1,91 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { corsHeaders } from "../_shared/cors.ts";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts';
 
 const TWILIO_ACCOUNT_SID = Deno.env.get('TWILIO_ACCOUNT_SID');
 const TWILIO_AUTH_TOKEN = Deno.env.get('TWILIO_AUTH_TOKEN');
 const TWILIO_PHONE_NUMBER = Deno.env.get('TWILIO_PHONE_NUMBER');
 
-interface RoboCallRequest {
-  name: string;
-  message: string;
-  recipients: string[];
-  voice?: 'alice' | 'man' | 'woman';
-  language?: string;
-  scheduledFor?: string;
-  gatherResponses?: boolean;
-  maxRetries?: number;
+const RoboCallSchema = z.object({
+  recipients: z.array(z.string().regex(/^\+?[1-9]\d{1,14}$/, 'Invalid phone number')).min(1).max(1000, 'Too many recipients'),
+  message: z.string().trim().min(1, 'Message required').max(1000, 'Message too long'),
+  name: z.string().trim().max(100).optional(),
+  voice: z.enum(['alice', 'man', 'woman']).default('alice'),
+  language: z.string().max(10).default('en'),
+  scheduledFor: z.string().optional(),
+  gatherResponses: z.boolean().default(false),
+  maxRetries: z.number().int().min(0).max(5).default(2),
+});
+
+function escapeXml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
 }
 
 const handler = async (req: Request): Promise<Response> => {
-  // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
+    // Authentication check
+    const authHeader = req.headers.get('Authorization');
+    if (!authHeader) {
+      return new Response(
+        JSON.stringify({ error: 'Unauthorized - Authentication required' }),
+        { status: 401, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    const supabaseClient = createClient(
+      Deno.env.get('SUPABASE_URL')!,
+      Deno.env.get('SUPABASE_ANON_KEY')!,
+      { global: { headers: { Authorization: authHeader } } }
+    );
+
+    const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
+    if (authError || !user) {
+      return new Response(
+        JSON.stringify({ error: 'Invalid authentication' }),
+        { status: 401, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
     if (!TWILIO_ACCOUNT_SID || !TWILIO_AUTH_TOKEN || !TWILIO_PHONE_NUMBER) {
       throw new Error('Missing required Twilio credentials');
     }
 
-    const { 
-      name, 
-      message, 
-      recipients, 
-      voice = 'alice', 
-      language = 'en',
-      scheduledFor,
-      gatherResponses = false,
-      maxRetries = 2
-    }: RoboCallRequest = await req.json();
+    // Input validation
+    const body = await req.json();
+    const validated = RoboCallSchema.parse(body);
 
-    if (!recipients || recipients.length === 0) {
-      throw new Error('Recipients list is required and cannot be empty');
-    }
+    console.log(`Starting robo call campaign "${validated.name || 'Unnamed'}" to ${validated.recipients.length} recipients`);
 
-    if (!message) {
-      throw new Error('Message is required');
-    }
-
-    console.log(`Starting robo call campaign "${name}" to ${recipients.length} recipients`);
-
-    // Create TwiML for the robo call
+    // Create TwiML for the robo call with escaped content
+    const safeMessage = escapeXml(validated.message);
     let twiml = `<?xml version="1.0" encoding="UTF-8"?>
     <Response>
-      <Say voice="${voice}" language="${language}">Hello, this is an important message from Faith Harbor Church.</Say>
+      <Say voice="${validated.voice}" language="${validated.language}">Hello, this is an important message from Faith Harbor Church.</Say>
       <Pause length="1"/>
-      <Say voice="${voice}" language="${language}">${message}</Say>`;
+      <Say voice="${validated.voice}" language="${validated.language}">${safeMessage}</Say>`;
 
-    if (gatherResponses) {
+    if (validated.gatherResponses) {
+      const safePrompt = escapeXml('Press 1 if you received this message clearly, press 2 if you need to speak with someone, or simply hang up.');
       twiml += `
         <Pause length="1"/>
         <Gather input="dtmf" numDigits="1" timeout="10" action="/robo-call-response">
-          <Say voice="${voice}" language="${language}">Press 1 if you received this message clearly, press 2 if you need to speak with someone, or simply hang up.</Say>
+          <Say voice="${validated.voice}" language="${validated.language}">${safePrompt}</Say>
         </Gather>
-        <Say voice="${voice}" language="${language}">Thank you for your time.</Say>`;
+        <Say voice="${validated.voice}" language="${validated.language}">Thank you for your time.</Say>`;
     } else {
       twiml += `
         <Pause length="1"/>
-        <Say voice="${voice}" language="${language}">Thank you and God bless!</Say>`;
+        <Say voice="${validated.voice}" language="${validated.language}">Thank you and God bless!</Say>`;
     }
 
     twiml += `
@@ -76,8 +96,8 @@ const handler = async (req: Request): Promise<Response> => {
     const batchSize = 5; // Process calls in batches to avoid overwhelming Twilio
     
     // Process recipients in batches
-    for (let i = 0; i < recipients.length; i += batchSize) {
-      const batch = recipients.slice(i, i + batchSize);
+    for (let i = 0; i < validated.recipients.length; i += batchSize) {
+      const batch = validated.recipients.slice(i, i + batchSize);
       const batchPromises = batch.map(async (phoneNumber) => {
         try {
           const callData = new URLSearchParams({
@@ -91,13 +111,13 @@ const handler = async (req: Request): Promise<Response> => {
           });
 
           // If scheduled, use Twilio's scheduling (requires TwiML Bins)
-          if (scheduledFor) {
+          if (validated.scheduledFor) {
             // For scheduled calls, you'd typically store in database and use a cron job
-            console.log(`Call to ${phoneNumber} scheduled for ${scheduledFor}`);
+            console.log(`Call to ${phoneNumber} scheduled for ${validated.scheduledFor}`);
             return {
               to: phoneNumber,
               status: 'scheduled',
-              scheduled_for: scheduledFor
+              scheduled_for: validated.scheduledFor
             };
           }
 
@@ -161,7 +181,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     return new Response(JSON.stringify({
       success: true,
-      campaignName: name,
+      campaignName: validated.name || 'Unnamed',
       message: 'Robo call campaign initiated successfully',
       results: callResults,
       statistics: stats,
@@ -176,13 +196,29 @@ const handler = async (req: Request): Promise<Response> => {
 
   } catch (error: any) {
     console.error("Error in robo-call function:", error);
+
+    // Handle validation errors
+    if (error instanceof z.ZodError) {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Validation failed',
+          details: error.errors,
+          success: false
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
     return new Response(
       JSON.stringify({ 
         error: error.message,
         success: false 
       }),
       {
-        status: 400,
+        status: 500,
         headers: { 
           "Content-Type": "application/json", 
           ...corsHeaders 
