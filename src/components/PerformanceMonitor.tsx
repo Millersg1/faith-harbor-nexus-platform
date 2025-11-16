@@ -10,8 +10,10 @@ interface PerformanceMetrics {
 }
 
 const reportMetrics = (metrics: PerformanceMetrics) => {
-  // Send metrics to analytics service
-  console.log('Performance metrics:', metrics);
+  // Only log in development
+  if (import.meta.env.DEV) {
+    console.log('Performance metrics:', metrics);
+  }
   
   // In production, send to your analytics service
   // Example: gtag('event', 'performance', { custom_map: metrics });
@@ -90,6 +92,8 @@ export const PerformanceMonitor: React.FC = () => {
 // Hook for component-level performance monitoring
 export const usePerformanceTracker = (componentName: string) => {
   useEffect(() => {
+    if (!import.meta.env.DEV) return;
+    
     const startTime = performance.now();
     
     return () => {

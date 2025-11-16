@@ -140,7 +140,7 @@ export const useCriticalResources = (resources: string[]) => {
 // Bundle size analyzer (development only)
 export const BundleAnalyzer: React.FC = () => {
   React.useEffect(() => {
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.DEV) {
       const analyzeBundle = () => {
         const scripts = Array.from(document.scripts);
         const stylesheets = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
